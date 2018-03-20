@@ -78,4 +78,12 @@ typedef NS_ENUM(NSInteger, SSMarginType) {
  */
 - (void)setImageRightTitleLeftWithSpacing:(CGFloat)spacing __deprecated_msg("Method deprecated. Use `setImagePositionWithType:spacing:`");
 
+
+/**
+ 设置角标的个数（右上角）
+ 
+ @param badgeValue <#badgeValue description#>
+ */
+- (void)setBadgeValue:(NSInteger)badgeValue;
+
 @end

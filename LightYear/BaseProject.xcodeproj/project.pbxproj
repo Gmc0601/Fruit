@@ -75,6 +75,13 @@
 		4218CED71FB157A400A63A13 /* verdanab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4218CEC41FB157A400A63A13 /* verdanab.ttf */; };
 		4218CED81FB157A400A63A13 /* verdanab_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4218CEC51FB157A400A63A13 /* verdanab_0.ttf */; };
 		4218CED91FB157A400A63A13 /* verdanai_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4218CEC61FB157A400A63A13 /* verdanai_0.ttf */; };
+		422FD9FA2060DC500062C4D9 /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FD9F92060DC4F0062C4D9 /* UIViewController+BarButton.m */; };
+		422FDA002060DCA20062C4D9 /* TBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FD9FC2060DCA20062C4D9 /* TBTabBarController.m */; };
+		422FDA012060DCA20062C4D9 /* TBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FD9FF2060DCA20062C4D9 /* TBNavigationController.m */; };
+		422FDA112060E0880062C4D9 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FDA102060E0880062C4D9 /* HomePageViewController.m */; };
+		422FDA142060E09E0062C4D9 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FDA132060E09E0062C4D9 /* ClassifyViewController.m */; };
+		422FDA172060E0C20062C4D9 /* ShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FDA162060E0C20062C4D9 /* ShopCarViewController.m */; };
+		422FDA1A2060E3300062C4D9 /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FDA192060E3300062C4D9 /* NetHelper.m */; };
 		423607CF1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 423607CE1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m */; };
 		4271F8B51FBD8069009D3E79 /* GetBackTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271F8B41FBD8069009D3E79 /* GetBackTime.m */; };
 		427C3D4F1F9F22180081B431 /* HHPasswordErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 427C3D4A1F9F22180081B431 /* HHPasswordErrorView.m */; };
@@ -183,7 +190,6 @@
 		6BB114B61F6D25CC00C9C886 /* SearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB114B51F6D25CC00C9C886 /* SearchResultView.m */; };
 		6BB114B91F6D7E9A00C9C886 /* PurchaseCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB114B81F6D7E9A00C9C886 /* PurchaseCarViewController.m */; };
 		6BB114BC1F6D8DDE00C9C886 /* CLImageViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB114BB1F6D8DDE00C9C886 /* CLImageViewPopup.m */; };
-		6BB191171F737606001ED732 /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB191161F737606001ED732 /* NetHelper.m */; };
 		6BBD89BA1F697AC700C8B7C3 /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD89B71F697AC700C8B7C3 /* RecommendCell.m */; };
 		6BBD89BB1F697AC700C8B7C3 /* RecommendCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD89B91F697AC700C8B7C3 /* RecommendCV.m */; };
 		6BBD89CA1F69928500C8B7C3 /* GoodsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD89C91F69928500C8B7C3 /* GoodsListView.m */; };
@@ -325,6 +331,20 @@
 		4218CEC41FB157A400A63A13 /* verdanab.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = verdanab.ttf; sourceTree = "<group>"; };
 		4218CEC51FB157A400A63A13 /* verdanab_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = verdanab_0.ttf; sourceTree = "<group>"; };
 		4218CEC61FB157A400A63A13 /* verdanai_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = verdanai_0.ttf; sourceTree = "<group>"; };
+		422FD9F82060DC4F0062C4D9 /* UIViewController+BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarButton.h"; sourceTree = "<group>"; };
+		422FD9F92060DC4F0062C4D9 /* UIViewController+BarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarButton.m"; sourceTree = "<group>"; };
+		422FD9FC2060DCA20062C4D9 /* TBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTabBarController.m; sourceTree = "<group>"; };
+		422FD9FD2060DCA20062C4D9 /* TBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBNavigationController.h; sourceTree = "<group>"; };
+		422FD9FE2060DCA20062C4D9 /* TBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTabBarController.h; sourceTree = "<group>"; };
+		422FD9FF2060DCA20062C4D9 /* TBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBNavigationController.m; sourceTree = "<group>"; };
+		422FDA0F2060E0880062C4D9 /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		422FDA102060E0880062C4D9 /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		422FDA122060E09E0062C4D9 /* ClassifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
+		422FDA132060E09E0062C4D9 /* ClassifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
+		422FDA152060E0C20062C4D9 /* ShopCarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCarViewController.h; sourceTree = "<group>"; };
+		422FDA162060E0C20062C4D9 /* ShopCarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCarViewController.m; sourceTree = "<group>"; };
+		422FDA182060E32F0062C4D9 /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetHelper.h; sourceTree = "<group>"; };
+		422FDA192060E3300062C4D9 /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
 		423607CD1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+EOCBlocksSupport.h"; sourceTree = "<group>"; };
 		423607CE1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EOCBlocksSupport.m"; sourceTree = "<group>"; };
 		4271F8B31FBD8069009D3E79 /* GetBackTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetBackTime.h; sourceTree = "<group>"; };
@@ -533,8 +553,6 @@
 		6BB114B81F6D7E9A00C9C886 /* PurchaseCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseCarViewController.m; sourceTree = "<group>"; };
 		6BB114BA1F6D8DDE00C9C886 /* CLImageViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLImageViewPopup.h; sourceTree = "<group>"; };
 		6BB114BB1F6D8DDE00C9C886 /* CLImageViewPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLImageViewPopup.m; sourceTree = "<group>"; };
-		6BB191151F737606001ED732 /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetHelper.h; path = "BaseProject/Classes/GoodsDetail&ShoppingCar/Views/NetHelper.h"; sourceTree = SOURCE_ROOT; };
-		6BB191161F737606001ED732 /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetHelper.m; path = "BaseProject/Classes/GoodsDetail&ShoppingCar/Views/NetHelper.m"; sourceTree = SOURCE_ROOT; };
 		6BBD89B61F697AC700C8B7C3 /* RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCell.h; sourceTree = "<group>"; };
 		6BBD89B71F697AC700C8B7C3 /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
 		6BBD89B81F697AC700C8B7C3 /* RecommendCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCV.h; sourceTree = "<group>"; };
@@ -816,6 +834,125 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		422FD9FB2060DCA20062C4D9 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				422FD9FD2060DCA20062C4D9 /* TBNavigationController.h */,
+				422FD9FF2060DCA20062C4D9 /* TBNavigationController.m */,
+				422FD9FE2060DCA20062C4D9 /* TBTabBarController.h */,
+				422FD9FC2060DCA20062C4D9 /* TBTabBarController.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		422FDA022060DEF00062C4D9 /* MaybeNoUse */ = {
+			isa = PBXGroup;
+			children = (
+				4214BDE51F5FA8A800FA1F85 /* GoodsDetail&ShoppingCar */,
+				429941161F5EAC4F0009ADDA /* FirstView&Coupons */,
+			);
+			path = MaybeNoUse;
+			sourceTree = "<group>";
+		};
+		422FDA032060DFAB0062C4D9 /* ShoppingCar */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA042060DFAB0062C4D9 /* Models */,
+				422FDA052060DFAB0062C4D9 /* ViewControllers */,
+				422FDA062060DFAB0062C4D9 /* Views */,
+			);
+			path = ShoppingCar;
+			sourceTree = "<group>";
+		};
+		422FDA042060DFAB0062C4D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		422FDA052060DFAB0062C4D9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA152060E0C20062C4D9 /* ShopCarViewController.h */,
+				422FDA162060E0C20062C4D9 /* ShopCarViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		422FDA062060DFAB0062C4D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		422FDA072060DFAB0062C4D9 /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA082060DFAB0062C4D9 /* Models */,
+				422FDA092060DFAB0062C4D9 /* ViewControllers */,
+				422FDA0A2060DFAB0062C4D9 /* Views */,
+			);
+			path = Classify;
+			sourceTree = "<group>";
+		};
+		422FDA082060DFAB0062C4D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		422FDA092060DFAB0062C4D9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA122060E09E0062C4D9 /* ClassifyViewController.h */,
+				422FDA132060E09E0062C4D9 /* ClassifyViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		422FDA0A2060DFAB0062C4D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		422FDA0B2060DFAB0062C4D9 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA0C2060DFAB0062C4D9 /* Models */,
+				422FDA0D2060DFAB0062C4D9 /* ViewControllers */,
+				422FDA0E2060DFAB0062C4D9 /* Views */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		422FDA0C2060DFAB0062C4D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		422FDA0D2060DFAB0062C4D9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				422FDA0F2060E0880062C4D9 /* HomePageViewController.h */,
+				422FDA102060E0880062C4D9 /* HomePageViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		422FDA0E2060DFAB0062C4D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		423607CC1FB2ACF800DF96CD /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1146,8 @@
 		42C84EA21EF2DB060008189D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				422FD9F82060DC4F0062C4D9 /* UIViewController+BarButton.h */,
+				422FD9F92060DC4F0062C4D9 /* UIViewController+BarButton.m */,
 				6B5F6D6C1F628D28001BDC0E /* NSArray+Category.h */,
 				6B5F6D6D1F628D28001BDC0E /* NSArray+Category.m */,
 				6B5F6D6E1F628D28001BDC0E /* NSAttributedString+Category.h */,
@@ -1074,10 +1213,12 @@
 		42C84EA31EF2DB060008189D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				429941161F5EAC4F0009ADDA /* FirstView&Coupons */,
-				4214BDE51F5FA8A800FA1F85 /* GoodsDetail&ShoppingCar */,
+				422FDA0B2060DFAB0062C4D9 /* HomePage */,
+				422FDA072060DFAB0062C4D9 /* Classify */,
+				422FDA032060DFAB0062C4D9 /* ShoppingCar */,
 				4299411E1F5EAC4F0009ADDA /* MyCenter&Login */,
 				427C3D521F9F227B0081B431 /* Order */,
+				422FDA022060DEF00062C4D9 /* MaybeNoUse */,
 				42C84EA41EF2DB060008189D /* ViewController.h */,
 				42C84EA51EF2DB060008189D /* ViewController.m */,
 			);
@@ -1141,6 +1282,7 @@
 			isa = PBXGroup;
 			children = (
 				42F795AC1F00C8B200A11A69 /* BaseViewControllers */,
+				422FD9FB2060DCA20062C4D9 /* Navigation */,
 			);
 			path = SuperClass;
 			sourceTree = "<group>";
@@ -1239,8 +1381,8 @@
 		6BB191181F739193001ED732 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6BB191151F737606001ED732 /* NetHelper.h */,
-				6BB191161F737606001ED732 /* NetHelper.m */,
+				422FDA182060E32F0062C4D9 /* NetHelper.h */,
+				422FDA192060E3300062C4D9 /* NetHelper.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1507,8 +1649,10 @@
 				00C40BC91F9DE132002A31A0 /* RechargeInfoCell.m in Sources */,
 				0422A3141F9F3BF30037AC25 /* CouponDefaultCell.m in Sources */,
 				6B5F6DA71F628D28001BDC0E /* NSString+Predicate.m in Sources */,
+				422FDA172060E0C20062C4D9 /* ShopCarViewController.m in Sources */,
 				04274F7B1F766732009DF308 /* SelectShopCell.m in Sources */,
 				6B5F6DB21F628D28001BDC0E /* UIView+BGFrame.m in Sources */,
+				422FDA142060E09E0062C4D9 /* ClassifyViewController.m in Sources */,
 				6BB114B61F6D25CC00C9C886 /* SearchResultView.m in Sources */,
 				00C40BC21F9DE100002A31A0 /* homeBannerModel.m in Sources */,
 				42A24FCD1F5F0CE5005130DC /* UIButton+YX.m in Sources */,
@@ -1532,6 +1676,7 @@
 				6B5F6DA51F628D28001BDC0E /* NSString+DisplayTime.m in Sources */,
 				046C474E1F73D92300FDCFF6 /* WMHomePageViewController.m in Sources */,
 				6BB114BC1F6D8DDE00C9C886 /* CLImageViewPopup.m in Sources */,
+				422FDA002060DCA20062C4D9 /* TBTabBarController.m in Sources */,
 				6B5F6DB31F628D28001BDC0E /* UIView+Category.m in Sources */,
 				4214BDEE1F5FA97A00FA1F85 /* FactorySet.m in Sources */,
 				04654A9A1F6E66360023FF63 /* balancePointDetailsCell.m in Sources */,
@@ -1551,6 +1696,7 @@
 				42C84EB91EF2DCD90008189D /* MainApi.m in Sources */,
 				6B5F6DB01F628D28001BDC0E /* UITextView+placeholder.m in Sources */,
 				04654A971F6E66280023FF63 /* WMTableView.m in Sources */,
+				422FDA012060DCA20062C4D9 /* TBNavigationController.m in Sources */,
 				046C474B1F73D90A00FDCFF6 /* WMBannerView.m in Sources */,
 				00C40BC31F9DE100002A31A0 /* integralListModel.m in Sources */,
 				42C84F1D1EF2EB650008189D /* NSString+SBJSON.m in Sources */,
@@ -1570,6 +1716,7 @@
 				00A9527F1F7024F800DEE0F6 /* FeedBackViewController.m in Sources */,
 				04654AA31F6E97230023FF63 /* couponDetailsCell.m in Sources */,
 				42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */,
+				422FDA1A2060E3300062C4D9 /* NetHelper.m in Sources */,
 				6BB114B31F6D0D5F00C9C886 /* HistoryTableView.m in Sources */,
 				04654A961F6E66280023FF63 /* WMSegmentView.m in Sources */,
 				427C3D7C1F9F227B0081B431 /* OrderTableViewCell.m in Sources */,
@@ -1585,11 +1732,11 @@
 				427C3D501F9F22180081B431 /* HHPayPasswordView.m in Sources */,
 				42C84EB61EF2DCBC0008189D /* ConfigModel.m in Sources */,
 				4214BDDB1F5FA27400FA1F85 /* FirstViewViewController.m in Sources */,
-				6BB191171F737606001ED732 /* NetHelper.m in Sources */,
 				0422A30F1F9F3BEB0037AC25 /* ExpireCouponViewController.m in Sources */,
 				00A9527A1F7024F800DEE0F6 /* ChangeUserInfoViewController.m in Sources */,
 				6BBD89BA1F697AC700C8B7C3 /* RecommendCell.m in Sources */,
 				6B5F6DA21F628D28001BDC0E /* NSMutableAttributedString+Category.m in Sources */,
+				422FDA112060E0880062C4D9 /* HomePageViewController.m in Sources */,
 				6B015A231F764A6000CDEA16 /* SKU.m in Sources */,
 				0422A3111F9F3BEB0037AC25 /* InspectCouponViewController.m in Sources */,
 				6B5F6DAB1F628D28001BDC0E /* UIControl+ResponseTime.m in Sources */,
@@ -1625,6 +1772,7 @@
 				427C3D781F9F227B0081B431 /* OrderFootView.m in Sources */,
 				427C3D761F9F227B0081B431 /* CouponTableViewCell.m in Sources */,
 				04274F781F766716009DF308 /* SelectShopViewController.m in Sources */,
+				422FD9FA2060DC500062C4D9 /* UIViewController+BarButton.m in Sources */,
 				429940EE1F5E8ED60009ADDA /* CCBaseViewController.m in Sources */,
 				4214BDEB1F5FA8A800FA1F85 /* ShoppingCarViewController.m in Sources */,
 				00C40BC61F9DE100002A31A0 /* tradeListModel.m in Sources */,

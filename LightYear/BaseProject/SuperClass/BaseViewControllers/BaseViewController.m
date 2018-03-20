@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #include "FactorySet.h"
 
+
 #define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
 #define ViewController_BackGround [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0]//视图控制器背景颜色
 @interface BaseViewController ()
@@ -23,71 +24,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     if (iOS7) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        
     }
-    self.view.backgroundColor = ViewController_BackGround;
-    
-    //导航栏 返回 按钮
+    self.view.backgroundColor =[UIColor whiteColor];
     NSArray *viewControllers = self.navigationController.viewControllers;
-    
     if (viewControllers.count > 1){
-        
-        [self.navigationItem setHidesBackButton:NO animated:NO];
-        
-        UIBarButtonItem *leftBarButtonItem = [FactorySet createBackBarButtonItemWithTarget:self action:@selector(backAction)];
-        
-        if (iOS7) {
-            
-            UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            negativeSpacer.width = -15;
-            self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftBarButtonItem];
-            
-        }else{
-            
-            self.navigationItem.leftBarButtonItem = leftBarButtonItem;
-        }
-        
-        //返回的手势
-        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backSweepGesture:)];
-        gesture.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.view addGestureRecognizer:gesture];
-        
-        
+        [self addLeftBarButtonWithImage:[UIImage imageNamed:@"ic_back"] action:@selector(backAction)];
     }else{
-        
         [self.navigationItem setHidesBackButton:YES animated:NO];
-        
     }
-    
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ThemeNab.png"] forBarMetrics:UIBarMetricsDefault];
+    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent ;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white.png"] forBarMetrics:UIBarMetricsDefault];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
 
 - (void)backSweepGesture:(UISwipeGestureRecognizer*)gesture{
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
-
 #pragma mark -
 #pragma mark Action
-
 - (void)backAction{
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 -(void)setCustomerTitle:(NSString *)title{
-    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     titleLabel.text = title;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:18];
     self.navigationItem.titleView = titleLabel;
-    
+}
+
+- (void)setTitleImage:(NSString *)imageStr {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 180, 20)];
+    UIImageView *img = [[UIImageView alloc] initWithFrame:view.frame];
+    img.image = [UIImage imageNamed:@"icon_jyb"];
+    img.contentMode = UIViewContentModeScaleAspectFit;
+    [view addSubview:img];
+    self.navigationItem.titleView = view;
 }
 
 

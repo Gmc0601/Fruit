@@ -123,4 +123,33 @@ sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
     }
 }
 
+
+/**
+ 设置角标的个数（右上角）
+ 
+ @param badgeValue <#badgeValue description#>
+ */
+- (void)setBadgeValue:(NSInteger)badgeValue{
+    
+    CGFloat badgeW   = SizeWidth(15);
+    CGSize imageSize = self.imageView.frame.size;
+    CGFloat imageX   = self.imageView.frame.origin.x;
+    CGFloat imageY   = self.imageView.frame.origin.y;
+    
+    UILabel *badgeLable = [[UILabel alloc]init];
+    badgeLable.text = [NSString stringWithFormat:@"%ld",badgeValue];
+    badgeLable.textAlignment = NSTextAlignmentCenter;
+    badgeLable.textColor = [UIColor whiteColor];
+    badgeLable.font = [UIFont systemFontOfSize:SizeWidth(10)];
+    badgeLable.layer.cornerRadius = badgeW*0.5;
+    badgeLable.clipsToBounds = YES;
+    badgeLable.backgroundColor = UIColorFromHex(0xE84A55);
+    
+    CGFloat badgeX = imageX + imageSize.width - badgeW*0.5;
+    CGFloat badgeY = imageY - badgeW*0.25;
+    badgeLable.frame = CGRectMake(badgeX, badgeY, badgeW, badgeW);
+    [self addSubview:badgeLable];
+}
+
+
 @end

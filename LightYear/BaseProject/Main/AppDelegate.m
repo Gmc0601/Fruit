@@ -14,6 +14,7 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "WMHomePageViewController.h"
 #import "UserModel.h"
+#import "ViewController.h"
 @interface AppDelegate ()
 @end
 
@@ -28,16 +29,10 @@
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [ViewController new];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
-    UINavigationController * na = [[UINavigationController alloc] initWithRootViewController:[WMHomePageViewController new]];
-    
-//    if ([ConfigModel getBoolObjectforKey:IsLogin] == YES) {
-//        na = [[UINavigationController alloc] initWithRootViewController:[WMHomePageViewController new]];
-//    }else{
-//        na = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
-//    }
-    
-    self.window.rootViewController = na;
     
     self.window.backgroundColor = [UIColor whiteColor];
     

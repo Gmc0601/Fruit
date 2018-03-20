@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ch</string>
 	<key>CFBundleDisplayName</key>
-	<string>光年</string>
+	<string>超果鲜</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -31,7 +31,7 @@
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1021</string>
+	<string>1000</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
