@@ -22,7 +22,7 @@ pod ‘SVPullToRefresh'
 pod 'AMapLocation-NO-IDFA' 
 pod 'AMapSearch-NO-IDFA'
 pod 'AMap2DMap-NO-IDFA'
-
+pod 'YYModel'
 use_frameworks!
 
 end
