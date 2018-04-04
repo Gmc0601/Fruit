@@ -59,7 +59,7 @@
 #define WeakSelf(weakSelf)  __weak __typeof(&*self)  weakSelf  = self;
 #define WeakObj(o) __weak typeof(o) o##Weak = o
 #define StrongSelf(strongSelf)  __strong __typeof(&*self)  strongSelf = weakSelf;
-
+#define WEAKSELF typeof(self) __weak weakSelf = self;
 
 /**
  * 字体大小（常规/粗体）

@@ -76,4 +76,51 @@
 }
 
 
+#pragma mark - 导航栏左右按钮设置
+
+/**
+ *  显示右按钮
+ *
+ *  @param title       按钮文字
+ *  @param sel         sel
+ *  @param imageName   默认图片
+ *  @param imageOnName 按下图片
+ */
+-(void)showNavRightButton:(NSString*)title action:(SEL)sel image:(UIImage *)imageName imageOn:(UIImage*)imageOnName{
+    self.navigationItem.rightBarButtonItems = nil;
+    if (!imageName) {
+        UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+        [bt setFrame:CGRectMake(0, 5,80, 28)];
+        bt.titleLabel.font = NormalFont(14);
+        //        bt.titleLabel.textAlignment = NSTextAlignmentRight;
+        bt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [bt setTitle:title forState:UIControlStateNormal];
+        //        [bt setImage:imageName forState:UIControlStateNormal];
+        [bt addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:bt];
+        //        UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:title style:UIBarButtonItemStylePlain target:self action:sel];
+        self.navigationItem.rightBarButtonItem = item;
+    }else{
+        UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+        [bt setFrame:CGRectMake(0, 0, 28, 28)];
+        bt.titleLabel.font = [UIFont systemFontOfSize:11];
+        [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [bt setImage:imageName forState:UIControlStateNormal];
+        [bt addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:bt];
+        
+        
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -5;
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer, item, nil];
+        
+        //        self.navigationItem.rightBarButtonItem = item;
+    }
+    
+    
+}
+
 @end
