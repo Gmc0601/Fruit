@@ -192,6 +192,8 @@
 		6BBD89BB1F697AC700C8B7C3 /* RecommendCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD89B91F697AC700C8B7C3 /* RecommendCV.m */; };
 		6BBD89CA1F69928500C8B7C3 /* GoodsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD89C91F69928500C8B7C3 /* GoodsListView.m */; };
 		6BD8871B1F72C1DC00871019 /* PurcharseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8871A1F72C1DC00871019 /* PurcharseCell.m */; };
+		740791542079EBA700F4BC45 /* ShoplistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 740791532079EBA700F4BC45 /* ShoplistVC.m */; };
+		740791572079F29700F4BC45 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 740791562079F29700F4BC45 /* ShopListCell.m */; };
 		74D34D6C207479920009AFB8 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D68207479920009AFB8 /* SearchVC.m */; };
 		74D34D6D207479920009AFB8 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D6A207479920009AFB8 /* HomePageViewController.m */; };
 		74D34D7A207479BD0009AFB8 /* HomeHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D70207479BB0009AFB8 /* HomeHotCell.m */; };
@@ -569,6 +571,10 @@
 		6BBD89C91F69928500C8B7C3 /* GoodsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListView.m; sourceTree = "<group>"; };
 		6BD887191F72C1DC00871019 /* PurcharseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurcharseCell.h; sourceTree = "<group>"; };
 		6BD8871A1F72C1DC00871019 /* PurcharseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurcharseCell.m; sourceTree = "<group>"; };
+		740791522079EBA700F4BC45 /* ShoplistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoplistVC.h; sourceTree = "<group>"; };
+		740791532079EBA700F4BC45 /* ShoplistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoplistVC.m; sourceTree = "<group>"; };
+		740791552079F29700F4BC45 /* ShopListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopListCell.h; sourceTree = "<group>"; };
+		740791562079F29700F4BC45 /* ShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
 		74D34D68207479920009AFB8 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		74D34D69207479920009AFB8 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		74D34D6A207479920009AFB8 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -975,6 +981,8 @@
 				74D34D6A207479920009AFB8 /* HomePageViewController.m */,
 				74D34D69207479920009AFB8 /* SearchVC.h */,
 				74D34D68207479920009AFB8 /* SearchVC.m */,
+				740791522079EBA700F4BC45 /* ShoplistVC.h */,
+				740791532079EBA700F4BC45 /* ShoplistVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1427,6 +1435,8 @@
 				74D34D75207479BC0009AFB8 /* ItemCollectionCell.h */,
 				74D34D76207479BC0009AFB8 /* ItemCollectionCell.m */,
 				74D34D6F207479AD0009AFB8 /* Banner */,
+				740791552079F29700F4BC45 /* ShopListCell.h */,
+				740791562079F29700F4BC45 /* ShopListCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1554,7 +1564,7 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = PA574T6LR3;
+						DevelopmentTeam = 32PRDP9W75;
 						ProvisioningStyle = Automatic;
 					};
 					42A444481EF133E000F90791 = {
@@ -1778,6 +1788,7 @@
 				6B5F6DC51F63D5F1001BDC0E /* GoodsModel.m in Sources */,
 				00A952891F7024F800DEE0F6 /* MycenterHeadView.m in Sources */,
 				427C3D7B1F9F227B0081B431 /* OrderStoreInfoTableViewCell.m in Sources */,
+				740791572079F29700F4BC45 /* ShopListCell.m in Sources */,
 				42F795BB1F00C8B200A11A69 /* BaseTableView.m in Sources */,
 				427C3D741F9F227B0081B431 /* OrderDetialViewController.m in Sources */,
 				74D34D7A207479BD0009AFB8 /* HomeHotCell.m in Sources */,
@@ -1872,6 +1883,7 @@
 				427C3D7A1F9F227B0081B431 /* OrderInfoFootView.m in Sources */,
 				00A952871F7024F800DEE0F6 /* DeilveryAddressTableViewCell.m in Sources */,
 				42A24FCF1F5F0CE5005130DC /* UIView+Frame.m in Sources */,
+				740791542079EBA700F4BC45 /* ShoplistVC.m in Sources */,
 				00A952831F7024F800DEE0F6 /* BaseTextField.m in Sources */,
 				6B5F6DB11F628D28001BDC0E /* UIView+Animation.m in Sources */,
 				74D34D84207479CB0009AFB8 /* UIView+Banner.m in Sources */,

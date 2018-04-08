@@ -40,7 +40,7 @@
             [self.selectArr addObject:dic];
         }
     }
-    
+    [self loadData];
     [self creatView];
 }
 
@@ -81,6 +81,27 @@
         
     }
     return _collectionView;
+}
+
+#pragma mark 加载数据
+- (void)loadData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"id"] = @"0";
+    parameters[@"page"] = @"1";
+    parameters[@"size"] = @"100";
+    [HttpRequest postPath:GoodsTypeByPid params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        NSLog(@"====%@",responseObject);
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            
+            
+        }else {
+            NSLog(@"====%@",baseModel.message);
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource

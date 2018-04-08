@@ -37,6 +37,9 @@
 
 #pragma mark - 接口地址 -
 
+//分类
+#define GoodsTypeByPid @"_goodstype_by_pid_001"
+
 //模块A
 #define LoginURL @"_login_001"
 #define CodeLoginURL @"_login_002"

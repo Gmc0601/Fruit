@@ -11,6 +11,8 @@
 #import "SearchVC.h"
 #import "ReclassifyVC.h"
 
+#import "ShoplistVC.h"
+
 #import "HomeBannerCell.h"
 #import "HomeItemsCell.h"
 #import "HomeHotCell.h"
@@ -28,7 +30,7 @@
     [self creatView];
     [self creatLeftBtn];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
-//    [self loadHomeData];
+    [self loadHomeData];
 }
 
 - (void)creatView {
@@ -95,20 +97,22 @@
 }
 
 #pragma mark 加载数据
-//- (void)loadHomeData {
-//    [ConfigModel showHud:self];
-//    NSDictionary * params = @{@"shopid":@"82"};
-//    [HttpRequest postPath:ShopGoodsType params:params resultBlock:^(id responseObject, NSError *error) {
-//        [ConfigModel hideHud:self];
-//        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-//        if (baseModel.error == 0) {
-//
-//            NSLog(@"====%@",responseObject);
-//        }else {
-//            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-//        }
-//    }];
-//}
+- (void)loadHomeData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"lat"] = @"26.891331";
+    parameters[@"lng"] = @"112.589089";
+    [HttpRequest postPath:shoplistURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+
+            NSLog(@"====%@",responseObject);
+        }else {
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
+}
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -237,6 +241,9 @@
 #pragma mark 按钮事件
 - (void)messageAction {
     NSLog(@"message");
+    ShoplistVC *vc = [ShoplistVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)searchBtnAction {
