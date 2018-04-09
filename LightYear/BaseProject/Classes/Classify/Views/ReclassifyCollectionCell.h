@@ -10,4 +10,6 @@
 
 @interface ReclassifyCollectionCell : UICollectionViewCell
 
+- (void)setUpData:(ThreeSubTypeModel *)model;
+
 @end

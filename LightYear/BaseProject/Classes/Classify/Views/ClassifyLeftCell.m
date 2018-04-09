@@ -47,8 +47,8 @@
     
 }
 
-- (void)setUpTitle:(NSString *)title {
-    _titleLb.text = title;
+- (void)setUpTitle:(OneSubTypeModel *)model {
+    _titleLb.text = [NSString stringWithFormat:@"%@",model.name];
 }
 
 - (void)changeSelectWithType:(NSDictionary *)dic {

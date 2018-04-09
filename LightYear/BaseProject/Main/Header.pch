@@ -24,6 +24,9 @@
 
 //model
 #import "ShopModel.h"
+#import "OneSubTypeModel.h"
+#import "TwoSubTypeModel.h"
+#import "ThreeSubTypeModel.h"
 
 /*
  通用
