@@ -10,6 +10,7 @@
 
 #import "SearchVC.h"
 #import "ReclassifyVC.h"
+#import "GoodsDetailVC.h"
 
 #import "ShoplistVC.h"
 
@@ -17,7 +18,7 @@
 #import "HomeItemsCell.h"
 #import "HomeHotCell.h"
 
-@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,HomeBannerCellDelegate,HomeItemsCellDelegate>
+@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,HomeBannerCellDelegate,HomeItemsCellDelegate,HomeHotCellDelegate>
 
 @property(nonatomic,strong) UITableView *tableView;
 
@@ -27,10 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ConfigModel saveBoolObject:YES forKey:IsLogin];
+    [ConfigModel saveString:@"37c69f3f1d1ed49d58cdf5d4b6750f81" forKey:UserToken];
     [self creatView];
     [self creatLeftBtn];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
     [self loadHomeData];
+    
 }
 
 - (void)creatView {
@@ -100,8 +104,8 @@
 - (void)loadHomeData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"lat"] = @"26.891331";
-    parameters[@"lng"] = @"112.589089";
+    parameters[@"lat"] = @"30.399085";
+    parameters[@"lng"] = @"114.89128";
     [HttpRequest postPath:shoplistURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
@@ -192,7 +196,7 @@
             if (cell == nil) {
                 cell = [[HomeHotCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
-            
+            cell.delegate = self;
             return cell;
         }
             break;
@@ -219,7 +223,7 @@
    
 }
 
-#pragma mark HomeBannerCellDelegate,HomeItemsCellDelegate
+#pragma mark HomeBannerCellDelegate  HomeItemsCellDelegate  HomeHotCellDelegate
 /**
  *  点击了广告
  */
@@ -233,6 +237,15 @@
 - (void)homeItemsDidSelectWithTag:(NSInteger )tag {
     NSLog(@"===%ld",tag);
     ReclassifyVC *vc = [ReclassifyVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/**
+ *  点击了畅销榜
+ */
+-(void)homeHotItemsDidSelectWithTag:(NSInteger)tag {
+    GoodsDetailVC *vc = [GoodsDetailVC new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

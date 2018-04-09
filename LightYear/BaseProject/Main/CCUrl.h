@@ -26,19 +26,19 @@
 /*****************************测试开关*******************************/
 
 #if HHTest
-
-#define    BaseApi       @"http://139.224.70.219:83/index.php"
+#define    BaseApi       @"http://139.224.70.219:8081/index.php"
+//#define    BaseApi       @"http://139.224.70.219:83/index.php"
 
 #else
-
-#define    BaseApi      @"http://47.96.21.205/index.php"
+#define    BaseApi       @"http://139.224.70.219:8081/index.php"
+//#define    BaseApi      @"http://47.96.21.205/index.php"
 
 #endif
 
 #pragma mark - 接口地址 -
 
 //分类
-#define GoodsTypeByPid @"_goodstype_by_pid_001"
+#define GoodsTypeList @"_goodstype_list_001"
 
 //模块A
 #define LoginURL @"_login_001"

@@ -25,6 +25,10 @@
 
 @implementation ClassifyViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"分类"];
@@ -40,7 +44,7 @@
             [self.selectArr addObject:dic];
         }
     }
-    [self loadData];
+    
     [self creatView];
 }
 
@@ -87,10 +91,10 @@
 - (void)loadData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"id"] = @"0";
+    parameters[@"id"] = @"1";
     parameters[@"page"] = @"1";
-    parameters[@"size"] = @"100";
-    [HttpRequest postPath:GoodsTypeByPid params:parameters resultBlock:^(id responseObject, NSError *error) {
+    parameters[@"size"] = @"10";
+    [HttpRequest postPath:GoodsTypeList params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         NSLog(@"====%@",responseObject);
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];

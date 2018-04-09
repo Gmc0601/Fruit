@@ -194,6 +194,8 @@
 		6BD8871B1F72C1DC00871019 /* PurcharseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8871A1F72C1DC00871019 /* PurcharseCell.m */; };
 		740791542079EBA700F4BC45 /* ShoplistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 740791532079EBA700F4BC45 /* ShoplistVC.m */; };
 		740791572079F29700F4BC45 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 740791562079F29700F4BC45 /* ShopListCell.m */; };
+		7407915A207AF44B00F4BC45 /* GoodsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74079159207AF44B00F4BC45 /* GoodsDetailVC.m */; };
+		7407915D207B40C500F4BC45 /* ShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7407915C207B40C500F4BC45 /* ShopModel.m */; };
 		74D34D6C207479920009AFB8 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D68207479920009AFB8 /* SearchVC.m */; };
 		74D34D6D207479920009AFB8 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D6A207479920009AFB8 /* HomePageViewController.m */; };
 		74D34D7A207479BD0009AFB8 /* HomeHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D70207479BB0009AFB8 /* HomeHotCell.m */; };
@@ -575,6 +577,10 @@
 		740791532079EBA700F4BC45 /* ShoplistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoplistVC.m; sourceTree = "<group>"; };
 		740791552079F29700F4BC45 /* ShopListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopListCell.h; sourceTree = "<group>"; };
 		740791562079F29700F4BC45 /* ShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
+		74079158207AF44B00F4BC45 /* GoodsDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailVC.h; sourceTree = "<group>"; };
+		74079159207AF44B00F4BC45 /* GoodsDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailVC.m; sourceTree = "<group>"; };
+		7407915B207B40C500F4BC45 /* ShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopModel.h; sourceTree = "<group>"; };
+		7407915C207B40C500F4BC45 /* ShopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopModel.m; sourceTree = "<group>"; };
 		74D34D68207479920009AFB8 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		74D34D69207479920009AFB8 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		74D34D6A207479920009AFB8 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -953,6 +959,8 @@
 				74D34D8720747A070009AFB8 /* ClassifyViewController.m */,
 				74D34D8620747A070009AFB8 /* ReclassifyVC.h */,
 				74D34D8820747A070009AFB8 /* ReclassifyVC.m */,
+				74079158207AF44B00F4BC45 /* GoodsDetailVC.h */,
+				74079159207AF44B00F4BC45 /* GoodsDetailVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -970,6 +978,8 @@
 		422FDA0C2060DFAB0062C4D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7407915B207B40C500F4BC45 /* ShopModel.h */,
+				7407915C207B40C500F4BC45 /* ShopModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1804,6 +1814,7 @@
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				74D34D8920747A070009AFB8 /* ClassifyViewController.m in Sources */,
 				42F795DC1F00CC3E00A11A69 /* UIScrollView+TBRefresh.m in Sources */,
+				7407915A207AF44B00F4BC45 /* GoodsDetailVC.m in Sources */,
 				6B5F6DA61F628D28001BDC0E /* NSString+MD5.m in Sources */,
 				00A952841F7024F800DEE0F6 /* ChoiceDeliveryAddressTableViewCell.m in Sources */,
 				00A952821F7024F800DEE0F6 /* UserInfoViewController.m in Sources */,
@@ -1858,6 +1869,7 @@
 				427C3D501F9F22180081B431 /* HHPayPasswordView.m in Sources */,
 				42C84EB61EF2DCBC0008189D /* ConfigModel.m in Sources */,
 				4214BDDB1F5FA27400FA1F85 /* FirstViewViewController.m in Sources */,
+				7407915D207B40C500F4BC45 /* ShopModel.m in Sources */,
 				0422A30F1F9F3BEB0037AC25 /* ExpireCouponViewController.m in Sources */,
 				00A9527A1F7024F800DEE0F6 /* ChangeUserInfoViewController.m in Sources */,
 				6BBD89BA1F697AC700C8B7C3 /* RecommendCell.m in Sources */,

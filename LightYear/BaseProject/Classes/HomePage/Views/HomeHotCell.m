@@ -90,9 +90,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(homeItemsDidSelectWithTag:)]) {
-//        [self.delegate homeItemsDidSelectWithTag:indexPath.row];
-//    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(homeHotItemsDidSelectWithTag:)]) {
+        [self.delegate homeHotItemsDidSelectWithTag:indexPath.row];
+    }
 }
 
 //- (void)setHealthModel:(DPUserHealthModel *)healthModel {

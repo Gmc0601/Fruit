@@ -16,6 +16,9 @@
 #import "TBNavigationController.h"
 //#import "TBTabBar.h"
 
+
+#import "LoginViewController.h"
+
 @interface TBTabBarController ()
 
 @end
@@ -42,6 +45,9 @@
     ShopCarViewController *car = [[ShopCarViewController alloc] init];
     [self setChildVC:car title:@"购物车" image:@"tab_gouwuche_wxz" selectedImage:@"tab_gouwuche_xz"];
 
+//    LoginViewController *myVC = [[LoginViewController alloc] init];
+//    [self setChildVC:myVC title:@"我的" image:@"tab_wode_wxz" selectedImage:@"tab_wode_xz"];
+    
     MycenterViewController *myVC = [[MycenterViewController alloc] init];
     [self setChildVC:myVC title:@"我的" image:@"tab_wode_wxz" selectedImage:@"tab_wode_xz"];
 

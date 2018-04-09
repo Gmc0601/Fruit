@@ -10,4 +10,6 @@
 
 @interface ShopListCell : UITableViewCell
 
+- (void)setUpData:(ShopModel *)shopModel;
+
 @end

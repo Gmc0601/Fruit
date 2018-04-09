@@ -12,6 +12,7 @@
 @interface ShoplistVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSMutableArray *itemsArray;
 
 @end
 
@@ -19,11 +20,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadHomeData];
     [self setCustomerTitle:@"选择店铺"];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
     [self creatView];
 }
 
+- (void)loadHomeData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"lat"] = @"24.488199";
+    parameters[@"lng"] = @"118.180351";
+    [HttpRequest postPath:shoplistURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        [self.itemsArray removeAllObjects];
+        NSLog(@"re===%@",responseObject);
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"];
+            for (NSDictionary *dic in arr) {
+                ShopModel *shopModel = [ShopModel yy_modelWithDictionary:dic];
+                [self.itemsArray addObject:shopModel];
+            }
+            [_tableView reloadData];
+        }else {
+            NSLog(@"====%@",baseModel.message);
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
+}
 
 - (void)creatView {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH-64) style:UITableViewStylePlain];
@@ -41,7 +66,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.itemsArray.count;
 }
 
 
@@ -69,7 +94,7 @@
     if (cell == nil) {
         cell = [[ShopListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
+    [cell setUpData:self.itemsArray[indexPath.row]];
     return cell;
     
 }
@@ -87,4 +112,11 @@
     NSLog(@"message");
 }
 
+#pragma mark 懒加载
+- (NSMutableArray *)itemsArray {
+    if (_itemsArray == nil) {
+        _itemsArray = [NSMutableArray new];
+    }
+    return _itemsArray;
+}
 @end

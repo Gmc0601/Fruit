@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HomeHotCellDelegate <NSObject>
+/**
+ *  点击了畅销榜
+ */
+-(void)homeHotItemsDidSelectWithTag:(NSInteger)tag;
+
+@end
+
 @interface HomeHotCell : UITableViewCell
+
+@property (nonatomic,weak) id<HomeHotCellDelegate>delegate;
+
 
 @end

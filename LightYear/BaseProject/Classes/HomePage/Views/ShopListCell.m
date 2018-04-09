@@ -10,7 +10,7 @@
 
 @interface ShopListCell ()
 
-@property(nonatomic,strong) UIView *shopImgV;
+@property(nonatomic,strong) UIImageView *shopImgV;
 @property(nonatomic,strong) UILabel *nameLb;
 @property(nonatomic,strong) UILabel *addressLb;
 @property(nonatomic,strong) UILabel *distanceLb;
@@ -77,6 +77,13 @@
         make.top.equalTo(_nameLb.mas_bottom).offset(SizeWidth(10));
     }];
 
+}
+
+- (void)setUpData:(ShopModel *)shopModel {
+    [_shopImgV sd_setImageWithURL:[NSURL URLWithString:shopModel.imgpath] placeholderImage:nil];
+    _nameLb.text = shopModel.shopname;
+    _addressLb.text = shopModel.address;
+    _distanceLb.text = [NSString stringWithFormat:@"距您%@km",shopModel.distance];
 }
 
 
