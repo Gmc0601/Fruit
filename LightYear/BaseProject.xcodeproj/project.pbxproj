@@ -199,6 +199,9 @@
 		74079160207B4E2D00F4BC45 /* OneSubTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7407915F207B4E2D00F4BC45 /* OneSubTypeModel.m */; };
 		74079163207B4E4A00F4BC45 /* TwoSubTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74079162207B4E4A00F4BC45 /* TwoSubTypeModel.m */; };
 		74079166207B4E5D00F4BC45 /* ThreeSubTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74079165207B4E5D00F4BC45 /* ThreeSubTypeModel.m */; };
+		74079169207C581300F4BC45 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74079168207C581300F4BC45 /* BannerModel.m */; };
+		7407916C207C5BAC00F4BC45 /* ShopGoodsTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7407916B207C5BAC00F4BC45 /* ShopGoodsTypeModel.m */; };
+		7407916F207C679700F4BC45 /* GoodsIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7407916E207C679700F4BC45 /* GoodsIndexModel.m */; };
 		74D34D6C207479920009AFB8 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D68207479920009AFB8 /* SearchVC.m */; };
 		74D34D6D207479920009AFB8 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D6A207479920009AFB8 /* HomePageViewController.m */; };
 		74D34D7A207479BD0009AFB8 /* HomeHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D70207479BB0009AFB8 /* HomeHotCell.m */; };
@@ -590,6 +593,12 @@
 		74079162207B4E4A00F4BC45 /* TwoSubTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoSubTypeModel.m; sourceTree = "<group>"; };
 		74079164207B4E5D00F4BC45 /* ThreeSubTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeSubTypeModel.h; sourceTree = "<group>"; };
 		74079165207B4E5D00F4BC45 /* ThreeSubTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeSubTypeModel.m; sourceTree = "<group>"; };
+		74079167207C581300F4BC45 /* BannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
+		74079168207C581300F4BC45 /* BannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		7407916A207C5BAC00F4BC45 /* ShopGoodsTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopGoodsTypeModel.h; sourceTree = "<group>"; };
+		7407916B207C5BAC00F4BC45 /* ShopGoodsTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopGoodsTypeModel.m; sourceTree = "<group>"; };
+		7407916D207C679700F4BC45 /* GoodsIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsIndexModel.h; sourceTree = "<group>"; };
+		7407916E207C679700F4BC45 /* GoodsIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsIndexModel.m; sourceTree = "<group>"; };
 		74D34D68207479920009AFB8 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		74D34D69207479920009AFB8 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		74D34D6A207479920009AFB8 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -995,6 +1004,12 @@
 			children = (
 				7407915B207B40C500F4BC45 /* ShopModel.h */,
 				7407915C207B40C500F4BC45 /* ShopModel.m */,
+				74079167207C581300F4BC45 /* BannerModel.h */,
+				74079168207C581300F4BC45 /* BannerModel.m */,
+				7407916A207C5BAC00F4BC45 /* ShopGoodsTypeModel.h */,
+				7407916B207C5BAC00F4BC45 /* ShopGoodsTypeModel.m */,
+				7407916D207C679700F4BC45 /* GoodsIndexModel.h */,
+				7407916E207C679700F4BC45 /* GoodsIndexModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1866,6 +1881,7 @@
 				00A9527D1F7024F800DEE0F6 /* EditDeliveryAddressViewController.m in Sources */,
 				42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */,
 				00A9527F1F7024F800DEE0F6 /* FeedBackViewController.m in Sources */,
+				7407916F207C679700F4BC45 /* GoodsIndexModel.m in Sources */,
 				04654AA31F6E97230023FF63 /* couponDetailsCell.m in Sources */,
 				42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */,
 				422FDA1A2060E3300062C4D9 /* NetHelper.m in Sources */,
@@ -1877,9 +1893,11 @@
 				42A24FCC1F5F0CE5005130DC /* UIButton+SSEdgeInsets.m in Sources */,
 				00A9527E1F7024F800DEE0F6 /* EditFeedBackViewController.m in Sources */,
 				6BD8871B1F72C1DC00871019 /* PurcharseCell.m in Sources */,
+				74079169207C581300F4BC45 /* BannerModel.m in Sources */,
 				6B5F6DBC1F629EB8001BDC0E /* GoodsListViewController.m in Sources */,
 				00A952881F7024F800DEE0F6 /* FeedBackTableViewCell.m in Sources */,
 				0422A3101F9F3BEB0037AC25 /* SelectCouponViewController.m in Sources */,
+				7407916C207C5BAC00F4BC45 /* ShopGoodsTypeModel.m in Sources */,
 				6B015A291F76A75100CDEA16 /* SearchListView.m in Sources */,
 				427C3D501F9F22180081B431 /* HHPayPasswordView.m in Sources */,
 				42C84EB61EF2DCBC0008189D /* ConfigModel.m in Sources */,

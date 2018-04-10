@@ -15,7 +15,7 @@
 
 @property(nonatomic,strong) UICollectionView *collectionView;
 
-//@property(nonatomic,strong)DPUserHealthModel *userHealthModel;
+@property(nonatomic,strong)NSArray *goodsArray;
 
 
 @end
@@ -26,37 +26,31 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        //        self.contentView.backgroundColor = DPWhiteColor;
-        [self creatView];
     }
     return self;
 }
 
-- (void)creatView {
-    [self.contentView addSubview:self.collectionView];
-    
-}
 
-- (UICollectionView *)collectionView{
-    if (_collectionView == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(SizeWidth(165), SizeWidth(250));
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(1000)) collectionViewLayout:layout];
-        //        UIImageView *imgV = [UIImageView new];
-        //        imgV.image = [UIImage imageNamed:@"我的背景黑2"];
-        //        _collectionView.backgroundView = imgV;
-        _collectionView.showsHorizontalScrollIndicator = NO;
-        layout.minimumLineSpacing = 0;
-        layout.minimumInteritemSpacing = SizeWidth(15);
-        layout.scrollDirection=UICollectionViewScrollDirectionVertical;
-        
-        [_collectionView registerClass:[HotCollectionCell class] forCellWithReuseIdentifier:@"HotCollectionCell"];
-        _collectionView.backgroundColor = RGBColor(255, 255, 255);
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        
-    }
-    return _collectionView;
+
+- (void )creatView{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(SizeWidth(165), SizeWidth(250));
+    CGFloat heigh = (_goodsArray.count/2 + _goodsArray.count%2)*SizeWidth(250);
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),heigh) collectionViewLayout:layout];
+    //        UIImageView *imgV = [UIImageView new];
+    //        imgV.image = [UIImage imageNamed:@"我的背景黑2"];
+    //        _collectionView.backgroundView = imgV;
+    _collectionView.showsHorizontalScrollIndicator = NO;
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = SizeWidth(15);
+    layout.scrollDirection=UICollectionViewScrollDirectionVertical;
+    
+    [_collectionView registerClass:[HotCollectionCell class] forCellWithReuseIdentifier:@"HotCollectionCell"];
+    _collectionView.backgroundColor = RGBColor(255, 255, 255);
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    [self.contentView addSubview:_collectionView];
 }
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
@@ -68,7 +62,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     
-    return 8;
+    return _goodsArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -77,7 +71,7 @@
     if (!cell) {
         cell = [[HotCollectionCell alloc] init];
     }
-    
+    [cell setUpData:_goodsArray[indexPath.row]];
     return cell;
 }
 
@@ -95,9 +89,11 @@
     }
 }
 
-//- (void)setHealthModel:(DPUserHealthModel *)healthModel {
-//    _userHealthModel = healthModel;
-//    [_collectionView reloadData];
-//}
+- (void)setDataArr:(NSArray *)dataArr {
+    _goodsArray = dataArr;
+    [self.contentView removeAllSubviews];
+    [self creatView];
+    [_collectionView reloadData];
+}
 
 @end

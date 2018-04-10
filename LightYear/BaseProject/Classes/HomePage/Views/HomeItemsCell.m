@@ -13,7 +13,7 @@
 @interface HomeItemsCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,strong) UICollectionView *collectionView;
-
+@property(nonatomic,strong) NSArray *dataArray;
 //@property(nonatomic,strong)DPUserHealthModel *userHealthModel;
 
 
@@ -32,7 +32,7 @@
 }
 
 - (void)creatView {
-    [self.contentView addSubview:self.collectionView];
+    
     
 }
 
@@ -40,7 +40,12 @@
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(SizeWidth(60), SizeWidth(85));
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(185)) collectionViewLayout:layout];
+        if (_dataArray.count<=4) {
+            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(100)) collectionViewLayout:layout];
+        } else {
+            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(185)) collectionViewLayout:layout];
+        }
+        
         //        UIImageView *imgV = [UIImageView new];
         //        imgV.image = [UIImage imageNamed:@"我的背景黑2"];
         //        _collectionView.backgroundView = imgV;
@@ -67,7 +72,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     
-    return 8;
+    return self.dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -76,7 +81,7 @@
     if (!cell) {
         cell = [[ItemCollectionCell alloc] init];
     }
-    
+    [cell setUpData:self.dataArray[indexPath.item]];
     return cell;
 }
 
@@ -94,9 +99,13 @@
     }
 }
 
-//- (void)setHealthModel:(DPUserHealthModel *)healthModel {
-//    _userHealthModel = healthModel;
-//    [_collectionView reloadData];
-//}
+- (void)setItemsArray:(NSArray *)itemsArray {
+    _dataArray = itemsArray;
+    [self.contentView removeAllSubviews];
+    [self.contentView addSubview:self.collectionView];
+    
+    
+    [_collectionView reloadData];
+}
 
 @end

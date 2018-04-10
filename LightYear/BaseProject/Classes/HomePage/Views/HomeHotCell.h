@@ -20,5 +20,7 @@
 
 @property (nonatomic,weak) id<HomeHotCellDelegate>delegate;
 
+@property (nonatomic,strong) NSArray *dataArr;
+
 
 @end

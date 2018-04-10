@@ -10,4 +10,6 @@
 
 @interface ItemCollectionCell : UICollectionViewCell
 
+- (void)setUpData:(ShopGoodsTypeModel *)model;
+
 @end
