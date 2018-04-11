@@ -19,8 +19,8 @@
 #import <TMCache/TMCache.h>
 #import "UIImageView+WebCache.h"
 #import "SVPullToRefresh.h"
-#import "YYModel.h"
-#import "UIColor+WTool.h"
+
+
 
 //model
 #import "ShopModel.h"
