@@ -20,8 +20,6 @@
 #import "UIImageView+WebCache.h"
 #import "SVPullToRefresh.h"
 
-
-
 //model
 #import "ShopModel.h"
 #import "OneSubTypeModel.h"
