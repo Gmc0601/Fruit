@@ -126,6 +126,10 @@
         }
     }
     _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
+    
+    
+    
+    
 }
 
 
@@ -238,7 +242,7 @@
 {
     self.isEdit = !self.isEdit;
     if (self.isEdit) {
-        item.title = @"取消";
+        item.title = @"完成";
         for (int i=0; i<_carDataArrList.count; i++) {
             NSArray *list = [_carDataArrList objectAtIndex:i];
             for (int j = 0; j<list.count-1; j++) {

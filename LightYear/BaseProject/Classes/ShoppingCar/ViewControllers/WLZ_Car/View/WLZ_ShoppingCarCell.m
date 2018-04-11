@@ -60,7 +60,7 @@ static CGFloat CELL_HEIGHT = 100;
     
     
     UIImage *btimg = [UIImage imageNamed:@"ic_cb_normal.png"];
-    UIImage *selectImg = [UIImage imageNamed:@"ic_cb_checked"];
+    UIImage *selectImg = [UIImage imageNamed:@"gouwuche_selected"];
     
     _selectBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, btimg.size.width+20, CELL_HEIGHT)];
     [_selectBt addTarget:self action:@selector(clickSelect:) forControlEvents:UIControlEventTouchUpInside];
@@ -101,7 +101,7 @@ static CGFloat CELL_HEIGHT = 100;
     
     _priceLab = [[UILabel alloc]initWithFrame:CGRectMake(_title.frame.origin.x, CGRectGetMaxY(_sizeLab.frame)+5+5, 100, 17)];
     _priceLab.textAlignment=NSTextAlignmentLeft;
-    _priceLab.textColor=[UIColor colorFromHexRGB:@"666666"];
+    _priceLab.textColor=[UIColor colorFromHexRGB:@"FF4C44"];
     _priceLab.font=[UIFont systemFontOfSize:14];
     [self.contentView addSubview:_priceLab];
     
@@ -214,6 +214,7 @@ static CGFloat CELL_HEIGHT = 100;
     
     if ([model.item_info.sale_state isEqualToString:@"3"]) {
         _soldoutLab.hidden=NO;
+        _priceLab.hidden=YES;
         _selectBt.enabled=NO;
 
         if (self.isEdit) {
@@ -222,6 +223,7 @@ static CGFloat CELL_HEIGHT = 100;
         }
     }
     else{
+         _priceLab.hidden=NO;
         _selectBt.enabled=YES;
         _changeView = [[WLZ_ChangeCountView alloc] initWithFrame:CGRectMake(kScreenW-120, CGRectGetMaxY(_sizeLab.frame)+5, 160, 35) chooseCount:self.choosedCount totalCount: [model.item_info.stock_quantity integerValue]];
         
