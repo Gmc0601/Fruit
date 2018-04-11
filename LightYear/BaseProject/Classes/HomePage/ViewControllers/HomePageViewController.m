@@ -19,6 +19,9 @@
 #import "HomeHotCell.h"
 
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,HomeBannerCellDelegate,HomeItemsCellDelegate,HomeHotCellDelegate>
+{
+    NSInteger _leftPage;
+}
 
 @property(nonatomic,strong) UITableView *tableView;
 
@@ -32,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _leftPage = 1;
     [ConfigModel saveBoolObject:YES forKey:IsLogin];
     [ConfigModel saveString:@"37c69f3f1d1ed49d58cdf5d4b6750f81" forKey:UserToken];
     [self creatView];
@@ -53,7 +57,7 @@
     _tableView.estimatedRowHeight = 0;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-    
+    [self setUpRefresh];
 }
 
 - (void)creatLeftBtn {
@@ -107,6 +111,18 @@
 }
 
 #pragma mark 加载数据
+/**
+ *  添加下拉加载
+ */
+-(void)setUpRefresh
+{
+    WEAKSELF
+    _tableView.mj_footer  = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        _leftPage ++;
+        [weakSelf loadGoodsIndexData];
+    }];
+}
+
 - (void)loadBannerData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
@@ -153,8 +169,8 @@
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"shopid"] = @"3";
-    parameters[@"page"] = @"1";
-    parameters[@"size"] = @"10";
+    parameters[@"page"] = @(_leftPage);
+    parameters[@"size"] = @"20";
     [HttpRequest postPath:goodsIndexURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
@@ -169,6 +185,7 @@
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
+        [_tableView.mj_footer endRefreshing];
     }];
 }
 
