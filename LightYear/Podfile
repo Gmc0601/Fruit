@@ -25,6 +25,7 @@ pod 'AMap2DMap-NO-IDFA'
 pod 'YYModel'
 pod 'MJExtension'
 pod 'MJRefresh'
+
 use_frameworks!
 
 end
