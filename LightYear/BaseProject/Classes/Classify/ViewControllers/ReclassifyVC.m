@@ -15,6 +15,8 @@
 {
     NSInteger _searchType; //1综合排序2销量3价格4上新
     NSInteger _sort;  //1升序2降序
+    NSInteger _leftPage;
+    NSInteger _leftType;
 }
 
 @property(nonatomic,strong) UICollectionView *collectionView;
@@ -35,11 +37,14 @@
 - (void)creatView {
     _searchType = 1;
     _sort = 2;
+    _leftPage = 1;
+    _leftType = 0;
     ScreenView *screenView = [[ScreenView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, SizeWidth(44))];
     screenView.delegate = self;
     [self.view addSubview:screenView];
     
     [self.view addSubview:self.collectionView];
+    [self setUpRefresh];
 }
 
 - (void)loadGoodsData {
@@ -49,11 +54,13 @@
     parameters[@"shopid"] = @"3";
     parameters[@"search_type"] = @(_searchType);
     parameters[@"sort"] = @(_sort);
-    parameters[@"page"] = @"1";
+    parameters[@"page"] = @(_leftPage);
     parameters[@"size"] = @"20";
     [HttpRequest postPath:goodsURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
-        [self.goodsArray removeAllObjects];
+        if (_leftType == 0) {
+            [self.goodsArray removeAllObjects];
+        }
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
             NSArray *arr = responseObject[@"info"];
@@ -62,10 +69,11 @@
                 [self.goodsArray addObject:goodsIndexModel];
             }
             [_collectionView reloadData];
-            
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
+        [_collectionView.mj_header endRefreshing];
+        [_collectionView.mj_footer endRefreshing];
     }];
 }
 
@@ -96,12 +104,18 @@
 -(void)setUpRefresh
 {
     WEAKSELF
-    
-//    _collectionView.mj_footer  = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-//        _leftPage ++;
-//        _leftType = 1;
-//        [weakSelf loadData];
-//    }];
+    _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        _leftPage = 1;
+        _leftType = 0;
+        
+        [weakSelf loadGoodsData];
+    }];
+    _collectionView.mj_footer  = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        _leftPage ++;
+        _leftType = 1;
+        [weakSelf loadGoodsData];
+    }];
 }
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
@@ -143,6 +157,8 @@
 #pragma mark ScreenViewDelegate
 // 0、综合  1、销量  2、价格降序 3、价格升序  4、上新
 -(void)screenViewDidSelectWihtIndex:(NSInteger)index {
+    _leftType = 0;
+    _leftPage = 1;
     switch (index) {
         case 0:
         {
