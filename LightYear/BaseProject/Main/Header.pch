@@ -21,6 +21,7 @@
 #import "SVPullToRefresh.h"
 #import "YYModel.h"
 
+#import "UIColor+WTool.h"
 
 //model
 #import "ShopModel.h"
@@ -65,7 +66,7 @@
 #define WeakObj(o) __weak typeof(o) o##Weak = o
 #define StrongSelf(strongSelf)  __strong __typeof(&*self)  strongSelf = weakSelf;
 #define WEAKSELF typeof(self) __weak weakSelf = self;
-
+#define WGetWeakSelf(toName,instance)   __weak typeof(&*instance)toName = instance    //设置弱引用
 /**
  * 字体大小（常规/粗体）
  */
