@@ -302,6 +302,7 @@
 - (void)homeItemsDidSelectWithTag:(NSInteger )tag {
     NSLog(@"===%ld",tag);
     ReclassifyVC *vc = [ReclassifyVC new];
+    vc.shopGoodsTypeModel = self.goodsTypeArr[tag];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

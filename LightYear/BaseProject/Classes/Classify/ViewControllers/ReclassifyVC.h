@@ -11,4 +11,6 @@
 /*二级分类**/
 @interface ReclassifyVC : CCBaseViewController
 
+@property (nonatomic,strong) ShopGoodsTypeModel *shopGoodsTypeModel;
+
 @end

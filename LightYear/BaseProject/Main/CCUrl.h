@@ -71,8 +71,8 @@
 #define integralListURL     @"_user_integral_list_001"
 #define homeBannerURL       @"_active_index_001"
 #define shopGoodsTypeURL    @"_shop_goods_type_001"
-#define goodsIndexURL    @"_goods_index_001"
-
+#define goodsIndexURL       @"_goods_index_001"
+#define goodsURL            @"_goods_001"
 
 #define kShopInfo           @"shopInfo"
 
