@@ -22,4 +22,8 @@
 
 @property(nonatomic,weak) id<HomeItemsCellDelegate>delegate;
 
+@property(nonatomic,strong)NSArray *itemsArray;
+
+
+
 @end

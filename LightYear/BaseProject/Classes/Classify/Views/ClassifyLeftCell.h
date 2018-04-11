@@ -10,7 +10,7 @@
 
 @interface ClassifyLeftCell : UITableViewCell
 
-- (void)setUpTitle:(NSString *)title;
+- (void)setUpTitle:(OneSubTypeModel *)model;
 
 - (void)changeSelectWithType:(NSDictionary *)dic;
 

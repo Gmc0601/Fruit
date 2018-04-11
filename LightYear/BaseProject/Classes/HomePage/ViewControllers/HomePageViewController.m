@@ -22,6 +22,10 @@
 
 @property(nonatomic,strong) UITableView *tableView;
 
+@property(nonatomic,strong) NSMutableArray *bannerArr;
+@property(nonatomic,strong) NSMutableArray *goodsTypeArr;
+@property(nonatomic,strong) NSMutableArray *goodsArr;
+
 @end
 
 @implementation HomePageViewController
@@ -33,7 +37,9 @@
     [self creatView];
     [self creatLeftBtn];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
-    [self loadHomeData];
+    [self loadBannerData];
+    [self loadShopGoodsTypeData];
+    [self loadGoodsIndexData];
     
 }
 
@@ -101,17 +107,65 @@
 }
 
 #pragma mark 加载数据
-- (void)loadHomeData {
+- (void)loadBannerData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"lat"] = @"30.399085";
-    parameters[@"lng"] = @"114.89128";
-    [HttpRequest postPath:shoplistURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+    parameters[@"shopid"] = @"3";
+    [HttpRequest postPath:homeBannerURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"];
+            for (NSDictionary *dic in arr) {
+                BannerModel *bannerModel = [BannerModel yy_modelWithDictionary:dic];
+                [self.bannerArr addObject:bannerModel];
+            }
+            [_tableView reloadData];
+    
+        }else {
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
+}
 
-            NSLog(@"====%@",responseObject);
+- (void)loadShopGoodsTypeData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"shopid"] = @"3";
+    [HttpRequest postPath:shopGoodsTypeURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"][@"details"];
+            for (NSDictionary *dic in arr) {
+                ShopGoodsTypeModel *shopGoodsTypeModel = [ShopGoodsTypeModel yy_modelWithDictionary:dic];
+                [self.goodsTypeArr addObject:shopGoodsTypeModel];
+            }
+            [_tableView reloadData];
+            
+        }else {
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
+}
+
+- (void)loadGoodsIndexData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"shopid"] = @"3";
+    parameters[@"page"] = @"1";
+    parameters[@"size"] = @"10";
+    [HttpRequest postPath:goodsIndexURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"];
+            for (NSDictionary *dic in arr) {
+                GoodsIndexModel *goodsIndexModel = [GoodsIndexModel yy_modelWithDictionary:dic];
+                [self.goodsArr addObject:goodsIndexModel];
+            }
+            [_tableView reloadData];
+            
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
@@ -172,7 +226,7 @@
             if (cell == nil) {
                 cell = [[HomeBannerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
-            cell.bannerArray = @[@""];
+            cell.bannerArray = self.bannerArr;
             cell.delegate = self;
             return cell;
         }
@@ -185,6 +239,7 @@
                 cell = [[HomeItemsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
             cell.delegate = self;
+            cell.itemsArray = self.goodsTypeArr;
             return cell;
         }
             break;
@@ -197,6 +252,7 @@
                 cell = [[HomeHotCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
             cell.delegate = self;
+            cell.dataArr = self.goodsArr;
             return cell;
         }
             break;
@@ -210,10 +266,19 @@
             return SizeWidth(180);
             break;
         case 1:
-            return SizeWidth(185);
+        {
+            if (self.goodsTypeArr.count <= 4) {
+                return SizeWidth(100);
+            } else {
+                return SizeWidth(185);
+            }
+        }
             break;
         default:
-            return SizeWidth(1000);
+        {
+            CGFloat heigh = (self.goodsArr.count/2 + self.goodsArr.count%2)*SizeWidth(250);
+            return heigh;
+        }
             break;
     }
     return 0.01;
@@ -237,6 +302,7 @@
 - (void)homeItemsDidSelectWithTag:(NSInteger )tag {
     NSLog(@"===%ld",tag);
     ReclassifyVC *vc = [ReclassifyVC new];
+    vc.shopGoodsTypeModel = self.goodsTypeArr[tag];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -270,4 +336,25 @@
     }];
 }
 
+#pragma mark 懒加载
+- (NSMutableArray *)bannerArr {
+    if (_bannerArr == nil) {
+        _bannerArr = [NSMutableArray new] ;
+    }
+    return _bannerArr;
+}
+
+- (NSMutableArray *)goodsTypeArr {
+    if (_goodsTypeArr == nil) {
+        _goodsTypeArr = [NSMutableArray new] ;
+    }
+    return _goodsTypeArr;
+}
+
+- (NSMutableArray *)goodsArr {
+    if (_goodsArr == nil) {
+        _goodsArr = [NSMutableArray new] ;
+    }
+    return _goodsArr;
+}
 @end

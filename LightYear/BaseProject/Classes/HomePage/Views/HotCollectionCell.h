@@ -10,4 +10,6 @@
 
 @interface HotCollectionCell : UICollectionViewCell
 
+- (void)setUpData:(GoodsIndexModel *)model;
+
 @end

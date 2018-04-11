@@ -11,7 +11,12 @@
 #import "ClassifyLeftCell.h"
 #import "ReclassifyCollectionCell.h"
 
+#import "GoodsDetailVC.h"
+
 @interface ClassifyViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSInteger _selectIndex;
+}
 
 @property(nonatomic,strong) UICollectionView *collectionView;
 
@@ -25,26 +30,12 @@
 
 @implementation ClassifyViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self loadData];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"分类"];
-    
-    for (NSInteger i = 0; i<self.titleArr.count; i++) {
-        NSMutableDictionary *dic = [NSMutableDictionary new];
-        
-        if (i == 0) {
-            dic[@"type"]= @"1";
-            [self.selectArr addObject:dic];
-        }else {
-            dic[@"type"]= @"0";
-            [self.selectArr addObject:dic];
-        }
-    }
-    
+    _selectIndex = 0;
+    [self loadData];
     [self creatView];
 }
 
@@ -99,8 +90,25 @@
         NSLog(@"====%@",responseObject);
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"];
+            for (NSDictionary *dic in arr) {
+                OneSubTypeModel *shopModel = [OneSubTypeModel yy_modelWithDictionary:dic];
+                [self.titleArr addObject:shopModel];
+            }
             
-            
+            for (NSInteger i = 0; i<self.titleArr.count; i++) {
+                NSMutableDictionary *dic = [NSMutableDictionary new];
+                
+                if (i == 0) {
+                    dic[@"type"]= @"1";
+                    [self.selectArr addObject:dic];
+                }else {
+                    dic[@"type"]= @"0";
+                    [self.selectArr addObject:dic];
+                }
+            }
+            [_tableView reloadData];
+            [_collectionView reloadData];
         }else {
             NSLog(@"====%@",baseModel.message);
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
@@ -162,19 +170,37 @@
             self.selectArr[i][@"type"] = @"0";
         }
     }
+    _selectIndex = indexPath.row;
     [_tableView reloadData];
+    [_collectionView reloadData];
 }
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    if (self.titleArr.count>0) {
+        OneSubTypeModel *oneModel = self.titleArr[_selectIndex];
+        NSArray *arr = oneModel.two_sub_type;
+        return arr.count;
+    } else {
+        return 0;
+    }
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    if (self.titleArr.count>0) {
+        OneSubTypeModel *oneModel = self.titleArr[_selectIndex];
+        NSArray *arr = oneModel.two_sub_type;
+        TwoSubTypeModel *twoModel = arr[section];
+        
+        return twoModel.three_sub_type.count;
+    } else {
+        return 0;
+    }
     
-    return 6;
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -183,15 +209,19 @@
     if (!cell) {
         cell = [[ReclassifyCollectionCell alloc] init];
     }
-    
+    OneSubTypeModel *oneModel = self.titleArr[_selectIndex];
+    NSArray *arr = oneModel.two_sub_type;
+    TwoSubTypeModel *twoModel = arr[indexPath.section];
+    NSArray *threeArr = twoModel.three_sub_type;
+    [cell setUpData:threeArr[indexPath.row]];
     return cell;
 }
 
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-    UILabel *lb = [[UILabel alloc] init];
-    lb.text = @"二级标题";
+    [headerView removeAllSubviews];
+    UILabel *lb= [[UILabel alloc] init];
     lb.textColor = RGBColor(51, 51, 51);
     lb.font = NormalFont(14);
     [headerView addSubview:lb];
@@ -200,6 +230,10 @@
         make.centerY.equalTo(headerView);
     }];
     
+    OneSubTypeModel *oneModel = self.titleArr[_selectIndex];
+    NSArray *arr = oneModel.two_sub_type;
+    TwoSubTypeModel *twoModel = arr[indexPath.section];
+    lb.text = twoModel.name;
     return headerView;
 }
 
@@ -212,6 +246,14 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    OneSubTypeModel *oneModel = self.titleArr[_selectIndex];
+    NSArray *arr = oneModel.two_sub_type;
+    TwoSubTypeModel *twoModel = arr[indexPath.section];
+    NSArray *threeArr = twoModel.three_sub_type;
+    GoodsDetailVC *vc = [GoodsDetailVC new];
+    vc.threeModel = threeArr[indexPath.row];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     //    if (self.delegate && [self.delegate respondsToSelector:@selector(homeItemsDidSelectWithTag:)]) {
     //        [self.delegate homeItemsDidSelectWithTag:indexPath.row];
     //    }
@@ -221,7 +263,7 @@
 #pragma mark 懒加载
 - (NSMutableArray *)titleArr {
     if (_titleArr == nil) {
-        _titleArr = [[NSMutableArray alloc] initWithObjects:@"脑说得对",@"别别别吧",@"呜呜呜呜",@"啛啛喳喳",@"柔柔弱弱", nil];
+        _titleArr = [NSMutableArray new];
     }
     return _titleArr;
 }

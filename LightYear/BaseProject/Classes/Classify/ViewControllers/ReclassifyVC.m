@@ -12,8 +12,13 @@
 #import "HotCollectionCell.h"
 
 @interface ReclassifyVC ()<ScreenViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSInteger _searchType; //1综合排序2销量3价格4上新
+    NSInteger _sort;  //1升序2降序
+}
 
 @property(nonatomic,strong) UICollectionView *collectionView;
+@property(nonatomic,strong) NSMutableArray *goodsArray;
 
 @end
 
@@ -21,17 +26,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLab.text = @"爆炸分类";
+    self.titleLab.text = _shopGoodsTypeModel.name;
     self.rightBar.hidden = YES;
     [self creatView];
+    [self loadGoodsData];
 }
 
 - (void)creatView {
+    _searchType = 1;
+    _sort = 2;
     ScreenView *screenView = [[ScreenView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, SizeWidth(44))];
     screenView.delegate = self;
     [self.view addSubview:screenView];
     
     [self.view addSubview:self.collectionView];
+}
+
+- (void)loadGoodsData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"goodstype"] = _shopGoodsTypeModel.typeId;
+    parameters[@"shopid"] = @"3";
+    parameters[@"search_type"] = @(_searchType);
+    parameters[@"sort"] = @(_sort);
+    parameters[@"page"] = @"1";
+    parameters[@"size"] = @"20";
+    [HttpRequest postPath:goodsURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        [self.goodsArray removeAllObjects];
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            NSArray *arr = responseObject[@"info"];
+            for (NSDictionary *dic in arr) {
+                GoodsIndexModel *goodsIndexModel = [GoodsIndexModel yy_modelWithDictionary:dic];
+                [self.goodsArray addObject:goodsIndexModel];
+            }
+            [_collectionView reloadData];
+            
+        }else {
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+    }];
 }
 
 - (UICollectionView *)collectionView{
@@ -51,9 +86,22 @@
         _collectionView.backgroundColor = RGBColor(255, 255, 255);
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        
     }
     return _collectionView;
+}
+
+/**
+ *  添加下拉加载
+ */
+-(void)setUpRefresh
+{
+    WEAKSELF
+    
+//    _collectionView.mj_footer  = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        _leftPage ++;
+//        _leftType = 1;
+//        [weakSelf loadData];
+//    }];
 }
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
@@ -65,7 +113,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     
-    return 8;
+    return self.goodsArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -74,7 +122,7 @@
     if (!cell) {
         cell = [[HotCollectionCell alloc] init];
     }
-    
+    [cell setUpData:self.goodsArray[indexPath.item]];
     return cell;
 }
 
@@ -98,33 +146,53 @@
     switch (index) {
         case 0:
         {
+            _searchType = 1;
+            _sort = 2;
             NSLog(@"综合");
         }
             break;
         case 1:
         {
+            _searchType = 2;
+            _sort = 2;
             NSLog(@"销量");
         }
             break;
         case 2:
         {
             NSLog(@"价格降序");
+            _searchType = 3;
+            _sort = 2;
         }
             break;
         case 3:
         {
             NSLog(@"价格升序");
+            _searchType = 3;
+            _sort = 1;
         }
             break;
         case 4:
         {
             NSLog(@"上新");
+            _searchType = 4;
+            _sort = 2;
         }
             break;
             
         default:
             break;
     }
+    
+    [self loadGoodsData];
+}
+
+#pragma mark 懒加载
+- (NSMutableArray *)goodsArray {
+    if (_goodsArray == nil) {
+        _goodsArray = [NSMutableArray new];
+    }
+    return _goodsArray;
 }
 
 @end

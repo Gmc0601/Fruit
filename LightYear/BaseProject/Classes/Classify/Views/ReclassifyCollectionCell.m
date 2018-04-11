@@ -53,4 +53,9 @@
     
 }
 
+- (void)setUpData:(ThreeSubTypeModel *)model {
+    [_itemIV sd_setImageWithURL:[NSURL URLWithString:model.img_path] placeholderImage:nil];
+    _titleLb.text = model.name;
+}
+
 @end

@@ -75,6 +75,7 @@
     [_addressLb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(SizeWidth(25));
         make.top.equalTo(_nameLb.mas_bottom).offset(SizeWidth(10));
+        make.width.mas_offset(SizeWidth(325));
     }];
 
 }

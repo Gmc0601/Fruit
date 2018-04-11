@@ -28,7 +28,7 @@
 - (void)creatView {
     WEAKSELF
     UIImageView *backView = [[UIImageView alloc] init];
-    backView.backgroundColor = RGBColor(24, 110, 255);
+//    backView.backgroundColor = RGBColor(24, 110, 255);
     backView.layer.masksToBounds = YES;
     backView.layer.cornerRadius = SizeWidth(22.5);
     [self.contentView addSubview:backView];
@@ -49,6 +49,11 @@
     }];
     _titleLb = lb;
    
+}
+
+- (void)setUpData:(ShopGoodsTypeModel *)model {
+    [_itemIV sd_setImageWithURL:[NSURL URLWithString:model.imgpath] placeholderImage:nil];
+    _titleLb.text = model.name;
 }
 
 
