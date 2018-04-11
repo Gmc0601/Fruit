@@ -11,7 +11,7 @@
 #import "ClassifyViewController.h"
 #import "ShopCarViewController.h"
 #import "MyCenterViewController.h"
-
+#import "WLZ_ShoppingCarController.h"
 #import "ViewController.h"
 #import "TBNavigationController.h"
 //#import "TBTabBar.h"
@@ -42,7 +42,7 @@
     ClassifyViewController *classify = [[ClassifyViewController alloc] init];
     [self setChildVC:classify title:@"分类" image:@"tab_fenlei_wxz" selectedImage:@"tab_fenlei_xz"];
 
-    ShopCarViewController *car = [[ShopCarViewController alloc] init];
+    WLZ_ShoppingCarController *car = [[WLZ_ShoppingCarController alloc] init];
     [self setChildVC:car title:@"购物车" image:@"tab_gouwuche_wxz" selectedImage:@"tab_gouwuche_xz"];
 
 //    LoginViewController *myVC = [[LoginViewController alloc] init];
