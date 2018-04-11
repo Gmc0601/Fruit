@@ -9,7 +9,6 @@
 #import "TBTabBarController.h"
 #import "HomepageViewController.h"
 #import "ClassifyViewController.h"
-#import "ShopCarViewController.h"
 #import "MyCenterViewController.h"
 #import "WLZ_ShoppingCarController.h"
 #import "ViewController.h"
