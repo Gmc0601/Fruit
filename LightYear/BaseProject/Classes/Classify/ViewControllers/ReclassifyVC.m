@@ -149,9 +149,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    if (self.delegate && [self.delegate respondsToSelector:@selector(homeItemsDidSelectWithTag:)]) {
-    //        [self.delegate homeItemsDidSelectWithTag:indexPath.row];
-    //    }
+    
 }
 
 #pragma mark ScreenViewDelegate

@@ -57,7 +57,7 @@
     _moneyLb.textColor = RGBColor(255, 76, 68);
     [self.contentView addSubview:_moneyLb];
     [_moneyLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(lb.mas_bottom).offset(SizeWidth(5));
+        make.bottom.equalTo(weakSelf.contentView).offset(-SizeWidth(6));
         make.centerX.equalTo(backView);
         make.width.mas_offset(149);
     }];

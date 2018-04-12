@@ -34,7 +34,7 @@
 
 - (void )creatView{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(SizeWidth(165), SizeWidth(250));
+    layout.itemSize = CGSizeMake(SizeWidth(164), SizeWidth(250));
     CGFloat heigh = (_goodsArray.count/2 + _goodsArray.count%2)*SizeWidth(250);
     
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),heigh) collectionViewLayout:layout];
