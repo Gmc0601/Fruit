@@ -70,7 +70,7 @@ static CGFloat VIEW_HEIGHT =44;
     line.backgroundColor=[UIColor colorFromHexRGB:@"e2e2e2"];
     [self addSubview:line];
     UIImage *btimg = [UIImage imageNamed:@"Unselected.png"];
-    UIImage *selectImg = [UIImage imageNamed:@"Selected.png"];
+    UIImage *selectImg = [UIImage imageNamed:@"gouwuche_selected"];
     
     _checkbt = [[UIButton alloc]initWithFrame:CGRectMake(5, self.frame.size.height/2-btimg.size.height/2, btimg.size.width+60, btimg.size.height)];
     _checkbt.selected=YES;
@@ -87,19 +87,19 @@ static CGFloat VIEW_HEIGHT =44;
     
     _Lab =[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_checkbt.frame)+10, 0, 150, self.frame.size.height)];
     
-    _Lab.textColor=[UIColor colorFromHexRGB:@"666666"];
+    _Lab.textColor=[UIColor colorFromHexRGB:@"FF4C44"];
     _Lab.text=[NSString stringWithFormat:@"合计: ￥ 0"];
     _Lab.font=[UIFont systemFontOfSize:15];
     
     [self addSubview:_Lab];
     
     
-    _pushBt = [[UIButton alloc]initWithFrame:CGRectMake(APPScreenWidth-15-80, 10, 80, 30)];
+    _pushBt = [[UIButton alloc]initWithFrame:CGRectMake(APPScreenWidth-120, 0, 120, 48)];
     _pushBt.hidden=NO;
     _pushBt.tag=18;
     [_pushBt setTitle:@"结算" forState:UIControlStateNormal];
     _pushBt.titleLabel.font=[UIFont systemFontOfSize:14];
-    _pushBt.backgroundColor=[UIColor colorFromHexRGB:@"fb5d5d"];
+    _pushBt.backgroundColor=[UIColor colorFromHexRGB:@"34BB2A"];
     [[_pushBt layer]setCornerRadius:3.0];
     [_pushBt addTarget:self action:@selector(clickRightBT:) forControlEvents:UIControlEventTouchUpInside];
     [_pushBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -110,15 +110,15 @@ static CGFloat VIEW_HEIGHT =44;
     
     _deleteBt = [[UIButton alloc]initWithFrame:_pushBt.frame];
     _deleteBt.hidden=YES;
-    [_deleteBt setTitleColor:[UIColor colorFromHexRGB:@"fb5d5d"] forState:UIControlStateNormal];
+    [_deleteBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _deleteBt.tag=19;
-    [_deleteBt setTitle:@"删除" forState:UIControlStateNormal];
+    [_deleteBt setTitle:@"删除所选" forState:UIControlStateNormal];
     _deleteBt.titleLabel.font=[UIFont systemFontOfSize:14];
-    _deleteBt.backgroundColor=[UIColor whiteColor];
-    [[_deleteBt layer]setCornerRadius:3.0];
-    [_deleteBt.layer setBorderWidth:0.5];
+    _deleteBt.backgroundColor=[UIColor colorFromHexRGB:@"CCCCCC"];
+//    [[_deleteBt layer]setCornerRadius:3.0];
+//    [_deleteBt.layer setBorderWidth:0.5];
     [_deleteBt addTarget:self action:@selector(clickRightBT:) forControlEvents:UIControlEventTouchUpInside];
-    _deleteBt.layer.borderColor = [[UIColor colorFromHexRGB:@"fb5d5d"] CGColor];
+//    _deleteBt.layer.borderColor = [[UIColor colorFromHexRGB:@"fb5d5d"] CGColor];
     
     
     [self addSubview:_deleteBt];

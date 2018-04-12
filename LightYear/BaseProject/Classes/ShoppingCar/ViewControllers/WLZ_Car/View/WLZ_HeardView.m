@@ -36,7 +36,7 @@
 - (void )initView
 {
     UIImage *btimg = [UIImage imageNamed:@"Unselected.png"];
-    UIImage *selectImg = [UIImage imageNamed:@"Selected.png"];
+    UIImage *selectImg = [UIImage imageNamed:@"gouwuche_selected"];
     UIButton *bt = [[UIButton alloc]initWithFrame:CGRectMake(2, 5, btimg.size.width+12, btimg.size.height+10)];
     bt.tag = 100+_section;
     [bt addTarget:self action:@selector(clickAll:) forControlEvents:UIControlEventTouchUpInside];

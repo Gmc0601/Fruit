@@ -22,8 +22,6 @@
 #import "MJRefresh.h"
 #import "YYModel.h"
 
-
-
 //model
 #import "ShopModel.h"
 #import "OneSubTypeModel.h"
