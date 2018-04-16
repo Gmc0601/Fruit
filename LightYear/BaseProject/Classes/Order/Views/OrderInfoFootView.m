@@ -82,7 +82,7 @@
         _copuBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW - SizeWidth(60), SizeHeigh(20), SizeWidth(45), SizeHeigh(15))];
         _copuBtn.backgroundColor = [UIColor clearColor];
         [_copuBtn setTitle:@"复制" forState:UIControlStateNormal];
-        [_copuBtn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [_copuBtn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         _copuBtn.titleLabel.font = SourceHanSansCNMedium(12);
         [_copuBtn addTarget:self action:@selector(copyBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -110,7 +110,7 @@
     searchButton.layer.cornerRadius = 3.0f;
     searchButton.layer.masksToBounds = YES;
     searchButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [searchButton setBackgroundColor:UIColorFromHex(0x3e7bb1)];
+    [searchButton setBackgroundColor:ThemeGreen];
     [searchButton setTitle:@"搜索" forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(searchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [searchView addSubview:searchButton];

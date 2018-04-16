@@ -24,6 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    if (@available(iOS 11.0, *)) {
+        UITableView.appearance.estimatedRowHeight = 0;
+        UITableView.appearance.estimatedSectionFooterHeight = 0;
+        UITableView.appearance.estimatedSectionHeaderHeight = 0;
+    }
+    
     //自动更新用户信息
     if ([[TMCache sharedCache] objectForKey:UserInfoModel]) {
         [self updateUserInfo];

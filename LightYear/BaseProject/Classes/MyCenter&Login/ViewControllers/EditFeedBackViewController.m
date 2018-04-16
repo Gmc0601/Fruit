@@ -113,7 +113,7 @@
     
     UIButton * bottomButton = [UIButton new];
     bottomButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    bottomButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+    bottomButton.backgroundColor = ThemeGreen;
     bottomButton.layer.cornerRadius = 4.0f;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setTitle:@"提交" forState:UIControlStateNormal];
@@ -183,7 +183,7 @@
 //开始编辑
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    contentTextView.layer.borderColor = UIColorFromHex(0x3e7bb1).CGColor;
+    contentTextView.layer.borderColor = ThemeGreen.CGColor;
     if ([textView.text isEqualToString:@"请描述你的问题，我们将会及时处理！"]) {
         textView.text = @"";
         textView.textColor = UIColorFromHex(0x333333);
@@ -240,7 +240,7 @@
         UIButton * lookMoreBtn = [UIButton new];
         lookMoreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [lookMoreBtn setTitle:@"查看更多反馈" forState:UIControlStateNormal];
-        [lookMoreBtn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [lookMoreBtn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         [lookMoreBtn addTarget:self action:@selector(lookMoreButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:lookMoreBtn];
         [lookMoreBtn mas_makeConstraints:^(MASConstraintMaker *make) {

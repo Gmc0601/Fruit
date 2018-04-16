@@ -92,7 +92,7 @@
         _otherBtn.centerX = self.width/2;
         [_otherBtn.titleLabel setFont:SourceHanSansCNRegular(SizeWidth(12))];
         [_otherBtn setTitle:@"其他门店" forState:UIControlStateNormal];
-        [_otherBtn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [_otherBtn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         [_otherBtn addTarget:self action:@selector(otherBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _otherBtn;

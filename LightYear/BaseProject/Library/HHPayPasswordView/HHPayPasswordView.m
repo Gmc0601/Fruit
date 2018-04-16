@@ -312,7 +312,7 @@ static CGFloat const kDotWith_height = 10;
         _forgetBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW - 110, 135, 90, 20)];
         _forgetBtn.backgroundColor = [UIColor clearColor];
         [_forgetBtn setTitle:@"忘记支付密码？" forState:UIControlStateNormal];
-        [_forgetBtn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [_forgetBtn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         [_forgetBtn addTarget:self action:@selector(clickForgetPwd) forControlEvents:UIControlEventTouchUpInside];
         _forgetBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     }

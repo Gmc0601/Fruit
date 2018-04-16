@@ -20,7 +20,7 @@
 - (id)initWithFrame:(CGRect)frame PlaceholderStr:(NSString *)placeholderStr isBorder:(BOOL)isBorder{
     self = [super initWithFrame:frame];
     if (self) {
-        self.textColor = UIColorFromHex(0x3e7bb1);
+        self.textColor = ThemeGreen;
         self.font = [UIFont systemFontOfSize:18.0];
         self.tintColor = UIColorFromHex(0xcccccc);
         UIButton * userCleanButton = [self valueForKey:@"_clearButton"];
@@ -58,7 +58,7 @@
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    self.layer.borderColor = [UIColorFromHex(0x3e7bb1) CGColor];
+    self.layer.borderColor = [ThemeGreen CGColor];
     //增加监听，当键盘出现或改变时收出消息
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(keyboardWillShow:)

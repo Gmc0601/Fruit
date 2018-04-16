@@ -10,4 +10,6 @@
 
 @interface LoginViewController : CCBaseViewController
 
+@property (nonatomic, copy) void(^clickBlock)(NSString *str);
+
 @end

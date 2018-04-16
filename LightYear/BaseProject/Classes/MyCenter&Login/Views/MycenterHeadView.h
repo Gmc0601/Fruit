@@ -22,4 +22,12 @@
 
 @property (nonatomic, strong) UIImageView * headImage;
 
+@property (nonatomic, strong) UIImageView *logoimage, *halfimage;
+
+@property (nonatomic, strong) UILabel *nickLab, *blanceLab, *couponLab;
+
+@property (nonatomic, copy) void(^blanceBlock)(id);
+
+@property (nonatomic, copy) void(^couponBlock)(id);
+
 @end

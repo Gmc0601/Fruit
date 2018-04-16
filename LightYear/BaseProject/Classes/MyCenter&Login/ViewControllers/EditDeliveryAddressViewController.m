@@ -110,7 +110,7 @@
             addressLabel = [UILabel new];
             if (_addressModel.address.length > 0) {
                 addressLabel.text = _addressModel.address;
-                addressLabel.textColor = UIColorFromHex(0x3e7bb1);
+                addressLabel.textColor = ThemeGreen;
             }else{
                 addressLabel.text = @"选择收货地址";
                 addressLabel.textColor = UIColorFromHex(0xcccccc);
@@ -168,7 +168,7 @@
     
     UIButton * bottomButton = [UIButton new];
     bottomButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    bottomButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+    bottomButton.backgroundColor = ThemeGreen;
     bottomButton.layer.cornerRadius = 4.0f;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setTitle:@"保存" forState:UIControlStateNormal];
@@ -187,7 +187,7 @@
     for (UIView *find_label in self.view.subviews) {
         if (find_label.tag == textField.tag)
         {
-            find_label.layer.borderColor = [UIColorFromHex(0x3e7bb1) CGColor];
+            find_label.layer.borderColor = [ThemeGreen CGColor];
         }
     }
 }
@@ -260,7 +260,7 @@
         _addressModel.lng = @(point.location.longitude).stringValue;
         _addressModel.address = point.address;
         addressLabel.text = point.address;
-        addressLabel.textColor = UIColorFromHex(0x3e7bb1);
+        addressLabel.textColor = ThemeGreen;
     }];
     [self.navigationController pushViewController:choiceAddressVC animated:YES];
 }

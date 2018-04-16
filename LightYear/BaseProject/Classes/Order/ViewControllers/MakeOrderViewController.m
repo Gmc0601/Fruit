@@ -174,7 +174,7 @@
         [self.footView changeBtnStyle:Gray];
         self.footView.payBtn.titleLabel.font = SourceHanSansCNRegular(13);
         [self.footView.payBtn setTitle:@"查看其它店铺" forState:UIControlStateNormal];
-        self.footView.payBtn.backgroundColor = UIColorFromHex(0x3e7bb1);
+        self.footView.payBtn.backgroundColor = ThemeGreen;
         [self.footView.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         return;
     }
@@ -774,12 +774,12 @@
     if (post) {
         
         [self.postBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.postBtn.backgroundColor = UIColorFromHex(0x3e7bb1);
+        self.postBtn.backgroundColor = ThemeGreen;
         self.getBtn.backgroundColor =UIColorFromHex(0xf1f2f2);
         [self.getBtn setTitleColor:UIColorFromHex(0xcccccc) forState:UIControlStateNormal];
     }else {
         [self.getBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.getBtn.backgroundColor = UIColorFromHex(0x3e7bb1);
+        self.getBtn.backgroundColor = ThemeGreen;
         self.postBtn.backgroundColor =UIColorFromHex(0xf1f2f2);
         [self.postBtn setTitleColor:UIColorFromHex(0xcccccc) forState:UIControlStateNormal];
     }
