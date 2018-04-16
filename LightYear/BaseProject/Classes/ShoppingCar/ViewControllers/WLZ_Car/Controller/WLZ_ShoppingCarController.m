@@ -13,6 +13,7 @@
 
 #import "WLZ_ShoppingCarController.h"
 #import "WLZ_HeardView.h"
+#import "LoginViewController.h"
 @interface WLZ_ShoppingCarController () <UITableViewDataSource,UITableViewDelegate,WLZ_ShoppingCarCellDelegate,WLZ_ShoppingCartEndViewDelegate>
 
 
@@ -61,7 +62,18 @@
      [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }
+}
 
 -(void)finshBarView
 {

@@ -43,7 +43,11 @@
     [super viewWillAppear:animated];
     
     if (![ConfigModel getBoolObjectforKey:IsLogin]) {
-        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
         [self presentViewController:na animated:YES completion:nil];
         return;
     }

@@ -199,8 +199,13 @@
 }
 //返回
 - (void)backAction{
-//    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.clickBlock) {
+        self.clickBlock(@"back");
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 //登录
 - (void)loginAction:(UIButton *)sender{
