@@ -74,7 +74,7 @@
     
     _sureButton = [UIButton new];
     _sureButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    _sureButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+    _sureButton.backgroundColor = ThemeGreen;
     _sureButton.layer.cornerRadius = 4.0f;
     _sureButton.layer.masksToBounds = YES;
     [_sureButton setTitle:@"确定" forState:UIControlStateNormal];

@@ -105,7 +105,7 @@
         _codeLab = [[UILabel alloc] initWithFrame:FRAME(0, self.titleLab.bottom + SizeHeigh(20), White_W, SizeHeigh(50))];
         _codeLab.textAlignment = NSTextAlignmentCenter;
         _codeLab.font = Verdana(SizeHeigh(60));
-        _codeLab.textColor = UIColorFromHex(0x3e7bb1);
+        _codeLab.textColor = ThemeGreen;
         _codeLab.text = @"8872";
     }
     return _codeLab;
@@ -184,7 +184,7 @@
         _callBtn = [[UIButton alloc] initWithFrame:FRAME(White_W/2 -SizeWidth(50), self.workTimeLab2.bottom + SizeHeigh(20), SizeWidth(100), SizeHeigh(50))];
         _callBtn.backgroundColor = [UIColor clearColor];
         [_callBtn setTitle:@"联系门店" forState:UIControlStateNormal];
-        [_callBtn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [_callBtn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         _callBtn.titleLabel.font = SourceHanSansCNRegular(15);
         [_callBtn addTarget:self action:@selector(callbtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }

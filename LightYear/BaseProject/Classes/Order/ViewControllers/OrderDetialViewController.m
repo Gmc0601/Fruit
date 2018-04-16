@@ -483,7 +483,7 @@
                             cell.detailTextLabel.text = self.model.code;
                             cell.accessoryType = UITableViewCellAccessoryNone;
                             cell.detailTextLabel.font = VerdanaBold(15);
-                            cell.detailTextLabel.textColor = UIColorFromHex(0x3e7bb1);
+                            cell.detailTextLabel.textColor = ThemeGreen;
                             return cell;
                         }else {
                             UITableViewCell *cell = [self.noUseTableView dequeueReusableCellWithIdentifier:cellId];
@@ -689,7 +689,7 @@
         
         UIButton *btn = [[UIButton alloc] initWithFrame:FRAME(kScreenW - SizeWidth(110), 7, SizeWidth(100), 30)];
         [btn setTitle:@"联系商家" forState:UIControlStateNormal];
-        [btn setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+        [btn setTitleColor:ThemeGreen forState:UIControlStateNormal];
         btn.titleLabel.font = NormalFont(13);
         [btn setImage:[UIImage imageNamed:@"icon_dh"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];

@@ -16,6 +16,8 @@
 #import "LoginViewController.h"
 #import "WMHomePageViewController.h"
 #import "UserModel.h"
+#import "WalletViewController.h"
+#import "ShoplistVC.h"
 
 @interface MycenterViewController ()<UITableViewDelegate,UITableViewDataSource,MycenterHeadViewDelegate,UserInfoPicketViewDelegate>
 {
@@ -32,24 +34,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    dataArray = [NSMutableArray arrayWithObjects:@"收货地址",@"意见反馈",@"联系我们", nil];//,@"分享App给朋友
+    NSArray *arr = @[@[@"收货地址",@"意见反馈",@"切换店铺"],@[@"设置"]];
+    dataArray = [NSMutableArray arrayWithArray:arr];//,@"分享App给朋友
+    self.navigationView.hidden = YES;
     [self createBaseView];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:[LoginViewController new]];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }
+    
+    [HttpRequest postPath:@"_user_score_total_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        if([error isEqual:[NSNull null]] || error == nil){
+            NSLog(@"success");
+        }
+        NSDictionary *datadic = responseObject;
+        if ([datadic[@"error"] intValue] == 0) {
+            NSDictionary *infoDic = datadic[@"info"];
+//            NSString *intgral = infoDic[@"integral"];
+            NSString *amount = [NSString stringWithFormat:@"%@", infoDic[@"amount"]];
+            NSString *coupon = [NSString stringWithFormat:@"%@", infoDic[@"coupon"]];
+            headView.blanceLab.text = amount;
+            headView.couponLab.text = coupon;
+            
+        }else {
+            NSString *str = datadic[@"info"];
+            [ConfigModel mbProgressHUD:str andView:nil];
+        }
+    }];
+    
     userModel = [[TMCache sharedCache] objectForKey:UserInfoModel];
     self.rightBar.hidden = YES;
     if (userModel) {
-        if ([userModel.nickname containsString:@","]) {
-            NSArray *nameArr = [userModel.nickname componentsSeparatedByString:@","];
-            NSString *name = [nameArr componentsJoinedByString:@""];
-            self.titleLab.text = [NSString stringWithFormat:@"%@ %@",[self getCurrentTime],name];
-        } else {
-            self.titleLab.text = [NSString stringWithFormat:@"%@ %@",[self getCurrentTime],userModel.nickname];
-        }
+        headView.nickLab.text = userModel.nickname;
+//        if ([userModel.nickname containsString:@","]) {
+//            NSArray *nameArr = [userModel.nickname componentsSeparatedByString:@","];
+//            NSString *name = [nameArr componentsJoinedByString:@""];
+//            self.titleLab.text = [NSString stringWithFormat:@"%@ %@",[self getCurrentTime],name];
+//        } else {
+//            self.titleLab.text = [NSString stringWithFormat:@"%@ %@",[self getCurrentTime],userModel.nickname];
+//        }
     }else{
-        self.titleLab.text = [self getCurrentTime];
+//        self.titleLab.text = [self getCurrentTime];
     }
 }
 //- (void)back:(UIButton *)sender{
@@ -64,7 +94,7 @@
     bottomButton = [UIButton new];
     bottomButton.titleLabel.font = [UIFont systemFontOfSize:18];
     [bottomButton setTitle:@"退出" forState:UIControlStateNormal];
-    [bottomButton setTitleColor:UIColorFromHex(0x3e7bb1) forState:UIControlStateNormal];
+    [bottomButton setTitleColor:ThemeGreen forState:UIControlStateNormal];
     [bottomButton addTarget:self action:@selector(exitLoginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bottomButton];
     [bottomButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,21 +105,30 @@
     myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     myTableView.delegate = self;
     myTableView.dataSource = self;
-    myTableView.bounces = NO;
+//    myTableView.bounces = NO;
     myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     myTableView.backgroundColor = [UIColor whiteColor];
     [myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:myTableView];
     [myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(self.height);
+        make.top.mas_offset(0);
         make.left.right.mas_offset(0);
         make.bottom.mas_equalTo(bottomButton.mas_top).mas_offset(-10);
     }];
     [self initTbaleViewHeadView];
+    [self.view addSubview:self.titleLab];
+    self.titleLab.text = @"个人中心";
+    self.titleLab.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.rightBar];
+    [self.rightBar setTitle:@"" forState:UIControlStateNormal];
+    [self.rightBar setImage:[UIImage imageNamed:@"home_message"] forState:UIControlStateNormal];
+    self.rightBar.backgroundColor = [UIColor clearColor];
+    self.rightBar.frame =CGRectMake(kScreenW - 10 - 40, 20, 40, 30);
+    
 }
 - (void)initTbaleViewHeadView{
     UserInfo * userModel = [[TMCache sharedCache] objectForKey:UserInfoModel];
-    headView = [[MycenterHeadView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH*0.35)];
+    headView = [[MycenterHeadView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 300)];
     headView.backgroundColor = [UIColor whiteColor];
     headView.delegate = self;
     headView.headImage.image = [UIImage imageNamed:@"icon_grzx_tx"];
@@ -115,6 +154,20 @@
          OrderList_Distributioning,//  配送中
          OrderList_Topay           //  待支付
          */
+        
+        if (button.tag >= 25) {
+            
+            if (button.tag == 25) {
+                WalletViewController *vc = [[WalletViewController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (button.tag == 26) {
+                
+            }
+            
+            return;
+        }
+        
         switch (button.tag) {
             case 20:
                 vc.listType = OrderList_All;
@@ -131,7 +184,6 @@
             case 24:
                 vc.listType = OrderList_Topay;
                 break;
-                
             default:
                 break;
         }
@@ -145,13 +197,13 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 1;
+        return 10;
     }
-    return 0.000001;
+    return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView * view = [UIView new];
-    view.backgroundColor = UIColorFromHex(0xcccccc);
+    view.backgroundColor = RGBColor(239, 240, 241);
     return view;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -160,20 +212,20 @@
     return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 1;
+    return 0.0001;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return dataArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [dataArray[section] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text = dataArray[indexPath.section];
+    cell.textLabel.text = dataArray[indexPath.section][indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:16];
 //    if (indexPath.section == 2) {
 //        UILabel * detailLabel = [UILabel new];
@@ -195,35 +247,49 @@
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section == 0) {
-        //收货地址
-        DeliveryAddressViewController * addressVC = [[DeliveryAddressViewController alloc] init];
-        [self.navigationController pushViewController:addressVC animated:YES];
-    }else if (indexPath.section == 1){
-        //意见反馈
-        EditFeedBackViewController * feedBackVC = [[EditFeedBackViewController alloc] init];
-        [self.navigationController pushViewController:feedBackVC animated:YES];
-    }else if (indexPath.section == 2){
-        //联系我们
-        NSMutableArray * array = [NSMutableArray arrayWithObjects:@"13879888888",@"13097890000", nil];
-        picketView = [[UserInfoPicketView alloc] init];
-        picketView.delegate = self;
-        picketView.tag = 10;
-        picketView.picketTitle = @"联系我们";
-        picketView.sureButtonTitle = @"立即联系";
-        picketView.pickViewTextArray = array;
-        picketView.picketType = PicketViewTypeDefault;
-        [self.view addSubview:picketView];
-    }else if (indexPath.section == 3){
-        //分享
-        NSMutableArray * array = [NSMutableArray arrayWithObjects:@"朋友圈",@"微信好友", @"QQ好友",@"QQ空间",nil];
-        NSMutableArray * imgArray = [NSMutableArray arrayWithObjects:@"icon_fx_pyq",@"icon_fx_wx", @"icon_fx_qq",@"icon_fx_qqkj",nil];
-        picketView = [[UserInfoPicketView alloc] init];
-        picketView.delegate = self;
-        picketView.pickViewTextArray = array;
-        picketView.pickViewImageArray = imgArray;
-        picketView.picketType = PicketViewTypeNormal;
-        [self.view addSubview:picketView];
+        if (indexPath.row == 0) {
+            //收货地址
+            DeliveryAddressViewController * addressVC = [[DeliveryAddressViewController alloc] init];
+            [self.navigationController pushViewController:addressVC animated:YES];
+        }else if (indexPath.row == 1){
+            //意见反馈
+            EditFeedBackViewController * feedBackVC = [[EditFeedBackViewController alloc] init];
+            [self.navigationController pushViewController:feedBackVC animated:YES];
+        }else if (indexPath.row == 2){
+            //联系我们
+            //        切换店铺
+            ShoplistVC *vc = [[ShoplistVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            //        NSMutableArray * array = [NSMutableArray arrayWithObjects:@"13879888888",@"13097890000", nil];
+            //        picketView = [[UserInfoPicketView alloc] init];
+            //        picketView.delegate = self;
+            //        picketView.tag = 10;
+            //        picketView.picketTitle = @"联系我们";
+            //        picketView.sureButtonTitle = @"立即联系";
+            //        picketView.pickViewTextArray = array;
+            //        picketView.picketType = PicketViewTypeDefault;
+            //        [self.view addSubview:picketView];
+        }
+        else if (indexPath.section == 3){
+            //        //分享
+            //        NSMutableArray * array = [NSMutableArray arrayWithObjects:@"朋友圈",@"微信好友", @"QQ好友",@"QQ空间",nil];
+            //        NSMutableArray * imgArray = [NSMutableArray arrayWithObjects:@"icon_fx_pyq",@"icon_fx_wx", @"icon_fx_qq",@"icon_fx_qqkj",nil];
+            //        picketView = [[UserInfoPicketView alloc] init];
+            //        picketView.delegate = self;
+            //        picketView.pickViewTextArray = array;
+            //        picketView.pickViewImageArray = imgArray;
+            //        picketView.picketType = PicketViewTypeNormal;
+            //        [self.view addSubview:picketView];
+        }
+    }else {
+        //个人中心
+        UserInfoViewController * userInfoVC = [[UserInfoViewController alloc] init];
+        [userInfoVC setFinishBlock:^(NSString * headImg){
+            [headView.headImage sd_setImageWithURL:[NSURL URLWithString:headImg] placeholderImage:[UIImage imageNamed:@"icon_grzl_tx"]];
+        }];
+        [self.navigationController pushViewController:userInfoVC animated:YES];
     }
+    
 }
 #pragma mark -- UserInfoPicketViewDelegate
 -(void)PickerSelectorIndex:(NSInteger)index contentString:(NSString *)str{

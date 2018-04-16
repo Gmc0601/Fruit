@@ -112,7 +112,7 @@
 {
     if (!_bottomLine) {
         _bottomLine =[[UIView alloc]init];
-        _bottomLine.backgroundColor = UIColorFromHex(0x3e7bb1);
+        _bottomLine.backgroundColor = ThemeGreen;
         _bottomLine.userInteractionEnabled =YES;
         
 //        NSInteger count = [_items count];

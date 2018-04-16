@@ -67,7 +67,7 @@
     
     UIButton * bottomButton = [UIButton new];
     bottomButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    bottomButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+    bottomButton.backgroundColor = ThemeGreen;
     bottomButton.layer.cornerRadius = 4.0f;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setTitle:@"保存" forState:UIControlStateNormal];

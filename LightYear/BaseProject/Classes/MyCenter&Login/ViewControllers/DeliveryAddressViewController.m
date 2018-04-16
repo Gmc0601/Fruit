@@ -76,7 +76,7 @@
     bottomButton = [UIButton new];
     bottomButton.hidden = YES;
     bottomButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    bottomButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+    bottomButton.backgroundColor = ThemeGreen;
     bottomButton.layer.cornerRadius = 4.0f;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setTitle:@"新增收货地址" forState:UIControlStateNormal];
@@ -143,7 +143,8 @@
     }else{
         UIButton * tableBottomButton = [UIButton new];
         tableBottomButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-        tableBottomButton.backgroundColor = UIColorFromHex(0x3e7bb1);
+        
+        tableBottomButton.backgroundColor = ThemeGreen;
         tableBottomButton.layer.cornerRadius = 4.0f;
         tableBottomButton.layer.masksToBounds = YES;
         [tableBottomButton setTitle:@"新增收货地址" forState:UIControlStateNormal];

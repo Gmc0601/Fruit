@@ -21,6 +21,8 @@
 }
 @property (nonatomic ,copy) void(^ChangeUserInfoBlock) (int status);
 
+@property (nonatomic, strong) UIButton *logoutBtn;
+
 @end
 
 @implementation UserInfoViewController
@@ -28,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleLab.text = @"个人资料";
+    self.titleLab.text = @"设置";
     self.rightBar.hidden = YES;
     dataArray = [NSMutableArray arrayWithObjects:@"头像",@"姓名",@"性别",@"生日", @"钱包支付密码",nil];
     [self createBaseView];
@@ -55,6 +57,7 @@
         make.top.mas_offset(self.height);
         make.left.right.bottom.mas_offset(0);
     }];
+    [self.view addSubview:self.logoutBtn];
 }
 - (void)changeUserInfoWithKey:(NSString *)key Value:(NSString *)value{
     [ConfigModel showHud:self];
@@ -304,6 +307,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (UIButton *)logoutBtn {
+    if (!_logoutBtn) {
+        _logoutBtn = [[UIButton alloc] initWithFrame:FRAME(0, kScreenH - 50, kScreenW, 50)];
+        _logoutBtn.backgroundColor = ThemeGreen;
+        [_logoutBtn setTitle:@"安全退出" forState:UIControlStateNormal];
+        [_logoutBtn addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _logoutBtn;
+}
+- (void)logout:(UIButton *)sender {
+    [ConfigModel saveBoolObject:NO forKey:IsLogin];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 /*
 #pragma mark - Navigation

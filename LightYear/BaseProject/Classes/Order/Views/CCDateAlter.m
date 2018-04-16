@@ -199,7 +199,7 @@
 - (UIButton *)finishBtn {
     if (!_finishBtn) {
         _finishBtn = [[UIButton alloc] initWithFrame:FRAME(SizeWidth(15), SizeHeigh(380 - 64), SizeWidth(310), SizeHeigh(44))];
-        _finishBtn.backgroundColor = UIColorFromHex(0x3e7bb1);
+        _finishBtn.backgroundColor = ThemeGreen;
         [_finishBtn setTitle:@"完成" forState:UIControlStateNormal];
         [_finishBtn addTarget:self action:@selector(finishClick:) forControlEvents:UIControlEventTouchUpInside];
         _finishBtn.layer.masksToBounds = YES;

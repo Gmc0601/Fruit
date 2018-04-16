@@ -36,8 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _leftPage = 1;
-    [ConfigModel saveBoolObject:YES forKey:IsLogin];
-    [ConfigModel saveString:@"37c69f3f1d1ed49d58cdf5d4b6750f81" forKey:UserToken];
     [self creatView];
     [self creatLeftBtn];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
