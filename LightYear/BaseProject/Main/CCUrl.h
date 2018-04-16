@@ -15,7 +15,7 @@
 /*
  地图key
  */
-#define AMapKey @"9a93d147b3dc5956b850d713d1b25a26"
+#define AMapKey @"b224ac2c0a43342519665dc7de7faaad"
 
 #define UDID     0
 

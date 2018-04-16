@@ -30,7 +30,7 @@
     self.view.backgroundColor =[UIColor whiteColor];
     NSArray *viewControllers = self.navigationController.viewControllers;
     if (viewControllers.count > 1){
-        [self addLeftBarButtonWithImage:[UIImage imageNamed:@"ic_back"] action:@selector(backAction)];
+        [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
     }else{
         [self.navigationItem setHidesBackButton:YES animated:NO];
     }
@@ -40,13 +40,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ThemeNab.png"] forBarMetrics:UIBarMetricsDefault];
-    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent ;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent ;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white.png"] forBarMetrics:UIBarMetricsDefault];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"white.png"] forBarMetrics:UIBarMetricsDefault];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)backSweepGesture:(UISwipeGestureRecognizer*)gesture{
