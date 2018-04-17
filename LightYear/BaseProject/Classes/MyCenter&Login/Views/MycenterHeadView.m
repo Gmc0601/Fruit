@@ -46,13 +46,13 @@
     UIButton * headButton = [UIButton new];
     headButton.tag = 10;
     [headButton addTarget:self action:@selector(headViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    headButton.layer.cornerRadius = 40.0f;
+    headButton.layer.cornerRadius = 25.0f;
     headButton.layer.masksToBounds = YES;
     [self addSubview:headButton];
     [headButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_offset(0);
-        make.top.mas_offset(40);
-        make.size.mas_offset(CGSizeMake(80, 80));
+        make.top.mas_offset(60);
+        make.size.mas_offset(CGSizeMake(50, 50));
     }];
     
     self.headImage = [UIImageView new];
@@ -77,26 +77,26 @@
         make.width.mas_offset(kScreenW);
     }];
     
-    UIImageView * titltImage = [UIImageView new];
-    titltImage.image = [UIImage imageNamed:@"img_tx_bj"];
-    [headButton addSubview:titltImage];
-    [titltImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_offset(0);
-        make.left.right.mas_offset(0);
-        make.height.mas_offset(20);
-    }];
+//    UIImageView * titltImage = [UIImageView new];
+//    titltImage.image = [UIImage imageNamed:@"img_tx_bj"];
+//    [headButton addSubview:titltImage];
+//    [titltImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_offset(0);
+//        make.left.right.mas_offset(0);
+//        make.height.mas_offset(20);
+//    }];
     
-    UILabel * headEditLabel = [UILabel new];
-    headEditLabel.text = @"编辑";
-    headEditLabel.textAlignment = NSTextAlignmentCenter;
-    headEditLabel.font = [UIFont systemFontOfSize:13];
-    headEditLabel.textColor = [UIColor whiteColor];
-    [headButton addSubview:headEditLabel];
-    [headEditLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_offset(0);
-        make.left.right.mas_offset(0);
-        make.height.mas_offset(20);
-    }];
+//    UILabel * headEditLabel = [UILabel new];
+//    headEditLabel.text = @"编辑";
+//    headEditLabel.textAlignment = NSTextAlignmentCenter;
+//    headEditLabel.font = [UIFont systemFontOfSize:13];
+//    headEditLabel.textColor = [UIColor whiteColor];
+//    [headButton addSubview:headEditLabel];
+//    [headEditLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_offset(0);
+//        make.left.right.mas_offset(0);
+//        make.height.mas_offset(20);
+//    }];
     //    余额  优惠券等
     UIView *halfView = [[UIView alloc] init];
     halfView.backgroundColor = RGBColorAlpha(21, 172, 21, 1);

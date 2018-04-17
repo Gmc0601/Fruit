@@ -8,6 +8,13 @@
 
 #import "CCBaseViewController.h"
 
+typedef enum TopUpType {
+    Topup_wallet,   //   钱包充值
+    Topup_order     //   订单充值
+}TopUpType;
+
 @interface TopUpViewController : CCBaseViewController
+
+@property (nonatomic, assign) TopUpType type;
 
 @end

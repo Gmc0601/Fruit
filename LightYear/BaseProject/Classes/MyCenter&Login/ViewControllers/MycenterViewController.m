@@ -18,6 +18,7 @@
 #import "UserModel.h"
 #import "WalletViewController.h"
 #import "ShoplistVC.h"
+#import "InspectCouponViewController.h"
 
 @interface MycenterViewController ()<UITableViewDelegate,UITableViewDataSource,MycenterHeadViewDelegate,UserInfoPicketViewDelegate>
 {
@@ -34,6 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    if (@available(iOS 11.0, *)) {
+        myTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     NSArray *arr = @[@[@"收货地址",@"意见反馈",@"切换店铺"],@[@"设置"]];
     dataArray = [NSMutableArray arrayWithArray:arr];//,@"分享App给朋友
     self.navigationView.hidden = YES;
@@ -41,7 +48,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent ;
     if (![ConfigModel getBoolObjectforKey:IsLogin]) {
         LoginViewController *vc = [[LoginViewController alloc] init];
         vc.clickBlock = ^(NSString *str) {
@@ -62,7 +69,7 @@
 //            NSString *intgral = infoDic[@"integral"];
             NSString *amount = [NSString stringWithFormat:@"%@", infoDic[@"amount"]];
             NSString *coupon = [NSString stringWithFormat:@"%@", infoDic[@"coupon"]];
-            headView.blanceLab.text = amount;
+            headView.blanceLab.text = [NSString stringWithFormat:@"%.2f", [amount floatValue]];
             headView.couponLab.text = coupon;
             
         }else {
@@ -115,7 +122,7 @@
     [myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:myTableView];
     [myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(0);
+        make.top.mas_offset(-20);
         make.left.right.mas_offset(0);
         make.bottom.mas_equalTo(bottomButton.mas_top).mas_offset(-10);
     }];
@@ -166,7 +173,8 @@
                 [self.navigationController pushViewController:vc animated:YES];
             }
             if (button.tag == 26) {
-                
+                InspectCouponViewController *vc = [[InspectCouponViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
             
             return;
