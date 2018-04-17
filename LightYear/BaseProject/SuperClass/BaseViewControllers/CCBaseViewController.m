@@ -64,7 +64,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     self.leftBar.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
-    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent;
     
 }
 

@@ -19,7 +19,6 @@
     NSString *_longitude;
 }
 
-
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSMutableArray *itemsArray;
 @property (nonatomic,strong)MAMapView *mapView;
