@@ -18,6 +18,7 @@
 #import "HomeItemsCell.h"
 #import "HomeHotCell.h"
 
+
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,HomeBannerCellDelegate,HomeItemsCellDelegate,HomeHotCellDelegate>
 {
     NSInteger _leftPage;

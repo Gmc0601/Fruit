@@ -9,10 +9,22 @@
 #import "ShoplistVC.h"
 #import "ShopListCell.h"
 
-@interface ShoplistVC ()<UITableViewDelegate,UITableViewDataSource>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+
+@interface ShoplistVC ()<UITableViewDelegate,UITableViewDataSource,MAMapViewDelegate>
+{
+    NSString *_latitude;
+    NSString *_longitude;
+}
+
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSMutableArray *itemsArray;
+@property (nonatomic,strong)MAMapView *mapView;
+@property (nonatomic, strong) CLGeocoder *geoC;
+@property (nonatomic,assign)BOOL isFirstMap;
 
 @end
 
@@ -20,21 +32,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadHomeData];
+//    [self loadHomeData];
     [self setCustomerTitle:@"选择店铺"];
     [self showNavRightButton:@"" action:@selector(messageAction) image:[UIImage imageNamed:@"home_message"] imageOn:nil];
     [self creatView];
+    [AMapServices sharedServices].apiKey = AMapKey;
+    [AMapServices sharedServices].enableHTTPS = YES;
+    [self.view addSubview:self.mapView];
 }
 
 - (void)loadHomeData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"lat"] = @"24.488199";
-    parameters[@"lng"] = @"118.180351";
+    parameters[@"lat"] = _latitude;
+    parameters[@"lng"] = _longitude;
     [HttpRequest postPath:shoplistURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         [self.itemsArray removeAllObjects];
-        NSLog(@"re===%@",responseObject);
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
             NSArray *arr = responseObject[@"info"];
@@ -104,8 +118,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ShopModel *model = self.itemsArray[indexPath.row];
+    [ConfigModel saveString:model.shopId forKey:ShopId];
+    // 点击选择店铺
     
 }
+
+
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation {
+    
+    CLLocationCoordinate2D coord = [userLocation coordinate];
+    //    NSLog(@"latitude: %f, longitude: %f",coord.latitude, coord.longitude);
+    if (!self.isFirstMap) {
+        _latitude = [NSString stringWithFormat:@"%f",coord.latitude];
+        _longitude = [NSString stringWithFormat:@"%f",coord.longitude];
+        [self loadHomeData];
+        self.isFirstMap=YES;
+    }
+}
+
 
 #pragma mark 按钮事件
 - (void)messageAction {
@@ -118,5 +149,25 @@
         _itemsArray = [NSMutableArray new];
     }
     return _itemsArray;
+}
+
+-(MAMapView *)mapView
+{
+    if (_mapView == nil) {
+        _mapView = [MAMapView new];
+        _mapView.showsUserLocation = YES;
+        
+        _mapView.delegate=self;
+  
+    }
+    return _mapView;
+}
+
+-(CLGeocoder *)geoC
+{
+    if (!_geoC) {
+        _geoC = [[CLGeocoder alloc] init];
+    }
+    return _geoC;
 }
 @end

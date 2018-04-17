@@ -57,6 +57,7 @@
 #define IsPad  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
 
 
+
 /**
  * 中英状态下键盘的高度
  */
