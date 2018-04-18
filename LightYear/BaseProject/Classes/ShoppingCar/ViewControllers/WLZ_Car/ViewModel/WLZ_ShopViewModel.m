@@ -24,6 +24,20 @@
 {
     //访问网络 获取数据 block回调失败或者成功 都可以在这处理
     
+  
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    parameters[@"shopid"] = @"3";
+    [HttpRequest postPath:cardList params:parameters resultBlock:^(id responseObject, NSError *error) {
+        NSLog(@"==================%@",responseObject);
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
     //本demo 直接读 本地数据了
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
     NSMutableDictionary *strategyDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];

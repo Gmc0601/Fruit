@@ -9,5 +9,7 @@
 #import "WLZ_CommodityModel.h"
 
 @implementation WLZ_CommodityModel
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"card_id" : @"id"};
+}
 @end

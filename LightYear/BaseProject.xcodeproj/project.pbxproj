@@ -1518,10 +1518,10 @@
 		53FB0177207DACC900F6D09E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				53FB0178207DACC900F6D09E /* WLZ_CommodityModel.h */,
-				53FB0179207DACC900F6D09E /* WLZ_ShoppIngCarModel.m */,
-				53FB017A207DACC900F6D09E /* WLZ_CommodityModel.m */,
 				53FB017B207DACC900F6D09E /* WLZ_ShoppIngCarModel.h */,
+				53FB0179207DACC900F6D09E /* WLZ_ShoppIngCarModel.m */,
+				53FB0178207DACC900F6D09E /* WLZ_CommodityModel.h */,
+				53FB017A207DACC900F6D09E /* WLZ_CommodityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1697,7 +1697,7 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = PA574T6LR3;
+						DevelopmentTeam = 32PRDP9W75;
 						ProvisioningStyle = Automatic;
 					};
 					42A444481EF133E000F90791 = {
@@ -2230,7 +2230,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				DEVELOPMENT_TEAM = 32PRDP9W75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/AliapySDK",
@@ -2266,7 +2266,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				DEVELOPMENT_TEAM = 32PRDP9W75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/AliapySDK",

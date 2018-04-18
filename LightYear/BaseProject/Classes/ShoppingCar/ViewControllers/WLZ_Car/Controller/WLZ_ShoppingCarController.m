@@ -300,7 +300,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, APPScreenWidth, APPScreenHeight-[WLZ_ShoppingCartEndView getViewHeight]) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, APPScreenWidth, APPScreenHeight-[WLZ_ShoppingCartEndView getViewHeight]-100) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.userInteractionEnabled=YES;
         _tableView.dataSource = self;
@@ -505,9 +505,9 @@
         }
     }
       _toolbar.frame=CGRectMake(0, APPScreenHeight, APPScreenWidth, _toolbar.frame.size.height);
-    _endView.frame = CGRectMake(0, self.view.frame.size.height-_endView.frame.size.height, APPScreenWidth, _endView.frame.size.height);
+    _endView.frame = CGRectMake(0, kScreenH-158, APPScreenWidth, _endView.frame.size.height);
 
-    self.tableView.frame=CGRectMake(0, 0, self.tableView.frame.size.width, APPScreenHeight-[WLZ_ShoppingCartEndView getViewHeight]);
+    self.tableView.frame=CGRectMake(0, 0, self.tableView.frame.size.width, APPScreenHeight-[WLZ_ShoppingCartEndView getViewHeight]-100);
     [UIView commitAnimations];
 }
 
