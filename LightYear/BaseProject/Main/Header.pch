@@ -30,6 +30,7 @@
 #import "BannerModel.h"
 #import "ShopGoodsTypeModel.h"
 #import "GoodsIndexModel.h"
+#import "GoodsDetailModel.h"
 
 /*
  通用

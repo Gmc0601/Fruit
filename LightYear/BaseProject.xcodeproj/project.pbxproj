@@ -210,6 +210,7 @@
 		74D34D9220747A240009AFB8 /* ClassifyLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D8D20747A230009AFB8 /* ClassifyLeftCell.m */; };
 		74D34D9320747A240009AFB8 /* ScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D8F20747A230009AFB8 /* ScreenView.m */; };
 		74D34D9420747A240009AFB8 /* ReclassifyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D9020747A240009AFB8 /* ReclassifyCollectionCell.m */; };
+		74E808462085D5930007E928 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E808452085D5930007E928 /* GoodsDetailModel.m */; };
 		94CFB0C9C148325C439484B8 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10C35584B1A7641A967DEC9 /* Pods_BaseProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -627,6 +628,8 @@
 		74D34D8F20747A230009AFB8 /* ScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenView.m; sourceTree = "<group>"; };
 		74D34D9020747A240009AFB8 /* ReclassifyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReclassifyCollectionCell.m; sourceTree = "<group>"; };
 		74D34D9120747A240009AFB8 /* ReclassifyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReclassifyCollectionCell.h; sourceTree = "<group>"; };
+		74E808442085D5930007E928 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
+		74E808452085D5930007E928 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
 		A2BC379B4929E517CCEBBD81 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		C10C35584B1A7641A967DEC9 /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79BCDCE7109E930EA932FB6 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -940,6 +943,8 @@
 				74079162207B4E4A00F4BC45 /* TwoSubTypeModel.m */,
 				74079164207B4E5D00F4BC45 /* ThreeSubTypeModel.h */,
 				74079165207B4E5D00F4BC45 /* ThreeSubTypeModel.m */,
+				74E808442085D5930007E928 /* GoodsDetailModel.h */,
+				74E808452085D5930007E928 /* GoodsDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1957,6 +1962,7 @@
 				427C3D7A1F9F227B0081B431 /* OrderInfoFootView.m in Sources */,
 				53FB018F207DACC900F6D09E /* WLZ_HeardView.m in Sources */,
 				00A952871F7024F800DEE0F6 /* DeilveryAddressTableViewCell.m in Sources */,
+				74E808462085D5930007E928 /* GoodsDetailModel.m in Sources */,
 				42A24FCF1F5F0CE5005130DC /* UIView+Frame.m in Sources */,
 				53FB018A207DACC900F6D09E /* WLZ_ShoppIngCarModel.m in Sources */,
 				740791542079EBA700F4BC45 /* ShoplistVC.m in Sources */,

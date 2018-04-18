@@ -250,13 +250,11 @@
     NSArray *arr = oneModel.two_sub_type;
     TwoSubTypeModel *twoModel = arr[indexPath.section];
     NSArray *threeArr = twoModel.three_sub_type;
+    ThreeSubTypeModel *threeModel = threeArr[indexPath.row];
     GoodsDetailVC *vc = [GoodsDetailVC new];
-    vc.threeModel = threeArr[indexPath.row];
+    vc.goodsId = threeModel.goodsId;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-    //    if (self.delegate && [self.delegate respondsToSelector:@selector(homeItemsDidSelectWithTag:)]) {
-    //        [self.delegate homeItemsDidSelectWithTag:indexPath.row];
-    //    }
 }
 
 

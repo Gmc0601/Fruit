@@ -327,7 +327,9 @@
  *  点击了畅销榜
  */
 -(void)homeHotItemsDidSelectWithTag:(NSInteger)tag {
+    GoodsIndexModel *model = self.goodsArr[tag];
     GoodsDetailVC *vc = [GoodsDetailVC new];
+    vc.goodsId = model.goodsId;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

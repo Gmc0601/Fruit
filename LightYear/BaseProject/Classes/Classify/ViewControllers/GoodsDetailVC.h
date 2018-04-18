@@ -11,6 +11,6 @@
 //商品详情
 @interface GoodsDetailVC : CCBaseViewController
 
-@property (nonatomic,strong) ThreeSubTypeModel *threeModel;
+@property (nonatomic,strong) NSString *goodsId;
 
 @end

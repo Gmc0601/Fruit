@@ -73,8 +73,9 @@
 #define shopGoodsTypeURL    @"_shop_goods_type_001"
 #define goodsIndexURL       @"_goods_index_001"
 #define goodsURL            @"_goods_001"
-
+#define goodsInfoURL        @"_goods_info_001"
 #define kShopInfo           @"shopInfo"
+#define setCarURL           @"_set_crad_001"
 
 /*
  *   User Info
