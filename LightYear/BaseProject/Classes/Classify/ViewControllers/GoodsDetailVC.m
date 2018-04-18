@@ -132,7 +132,7 @@
     parameters[@"count"] = @"1";
     parameters[@"price"] = _goodsDetailModel.original_price;
     parameters[@"good_id"] = _goodsDetailModel.goodsId;
-    parameters[@"sku_id"] = _goodsId;
+//    parameters[@"sku_id"] = _goodsId;
     parameters[@"shopid"] = @"3";
     
     [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {
@@ -143,6 +143,24 @@
 //            NSDictionary *dic = responseObject[@"info"];
             _carCount ++;
             _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
+        }else {
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+        
+    }];
+}
+
+- (void)loadCarCountData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    
+    [HttpRequest postPath:carCountURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            //            NSDictionary *dic = responseObject[@"info"];
+//            _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }

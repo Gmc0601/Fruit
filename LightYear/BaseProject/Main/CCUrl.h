@@ -76,6 +76,7 @@
 #define goodsInfoURL        @"_goods_info_001"
 #define kShopInfo           @"shopInfo"
 #define setCarURL           @"_set_crad_001"
+#define carCountURL           @"_card_count_001"
 
 /*
  *   User Info
