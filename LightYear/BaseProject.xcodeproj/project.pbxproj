@@ -219,6 +219,8 @@
 		74D34D9320747A240009AFB8 /* ScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D8F20747A230009AFB8 /* ScreenView.m */; };
 		74D34D9420747A240009AFB8 /* ReclassifyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D9020747A240009AFB8 /* ReclassifyCollectionCell.m */; };
 		74E808462085D5930007E928 /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E808452085D5930007E928 /* GoodsDetailModel.m */; };
+		74E8084920871A1A0007E928 /* GoodsDetailImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E8084820871A1A0007E928 /* GoodsDetailImgCell.m */; };
+		74E8084C208724370007E928 /* GoodsDetailTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E8084B208724370007E928 /* GoodsDetailTitleCell.m */; };
 		94CFB0C9C148325C439484B8 /* Pods_BaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10C35584B1A7641A967DEC9 /* Pods_BaseProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -654,6 +656,10 @@
 		74D34D9120747A240009AFB8 /* ReclassifyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReclassifyCollectionCell.h; sourceTree = "<group>"; };
 		74E808442085D5930007E928 /* GoodsDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
 		74E808452085D5930007E928 /* GoodsDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
+		74E8084720871A1A0007E928 /* GoodsDetailImgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailImgCell.h; sourceTree = "<group>"; };
+		74E8084820871A1A0007E928 /* GoodsDetailImgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailImgCell.m; sourceTree = "<group>"; };
+		74E8084A208724370007E928 /* GoodsDetailTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailTitleCell.h; sourceTree = "<group>"; };
+		74E8084B208724370007E928 /* GoodsDetailTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailTitleCell.m; sourceTree = "<group>"; };
 		A2BC379B4929E517CCEBBD81 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		C10C35584B1A7641A967DEC9 /* Pods_BaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79BCDCE7109E930EA932FB6 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1584,6 +1590,10 @@
 				74D34D9020747A240009AFB8 /* ReclassifyCollectionCell.m */,
 				74D34D8E20747A230009AFB8 /* ScreenView.h */,
 				74D34D8F20747A230009AFB8 /* ScreenView.m */,
+				74E8084720871A1A0007E928 /* GoodsDetailImgCell.h */,
+				74E8084820871A1A0007E928 /* GoodsDetailImgCell.m */,
+				74E8084A208724370007E928 /* GoodsDetailTitleCell.h */,
+				74E8084B208724370007E928 /* GoodsDetailTitleCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1933,6 +1943,7 @@
 				42C84EB91EF2DCD90008189D /* MainApi.m in Sources */,
 				6B5F6DB01F628D28001BDC0E /* UITextView+placeholder.m in Sources */,
 				04654A971F6E66280023FF63 /* WMTableView.m in Sources */,
+				74E8084C208724370007E928 /* GoodsDetailTitleCell.m in Sources */,
 				422FDA012060DCA20062C4D9 /* TBNavigationController.m in Sources */,
 				046C474B1F73D90A00FDCFF6 /* WMBannerView.m in Sources */,
 				74D34D8A20747A070009AFB8 /* ReclassifyVC.m in Sources */,
@@ -2008,6 +2019,7 @@
 				427C3D7A1F9F227B0081B431 /* OrderInfoFootView.m in Sources */,
 				53FB018F207DACC900F6D09E /* WLZ_HeardView.m in Sources */,
 				00A952871F7024F800DEE0F6 /* DeilveryAddressTableViewCell.m in Sources */,
+				74E8084920871A1A0007E928 /* GoodsDetailImgCell.m in Sources */,
 				74E808462085D5930007E928 /* GoodsDetailModel.m in Sources */,
 				42A24FCF1F5F0CE5005130DC /* UIView+Frame.m in Sources */,
 				53FB018A207DACC900F6D09E /* WLZ_ShoppIngCarModel.m in Sources */,

@@ -8,6 +8,9 @@
 
 #import "GoodsDetailVC.h"
 
+#import "GoodsDetailImgCell.h"
+#import "GoodsDetailTitleCell.h"
+
 @interface GoodsDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger _carCount;
@@ -24,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleLab.text = @"商品详情";
+    [self creatView];
     [self loadGoodsData];
     [self creatBottomView];
     [self loadCarCountData];
@@ -31,7 +35,7 @@
 
 - (void)creatView {
     //    WEAKSELF
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     //    _tableView.backgroundColor = DPBGGrayColor;
@@ -208,8 +212,8 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 2) {
-        return SizeWidth(44);
+    if (section == 3) {
+        return SizeWidth(36);
     } else {
         return 0.01;
     }
@@ -223,24 +227,23 @@
     switch (indexPath.section) {
         case 0:
         {
-            static NSString*cellIdentifier = @"UITableViewCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            static NSString*cellIdentifier = @"GoodsDetailImgCell";
+            GoodsDetailImgCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                cell = [[GoodsDetailImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
-//            cell.bannerArray = @[@""];
-//            cell.delegate = self;
+            cell.imgArray = _goodsDetailModel.img_path;
             return cell;
         }
             break;
         case 1:
         {
-            static NSString*cellIdentifier = @"HomeItemsCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            static NSString*cellIdentifier = @"GoodsDetailTitleCell";
+            GoodsDetailTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                cell = [[GoodsDetailTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
-//            cell.delegate = self;
+            [cell setUpData:_goodsDetailModel];
             return cell;
         }
             break;
@@ -263,13 +266,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:
+        {
             return SizeWidth(375);
+        }
             break;
         case 1:
+        {
             return SizeWidth(131);
+        }
+            break;
+        case 2:
+        {
+            return SizeWidth(300);
+        }
             break;
         default:
-            return SizeWidth(1000);
+        {
+            return SizeWidth(300);
+        }
             break;
     }
     return 0.01;
