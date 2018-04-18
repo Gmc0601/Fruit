@@ -26,6 +26,7 @@
     self.titleLab.text = @"商品详情";
     [self loadGoodsData];
     [self creatBottomView];
+    [self loadCarCountData];
 }
 
 - (void)creatView {
@@ -41,7 +42,6 @@
 }
 
 - (void)creatBottomView {
-    _carCount = 1;
     UIView *bottomView = [UIView new];
     bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomView];
@@ -74,7 +74,7 @@
     }];
     
     _countLb = [UILabel new];
-    _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
+//    _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
     _countLb.textAlignment = NSTextAlignmentCenter;
     _countLb.layer.masksToBounds = YES;
     _countLb.layer.cornerRadius = SizeWidth(7);
@@ -143,6 +143,11 @@
 //            NSDictionary *dic = responseObject[@"info"];
             _carCount ++;
             _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
+            if (_carCount == 0) {
+                _countLb.hidden = YES;
+            }else {
+                _countLb.hidden = NO;
+            }
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
@@ -159,8 +164,13 @@
         
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
-            //            NSDictionary *dic = responseObject[@"info"];
-//            _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
+            _carCount = [responseObject[@"info"] integerValue];
+            _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
+            if (_carCount == 0) {
+                _countLb.hidden = YES;
+            }else {
+                _countLb.hidden = NO;
+            }
         }else {
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
