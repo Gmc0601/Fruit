@@ -21,6 +21,7 @@
 @property(nonatomic,copy)NSString *min_price;     //
 @property(nonatomic,copy)NSString *stock;         //库存
 @property(nonatomic,copy)NSString *original_price;//商品价格
+@property(nonatomic,copy)NSString *discount_price;//商品价格
 @property(nonatomic,copy)NSString *postage;       //
 
 @property(nonatomic,copy)NSArray *supplier;       //

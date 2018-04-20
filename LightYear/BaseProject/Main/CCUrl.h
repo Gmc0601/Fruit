@@ -80,6 +80,7 @@
 #define cardList            @"_card_list_001"
 #define deleteCrad            @"_delete_crad_001"
 #define commentUrl           @"_comment_002"
+#define orderUrl           @"_order_001"
 
 
 /*

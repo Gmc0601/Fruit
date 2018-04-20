@@ -65,7 +65,7 @@
 - (void)setUpData:(GoodsDetailModel *)model {
     _titleLb.text = model.title;
     _subLb.text = model.sub_title;
-    _priceLb.text = [NSString stringWithFormat:@"￥%@",model.original_price];
+    _priceLb.text = [NSString stringWithFormat:@"￥%@",model.discount_price];
 }
 
 @end
