@@ -78,7 +78,7 @@
 #define setCarURL           @"_set_crad_001"
 #define carCountURL         @"_card_count_001"
 #define cardList            @"_card_list_001"
-
+#define commentUrl           @"_comment_002"
 
 
 /*
