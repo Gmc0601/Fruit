@@ -79,6 +79,7 @@
 #define carCountURL         @"_card_count_001"
 #define cardList            @"_card_list_001"
 #define commentUrl           @"_comment_002"
+#define orderUrl           @"_order_001"
 
 
 /*
