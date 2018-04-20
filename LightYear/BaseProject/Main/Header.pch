@@ -31,6 +31,9 @@
 #import "ShopGoodsTypeModel.h"
 #import "GoodsIndexModel.h"
 #import "GoodsDetailModel.h"
+#import "CommentsModel.h"
+
+#import "UtilHelper.h"
 
 /*
  通用

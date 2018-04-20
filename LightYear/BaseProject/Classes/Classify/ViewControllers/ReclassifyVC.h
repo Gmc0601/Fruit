@@ -11,6 +11,7 @@
 /*二级分类**/
 @interface ReclassifyVC : CCBaseViewController
 
-@property (nonatomic,strong) ShopGoodsTypeModel *shopGoodsTypeModel;
+@property (nonatomic,strong) NSString *typeId; //分类ID
+@property (nonatomic,strong) NSString *titleStr; //标题
 
 @end

@@ -31,5 +31,6 @@
 @property(nonatomic,copy)NSString *sale;          //销量
 @property(nonatomic,copy)NSString *iscmd;         //是否推荐
 @property(nonatomic,copy)NSString *img_desc;      //商品详情
+@property(nonatomic,copy)NSString *desc;      //商品详情
 
 @end
