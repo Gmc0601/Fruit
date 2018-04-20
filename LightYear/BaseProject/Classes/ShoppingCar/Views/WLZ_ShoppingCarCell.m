@@ -187,7 +187,7 @@ static CGFloat CELL_HEIGHT = 100;
     _changeView.numberFD.delegate = self;
     
     [_changeView.addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
+    _changeView.numberFD.text=model.count;
     [self.contentView addSubview:_changeView];
     
  

@@ -31,6 +31,15 @@
   
 }
 
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getCartData];
+}
+
+
 -(UILabel *)holdLab
 {
     if (_holdLab == nil) {
@@ -111,6 +120,7 @@
     _vm = [[WLZ_ShopViewModel alloc]init];
     WGetWeakSelf(weak, self);
     [_vm getShopData:^(NSArray *commonArry) {
+        weak.cartmArr=nil;
         [weak.cartmArr addObjectsFromArray:commonArry];
         
         [weak.showTbv reloadData];
@@ -262,6 +272,10 @@
         
         
         
+        
+        
+        
+        
     }
     
     
@@ -339,7 +353,7 @@
     [headV addSubview:imageV];
     
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 200, 21)];
-    label.text=@"嘻哈侠店铺";
+    label.text=@"厦门店";
     label.textColor=[UIColor grayColor];
     label.font=[UIFont systemFontOfSize:15];
     label.textAlignment=NSTextAlignmentLeft;
