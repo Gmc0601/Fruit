@@ -9,11 +9,14 @@
 #import "GoodsDetailVC.h"
 
 #import "AllCommentsVC.h"
+#import "MakeOrderViewController.h"
 
 #import "GoodsDetailImgCell.h"
 #import "GoodsDetailTitleCell.h"
 #import "CommentCell.h"
 #import "GoodsDetailCell.h"
+
+
 
 @interface GoodsDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -442,7 +445,9 @@
 }
 
 - (void)buyBtnAction {
-    
+    MakeOrderViewController *vc = [MakeOrderViewController new];
+    vc.OrderID = _goodsDetailModel.goodsId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)commentDetailAction {

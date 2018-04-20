@@ -10,6 +10,7 @@
 
 #import "ScreenView.h"
 #import "HotCollectionCell.h"
+#import "GoodsDetailVC.h"
 
 @interface ReclassifyVC ()<ScreenViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -28,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLab.text = _shopGoodsTypeModel.name;
+    self.titleLab.text = _titleStr;
     self.rightBar.hidden = YES;
     [self creatView];
     [self loadGoodsData];
@@ -50,7 +51,7 @@
 - (void)loadGoodsData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"goodstype"] = _shopGoodsTypeModel.typeId;
+    parameters[@"goodstype"] = _typeId;
     parameters[@"shopid"] = @"3";
     parameters[@"search_type"] = @(_searchType);
     parameters[@"sort"] = @(_sort);
@@ -149,7 +150,11 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    GoodsIndexModel *model = self.goodsArray[indexPath.row];
+    GoodsDetailVC *vc = [GoodsDetailVC new];
+    vc.goodsId = model.goodsId;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark ScreenViewDelegate

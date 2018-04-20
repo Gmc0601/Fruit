@@ -10,6 +10,7 @@
 
 #import "HotCollectionCell.h"
 #import "ScreenView.h"
+#import "GoodsDetailVC.h"
 
 @interface SearchVC ()<UISearchBarDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ScreenViewDelegate>
 {
@@ -50,10 +51,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault  ;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent ;
 }
 
@@ -312,9 +315,10 @@ maxHeight:(CGFloat)height {
 #pragma mark 按钮事件
 - (void)backBtnAction {
     [self.searchBar resignFirstResponder];
-    [self dismissViewControllerAnimated:NO completion:^{
-        
-    }];
+    [self.navigationController popViewControllerAnimated:NO];
+//    [self dismissViewControllerAnimated:NO completion:^{
+    
+//    }];
 }
 
 /**
@@ -368,7 +372,11 @@ maxHeight:(CGFloat)height {
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    GoodsIndexModel *model = self.goodsArray[indexPath.row];
+    GoodsDetailVC *vc = [GoodsDetailVC new];
+    vc.goodsId = model.goodsId;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark ScreenViewDelegate

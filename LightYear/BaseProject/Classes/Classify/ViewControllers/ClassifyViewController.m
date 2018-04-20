@@ -12,6 +12,7 @@
 #import "ReclassifyCollectionCell.h"
 
 #import "GoodsDetailVC.h"
+#import "ReclassifyVC.h"
 
 @interface ClassifyViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -251,8 +252,14 @@
     TwoSubTypeModel *twoModel = arr[indexPath.section];
     NSArray *threeArr = twoModel.three_sub_type;
     ThreeSubTypeModel *threeModel = threeArr[indexPath.row];
-    GoodsDetailVC *vc = [GoodsDetailVC new];
-    vc.goodsId = threeModel.goodsId;
+//    GoodsDetailVC *vc = [GoodsDetailVC new];
+//    vc.goodsId = threeModel.goodsId;
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    ReclassifyVC *vc = [ReclassifyVC new];
+    vc.typeId = threeModel.goodsId;
+    vc.titleStr = threeModel.name;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

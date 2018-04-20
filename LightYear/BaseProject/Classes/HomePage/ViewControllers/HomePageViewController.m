@@ -316,9 +316,10 @@
  *  点击了按钮
  */
 - (void)homeItemsDidSelectWithTag:(NSInteger )tag {
-    NSLog(@"===%ld",tag);
+    ShopGoodsTypeModel *shopGoodsTypeModel = self.goodsTypeArr[tag];
     ReclassifyVC *vc = [ReclassifyVC new];
-    vc.shopGoodsTypeModel = self.goodsTypeArr[tag];
+    vc.typeId = shopGoodsTypeModel.typeId;
+    vc.titleStr = shopGoodsTypeModel.name;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -348,10 +349,7 @@
     SearchVC *vc = [[SearchVC alloc] init];
     vc.modalPresentationStyle = UIModalPresentationCustom;
     vc.definesPresentationContext = YES;
-//    vc.delegate = self;
-    [self presentViewController:vc animated:NO completion:^{
-        
-    }];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 #pragma mark 懒加载
