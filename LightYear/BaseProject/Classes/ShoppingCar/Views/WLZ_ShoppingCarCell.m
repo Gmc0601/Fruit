@@ -27,7 +27,6 @@ static CGFloat CELL_HEIGHT = 100;
 @property(nonatomic,assign)CGRect tableVieFrame;
 
 
-@property(nonatomic,strong)UILabel *soldoutLab;
 
 @end
 
@@ -37,7 +36,7 @@ static CGFloat CELL_HEIGHT = 100;
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    _soldoutLab.hidden=YES;
+
     [_shoppingImgView sd_setImageWithURL:nil];
     [_changeView removeFromSuperview];
     _spuImgView.image = nil;
@@ -50,7 +49,7 @@ static CGFloat CELL_HEIGHT = 100;
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
-        _tableView = tableView;
+       _tableView = tableView;
         [self initCellView];
     }
     return self;
@@ -77,7 +76,7 @@ static CGFloat CELL_HEIGHT = 100;
     [_shoppingImgView addSubview:_spuImgView];
     
     
-    _title = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_shoppingImgView.frame)+10, 10, APPScreenWidth-CGRectGetMaxX(_shoppingImgView.frame)-15, 21)];
+    _title = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_shoppingImgView.frame)+10, 10, kScreenW-CGRectGetMaxX(_shoppingImgView.frame)-15, 21)];
     _title.font=[UIFont systemFontOfSize:15];
     _title.textColor=[UIColor colorFromHexRGB:@"666666"];
     
@@ -91,12 +90,7 @@ static CGFloat CELL_HEIGHT = 100;
     
     
     
-    _soldoutLab = [[UILabel alloc]initWithFrame:CGRectMake(_title.frame.origin.x, CGRectGetMaxY(_sizeLab.frame)+15, 100, 17)];
-    _soldoutLab.hidden =YES;
-    _soldoutLab.text=@"无货";
-    _soldoutLab.font =  [UIFont systemFontOfSize:14];
-    _soldoutLab.textColor=[UIColor colorFromHexRGB:@"666666"];
-    [self.contentView addSubview:_soldoutLab];
+   
     
     
     _priceLab = [[UILabel alloc]initWithFrame:CGRectMake(_title.frame.origin.x, CGRectGetMaxY(_sizeLab.frame)+5+5, 100, 17)];
@@ -106,7 +100,7 @@ static CGFloat CELL_HEIGHT = 100;
     [self.contentView addSubview:_priceLab];
     
     
-    
+   
     
     
     
@@ -137,14 +131,15 @@ static CGFloat CELL_HEIGHT = 100;
         
     }
     NSString *numText = _changeView.numberFD.text;
-    if ([numText intValue]>[_model.item_info.stock_quantity  intValue]) {
-        _changeView.numberFD.text=[NSString stringWithFormat:@"%zi",[_model.item_info.stock_quantity  intValue]];
-        
-        
+   
+    
+    if ([numText intValue] >_model.stock) {
+      //  [SVProgressHUD showErrorWithStatus:@"最多支持购买99个"];
+        _changeView.numberFD.text = [NSString stringWithFormat:@"%zi",_model.stock];
     }
     
     if ([numText intValue] >99) {
-      //  [SVProgressHUD showErrorWithStatus:@"最多支持购买99个"];
+        //  [SVProgressHUD showErrorWithStatus:@"最多支持购买99个"];
         _changeView.numberFD.text = @"99";
     }
     
@@ -153,7 +148,6 @@ static CGFloat CELL_HEIGHT = 100;
     self.choosedCount = [_changeView.numberFD.text integerValue];
     _model.count = _changeView.numberFD.text;
     _model.isSelect = _selectBt.selected;
-    
 }
 
 - (BOOL)isPureInt:(NSString*)string{
@@ -175,66 +169,28 @@ static CGFloat CELL_HEIGHT = 100;
     else{
         self.choosedCount =[model.count integerValue] ;
     }
-    
-    
+    [self.shoppingImgView sd_setImageWithURL:[NSURL URLWithString:model.img_path] placeholderImage:[UIImage imageNamed:@"default"]];
     _shoppingImgView.layer.cornerRadius = 2;
     _shoppingImgView.layer.borderWidth = 1;
     _shoppingImgView.layer.borderColor = [UIColor colorFromHexRGB:@"e2e2e2"].CGColor;
-    [_shoppingImgView sd_setImageWithURL:[NSURL URLWithString:model.item_info.icon] placeholderImage:[UIImage imageNamed:@"default"]];
-
+   
+    self.title.text=model.title;
+    self.sizeLab.text=model.sub_title;
+    self.priceLab.text=model.price;
     
-    if ([model.item_info.is_spu intValue] == 1) {
-        UIImage *img = [UIImage imageNamed:@"spuIcon"];
-        _spuImgView.image = img;
-      //  _spuImgView.size = img.size;
-        _priceLab.text=[NSString stringWithFormat:@"套装价￥%@",model.item_info.sale_price];
-    } else {
-        
-        UIImage *level = [UIImage imageNamed:@"level2"];
-        if (model.item_info.type == 5) {
-            _spuImgView.image = [UIImage imageNamed:@"level3"];
-         //   _spuImgView.size = level.size;
-        } else if (model.item_info.type == 6) {
-          //  _spuImgView.size = level.size;
-            _spuImgView.image = level;
-        }
-        
-        
-        
-        if (![model.item_size isEqualToString:@"SINGLE"]) {
-            _sizeLab.text = [NSString stringWithFormat:@"规格:%@",model.item_size];
-        }
-        
-        _priceLab.text=[NSString stringWithFormat:@"￥%@",model.item_info.sale_price];
-    }
+    _selectBt.enabled=YES;
+   
+    _changeView = [[WLZ_ChangeCountView alloc] initWithFrame:CGRectMake(kScreenW-120, CGRectGetMaxY(_sizeLab.frame)+5, 160, 35) chooseCount:self.choosedCount totalCount: 99];
     
+    [_changeView.subButton addTarget:self action:@selector(subButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    _title.text= model.item_info.full_name;
+    _changeView.numberFD.delegate = self;
     
+    [_changeView.addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([model.item_info.sale_state isEqualToString:@"3"]) {
-        _soldoutLab.hidden=NO;
-        _priceLab.hidden=YES;
-        _selectBt.enabled=NO;
-
-        if (self.isEdit) {
-            //编辑状态
-            _selectBt.enabled=YES;
-        }
-    }
-    else{
-         _priceLab.hidden=NO;
-        _selectBt.enabled=YES;
-        _changeView = [[WLZ_ChangeCountView alloc] initWithFrame:CGRectMake(kScreenW-120, CGRectGetMaxY(_sizeLab.frame)+5, 160, 35) chooseCount:self.choosedCount totalCount: [model.item_info.stock_quantity integerValue]];
-        
-        [_changeView.subButton addTarget:self action:@selector(subButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
-        _changeView.numberFD.delegate = self;
-        
-        [_changeView.addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.contentView addSubview:_changeView];
-    }
+    [self.contentView addSubview:_changeView];
+    
+ 
     
 }
 //加
@@ -250,15 +206,15 @@ static CGFloat CELL_HEIGHT = 100;
         _changeView.subButton.enabled=YES;
     }
     
-    
-    if ([_model.item_info.stock_quantity integerValue]<self.choosedCount) {
-        self.choosedCount  = [_model.item_info.stock_quantity  intValue];
+    if (_model.stock <self.choosedCount) {
+        self.choosedCount  = _model.stock;
         _changeView.addButton.enabled = NO;
     }
     else
     {
         _changeView.subButton.enabled = YES;
     }
+   
     
     if(self.choosedCount>=99)
     {
@@ -269,13 +225,7 @@ static CGFloat CELL_HEIGHT = 100;
     _changeView.numberFD.text=[NSString stringWithFormat:@"%zi",self.choosedCount];
     
     _model.count = _changeView.numberFD.text;
-    
     _model.isSelect=_selectBt.selected;
-    
-    
-    
-    
-    
 }
 
 -(void)addCar
@@ -287,11 +237,7 @@ static CGFloat CELL_HEIGHT = 100;
 -(void)clickSelect:(UIButton *)bt
 {
     
-    
-    //  _selectBt.selected = !_selectBt.selected;
-    if (!_soldoutLab.hidden && !self.isEdit) {
-        return;
-    }
+ 
     _selectBt.selected = !_selectBt.selected;
     _model.isSelect = _selectBt.selected;
     
@@ -300,6 +246,9 @@ static CGFloat CELL_HEIGHT = 100;
     }
     
     [self.delegate singleClick:_model row:self.row];
+  
+    
+  
 }
 
 //减
@@ -307,7 +256,7 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
     if (self.choosedCount >1) {
-        [self deleteCar];
+         [self deleteCar];
     }
     
    -- self.choosedCount ;
@@ -328,14 +277,6 @@ static CGFloat CELL_HEIGHT = 100;
     _model.isSelect=_selectBt.selected;
     
     
-    
-}
-
-
--(void)deleteCar
-{
-
-    
 }
 
 - (void)dealloc
@@ -343,6 +284,11 @@ static CGFloat CELL_HEIGHT = 100;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)deleteCar
+{
+    
+    
+}
 
 +(CGFloat)getHeight
 {

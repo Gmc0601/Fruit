@@ -17,21 +17,20 @@
 
 @property(nonatomic,strong)WLZ_ShoppIngCarModel *model;
 @property(nonatomic,assign)NSInteger choosedCount;
-@property(nonatomic,assign)NSInteger row;
-@property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,assign)BOOL isEdit;
 
+@property(nonatomic,assign)NSInteger row;
+@property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,weak)id<WLZ_ShoppingCarCellDelegate> delegate;
-
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView *)tableView;
 
 +(CGFloat)getHeight;
 @end
 
-
 @protocol WLZ_ShoppingCarCellDelegate <NSObject>
 
 -(void)singleClick:(WLZ_ShoppIngCarModel *)models row:(NSInteger )row;
 
 @end
+

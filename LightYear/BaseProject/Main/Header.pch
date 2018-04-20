@@ -21,7 +21,7 @@
 #import "SVPullToRefresh.h"
 #import "MJRefresh.h"
 #import "YYModel.h"
-
+#import "UIColor+WTool.h"
 //model
 #import "ShopModel.h"
 #import "OneSubTypeModel.h"

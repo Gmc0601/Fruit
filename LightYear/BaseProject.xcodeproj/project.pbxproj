@@ -133,19 +133,16 @@
 		42F9BB192085EC6F001D941A /* TopupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F9BB152085EC6E001D941A /* TopupModel.m */; };
 		42F9BB1A2085EC6F001D941A /* TransformModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F9BB182085EC6F001D941A /* TransformModel.m */; };
 		42F9BB1D2085ECB8001D941A /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F9BB1C2085ECB8001D941A /* TopUpViewController.m */; };
+		5351BF3D208842F9003CD54A /* WLZ_ShoppingCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF3C208842F9003CD54A /* WLZ_ShoppingCarController.m */; };
+		5351BF4020884729003CD54A /* WLZ_ShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF3F20884729003CD54A /* WLZ_ShoppingCarCell.m */; };
+		5351BF4320886779003CD54A /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF4220886778003CD54A /* WLZ_ChangeCountView.m */; };
+		5351BF46208867A7003CD54A /* WLZ_ShoppIngCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF45208867A6003CD54A /* WLZ_ShoppIngCarModel.m */; };
+		5351BF49208875E1003CD54A /* UIColor+WLZ_HexRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF48208875E0003CD54A /* UIColor+WLZ_HexRGB.m */; };
+		5351BF4C20888374003CD54A /* WLZ_ShoppingCartEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF4B20888373003CD54A /* WLZ_ShoppingCartEndView.m */; };
+		5351BF4F2089BA33003CD54A /* WLZ_ShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5351BF4D2089BA32003CD54A /* WLZ_ShopViewModel.m */; };
 		53FB015E207C627D00F6D09E /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB015B207C627C00F6D09E /* BaseCell.m */; };
 		53FB0164207C62E600F6D09E /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0163207C62E500F6D09E /* BaseView.m */; };
 		53FB016D207CACB700F6D09E /* UIColor+WTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB016C207CACB700F6D09E /* UIColor+WTool.m */; };
-		53FB0186207DACC900F6D09E /* WLZ_ShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0171207DACC900F6D09E /* WLZ_ShopViewModel.m */; };
-		53FB0187207DACC900F6D09E /* UIColor+WLZ_HexRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0172207DACC900F6D09E /* UIColor+WLZ_HexRGB.m */; };
-		53FB0188207DACC900F6D09E /* WLZ_ShoppingCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0174207DACC900F6D09E /* WLZ_ShoppingCarController.m */; };
-		53FB0189207DACC900F6D09E /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53FB0176207DACC900F6D09E /* data.plist */; };
-		53FB018A207DACC900F6D09E /* WLZ_ShoppIngCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0179207DACC900F6D09E /* WLZ_ShoppIngCarModel.m */; };
-		53FB018B207DACC900F6D09E /* WLZ_CommodityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB017A207DACC900F6D09E /* WLZ_CommodityModel.m */; };
-		53FB018C207DACC900F6D09E /* WLZ_ChangeCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB017D207DACC900F6D09E /* WLZ_ChangeCountView.m */; };
-		53FB018D207DACC900F6D09E /* WLZ_ShoppingCartEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB017E207DACC900F6D09E /* WLZ_ShoppingCartEndView.m */; };
-		53FB018E207DACC900F6D09E /* WLZ_ShoppingCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0182207DACC900F6D09E /* WLZ_ShoppingCarCell.m */; };
-		53FB018F207DACC900F6D09E /* WLZ_HeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB0184207DACC900F6D09E /* WLZ_HeardView.m */; };
 		6B015A231F764A6000CDEA16 /* SKU.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B015A221F764A6000CDEA16 /* SKU.m */; };
 		6B015A261F764AB900CDEA16 /* SKUPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B015A251F764AB900CDEA16 /* SKUPrice.m */; };
 		6B015A291F76A75100CDEA16 /* SearchListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B015A281F76A75100CDEA16 /* SearchListView.m */; };
@@ -490,31 +487,26 @@
 		42F9BB182085EC6F001D941A /* TransformModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformModel.m; sourceTree = "<group>"; };
 		42F9BB1B2085ECB7001D941A /* TopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopUpViewController.h; sourceTree = "<group>"; };
 		42F9BB1C2085ECB8001D941A /* TopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopUpViewController.m; sourceTree = "<group>"; };
+		5351BF3B208842F9003CD54A /* WLZ_ShoppingCarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCarController.h; sourceTree = "<group>"; };
+		5351BF3C208842F9003CD54A /* WLZ_ShoppingCarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCarController.m; sourceTree = "<group>"; };
+		5351BF3E20884728003CD54A /* WLZ_ShoppingCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCarCell.h; sourceTree = "<group>"; };
+		5351BF3F20884729003CD54A /* WLZ_ShoppingCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCarCell.m; sourceTree = "<group>"; };
+		5351BF4120886777003CD54A /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
+		5351BF4220886778003CD54A /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
+		5351BF44208867A6003CD54A /* WLZ_ShoppIngCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppIngCarModel.h; sourceTree = "<group>"; };
+		5351BF45208867A6003CD54A /* WLZ_ShoppIngCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppIngCarModel.m; sourceTree = "<group>"; };
+		5351BF47208875DF003CD54A /* UIColor+WLZ_HexRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WLZ_HexRGB.h"; sourceTree = "<group>"; };
+		5351BF48208875E0003CD54A /* UIColor+WLZ_HexRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WLZ_HexRGB.m"; sourceTree = "<group>"; };
+		5351BF4A20888372003CD54A /* WLZ_ShoppingCartEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCartEndView.h; sourceTree = "<group>"; };
+		5351BF4B20888373003CD54A /* WLZ_ShoppingCartEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCartEndView.m; sourceTree = "<group>"; };
+		5351BF4D2089BA32003CD54A /* WLZ_ShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShopViewModel.m; sourceTree = "<group>"; };
+		5351BF4E2089BA33003CD54A /* WLZ_ShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShopViewModel.h; sourceTree = "<group>"; };
 		53FB015A207C627B00F6D09E /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		53FB015B207C627C00F6D09E /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 		53FB0162207C62E500F6D09E /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		53FB0163207C62E500F6D09E /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		53FB016B207CACB600F6D09E /* UIColor+WTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WTool.h"; sourceTree = "<group>"; };
 		53FB016C207CACB700F6D09E /* UIColor+WTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTool.m"; sourceTree = "<group>"; };
-		53FB0170207DACC900F6D09E /* WLZ_ShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShopViewModel.h; sourceTree = "<group>"; };
-		53FB0171207DACC900F6D09E /* WLZ_ShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShopViewModel.m; sourceTree = "<group>"; };
-		53FB0172207DACC900F6D09E /* UIColor+WLZ_HexRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WLZ_HexRGB.m"; sourceTree = "<group>"; };
-		53FB0174207DACC900F6D09E /* WLZ_ShoppingCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCarController.m; sourceTree = "<group>"; };
-		53FB0175207DACC900F6D09E /* WLZ_ShoppingCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCarController.h; sourceTree = "<group>"; };
-		53FB0176207DACC900F6D09E /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
-		53FB0178207DACC900F6D09E /* WLZ_CommodityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_CommodityModel.h; sourceTree = "<group>"; };
-		53FB0179207DACC900F6D09E /* WLZ_ShoppIngCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppIngCarModel.m; sourceTree = "<group>"; };
-		53FB017A207DACC900F6D09E /* WLZ_CommodityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_CommodityModel.m; sourceTree = "<group>"; };
-		53FB017B207DACC900F6D09E /* WLZ_ShoppIngCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppIngCarModel.h; sourceTree = "<group>"; };
-		53FB017D207DACC900F6D09E /* WLZ_ChangeCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ChangeCountView.m; sourceTree = "<group>"; };
-		53FB017E207DACC900F6D09E /* WLZ_ShoppingCartEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCartEndView.m; sourceTree = "<group>"; };
-		53FB017F207DACC900F6D09E /* WLZ_ShoppingCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCarCell.h; sourceTree = "<group>"; };
-		53FB0180207DACC900F6D09E /* WLZ_HeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_HeardView.h; sourceTree = "<group>"; };
-		53FB0181207DACC900F6D09E /* WLZ_ChangeCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ChangeCountView.h; sourceTree = "<group>"; };
-		53FB0182207DACC900F6D09E /* WLZ_ShoppingCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_ShoppingCarCell.m; sourceTree = "<group>"; };
-		53FB0183207DACC900F6D09E /* WLZ_ShoppingCartEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLZ_ShoppingCartEndView.h; sourceTree = "<group>"; };
-		53FB0184207DACC900F6D09E /* WLZ_HeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLZ_HeardView.m; sourceTree = "<group>"; };
-		53FB0185207DACC900F6D09E /* UIColor+WLZ_HexRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WLZ_HexRGB.h"; sourceTree = "<group>"; };
 		6B015A211F764A6000CDEA16 /* SKU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKU.h; sourceTree = "<group>"; };
 		6B015A221F764A6000CDEA16 /* SKU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKU.m; sourceTree = "<group>"; };
 		6B015A241F764AB900CDEA16 /* SKUPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKUPrice.h; sourceTree = "<group>"; };
@@ -961,9 +953,9 @@
 		422FDA032060DFAB0062C4D9 /* ShoppingCar */ = {
 			isa = PBXGroup;
 			children = (
+				5351BF2820883E5E003CD54A /* Views */,
 				422FDA042060DFAB0062C4D9 /* Models */,
 				422FDA052060DFAB0062C4D9 /* ViewControllers */,
-				53FB0155207B96DB00F6D09E /* Views */,
 			);
 			path = ShoppingCar;
 			sourceTree = "<group>";
@@ -971,6 +963,12 @@
 		422FDA042060DFAB0062C4D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5351BF47208875DF003CD54A /* UIColor+WLZ_HexRGB.h */,
+				5351BF48208875E0003CD54A /* UIColor+WLZ_HexRGB.m */,
+				5351BF44208867A6003CD54A /* WLZ_ShoppIngCarModel.h */,
+				5351BF45208867A6003CD54A /* WLZ_ShoppIngCarModel.m */,
+				5351BF4E2089BA33003CD54A /* WLZ_ShopViewModel.h */,
+				5351BF4D2089BA32003CD54A /* WLZ_ShopViewModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -978,7 +976,8 @@
 		422FDA052060DFAB0062C4D9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				53FB016E207DACC900F6D09E /* WLZ_Car */,
+				5351BF3B208842F9003CD54A /* WLZ_ShoppingCarController.h */,
+				5351BF3C208842F9003CD54A /* WLZ_ShoppingCarController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1495,69 +1494,17 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
-		53FB0155207B96DB00F6D09E /* Views */ = {
+		5351BF2820883E5E003CD54A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5351BF3E20884728003CD54A /* WLZ_ShoppingCarCell.h */,
+				5351BF3F20884729003CD54A /* WLZ_ShoppingCarCell.m */,
+				5351BF4120886777003CD54A /* WLZ_ChangeCountView.h */,
+				5351BF4220886778003CD54A /* WLZ_ChangeCountView.m */,
+				5351BF4A20888372003CD54A /* WLZ_ShoppingCartEndView.h */,
+				5351BF4B20888373003CD54A /* WLZ_ShoppingCartEndView.m */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		53FB016E207DACC900F6D09E /* WLZ_Car */ = {
-			isa = PBXGroup;
-			children = (
-				53FB016F207DACC900F6D09E /* ViewModel */,
-				53FB0172207DACC900F6D09E /* UIColor+WLZ_HexRGB.m */,
-				53FB0173207DACC900F6D09E /* Controller */,
-				53FB0176207DACC900F6D09E /* data.plist */,
-				53FB0177207DACC900F6D09E /* Model */,
-				53FB017C207DACC900F6D09E /* View */,
-				53FB0185207DACC900F6D09E /* UIColor+WLZ_HexRGB.h */,
-			);
-			path = WLZ_Car;
-			sourceTree = "<group>";
-		};
-		53FB016F207DACC900F6D09E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				53FB0170207DACC900F6D09E /* WLZ_ShopViewModel.h */,
-				53FB0171207DACC900F6D09E /* WLZ_ShopViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		53FB0173207DACC900F6D09E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				53FB0175207DACC900F6D09E /* WLZ_ShoppingCarController.h */,
-				53FB0174207DACC900F6D09E /* WLZ_ShoppingCarController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		53FB0177207DACC900F6D09E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				53FB017B207DACC900F6D09E /* WLZ_ShoppIngCarModel.h */,
-				53FB0179207DACC900F6D09E /* WLZ_ShoppIngCarModel.m */,
-				53FB0178207DACC900F6D09E /* WLZ_CommodityModel.h */,
-				53FB017A207DACC900F6D09E /* WLZ_CommodityModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		53FB017C207DACC900F6D09E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				53FB0181207DACC900F6D09E /* WLZ_ChangeCountView.h */,
-				53FB017D207DACC900F6D09E /* WLZ_ChangeCountView.m */,
-				53FB017F207DACC900F6D09E /* WLZ_ShoppingCarCell.h */,
-				53FB0182207DACC900F6D09E /* WLZ_ShoppingCarCell.m */,
-				53FB0183207DACC900F6D09E /* WLZ_ShoppingCartEndView.h */,
-				53FB017E207DACC900F6D09E /* WLZ_ShoppingCartEndView.m */,
-				53FB0180207DACC900F6D09E /* WLZ_HeardView.h */,
-				53FB0184207DACC900F6D09E /* WLZ_HeardView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6BB191181F739193001ED732 /* Utils */ = {
@@ -1766,7 +1713,6 @@
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
 				42A444431EF133E000F90791 /* LaunchScreen.storyboard in Resources */,
 				42A444401EF133E000F90791 /* Assets.xcassets in Resources */,
-				53FB0189207DACC900F6D09E /* data.plist in Resources */,
 				00A952861F7024F800DEE0F6 /* DateView.xib in Resources */,
 				42DDA5441F70F19A006A6A26 /* README.txt in Resources */,
 				42A4443B1EF133E000F90791 /* Main.storyboard in Resources */,
@@ -1898,6 +1844,7 @@
 			files = (
 				00A9527B1F7024F800DEE0F6 /* ChoiceDeliveryAddressViewController.m in Sources */,
 				42F795BC1F00C8B200A11A69 /* BaseViewController.m in Sources */,
+				5351BF46208867A7003CD54A /* WLZ_ShoppIngCarModel.m in Sources */,
 				74D34D6D207479920009AFB8 /* HomePageViewController.m in Sources */,
 				42A24FC11F5F07B3005130DC /* LocationHelper.m in Sources */,
 				427C3D751F9F227B0081B431 /* OrderViewController.m in Sources */,
@@ -1923,6 +1870,7 @@
 				423607CF1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m in Sources */,
 				427C3D721F9F227B0081B431 /* CouponViewController.m in Sources */,
 				6B5F6DC21F63D5D2001BDC0E /* GoodsCell.m in Sources */,
+				5351BF4F2089BA33003CD54A /* WLZ_ShopViewModel.m in Sources */,
 				6B5F6DAA1F628D28001BDC0E /* UIColor+BGHexColor.m in Sources */,
 				6B5F6DA11F628D28001BDC0E /* NSMutableArray+Category.m in Sources */,
 				4284FD6A1FF1063100AE2A4F /* BirthDayAlter.m in Sources */,
@@ -1940,13 +1888,11 @@
 				42F9BB112085EC2D001D941A /* TransformTableViewCell.m in Sources */,
 				6B5F6DA51F628D28001BDC0E /* NSString+DisplayTime.m in Sources */,
 				046C474E1F73D92300FDCFF6 /* WMHomePageViewController.m in Sources */,
-				53FB0188207DACC900F6D09E /* WLZ_ShoppingCarController.m in Sources */,
 				6BB114BC1F6D8DDE00C9C886 /* CLImageViewPopup.m in Sources */,
 				743A5C3B2088702A00BF85D0 /* GoodsDetailCell.m in Sources */,
 				422FDA002060DCA20062C4D9 /* TBTabBarController.m in Sources */,
 				6B5F6DB31F628D28001BDC0E /* UIView+Category.m in Sources */,
 				4214BDEE1F5FA97A00FA1F85 /* FactorySet.m in Sources */,
-				53FB018D207DACC900F6D09E /* WLZ_ShoppingCartEndView.m in Sources */,
 				04654A9A1F6E66360023FF63 /* balancePointDetailsCell.m in Sources */,
 				427C3D701F9F227B0081B431 /* OrderDataHelper.m in Sources */,
 				6BBD89CA1F69928500C8B7C3 /* GoodsListView.m in Sources */,
@@ -1959,6 +1905,7 @@
 				00A952821F7024F800DEE0F6 /* UserInfoViewController.m in Sources */,
 				00A952791F7024F800DEE0F6 /* ChangePayPasswordViewController.m in Sources */,
 				42B5F4C01F6233960072FF36 /* OrderAlterView.m in Sources */,
+				5351BF4320886779003CD54A /* WLZ_ChangeCountView.m in Sources */,
 				00C40BC11F9DE100002A31A0 /* CouponListModel.m in Sources */,
 				74D34D7C207479BD0009AFB8 /* HomeItemsCell.m in Sources */,
 				74D34D7B207479BD0009AFB8 /* HotCollectionCell.m in Sources */,
@@ -2002,6 +1949,7 @@
 				742D04AF2084A6A4001858DE /* WalletViewController.m in Sources */,
 				427C3D7C1F9F227B0081B431 /* OrderTableViewCell.m in Sources */,
 				427C3D791F9F227B0081B431 /* OrderGoodsTableViewCell.m in Sources */,
+				5351BF3D208842F9003CD54A /* WLZ_ShoppingCarController.m in Sources */,
 				6B5F6DA31F628D28001BDC0E /* NSMutableDictionary+Category.m in Sources */,
 				42A24FCC1F5F0CE5005130DC /* UIButton+SSEdgeInsets.m in Sources */,
 				00A9527E1F7024F800DEE0F6 /* EditFeedBackViewController.m in Sources */,
@@ -2018,6 +1966,7 @@
 				4214BDDB1F5FA27400FA1F85 /* FirstViewViewController.m in Sources */,
 				7407915D207B40C500F4BC45 /* ShopModel.m in Sources */,
 				0422A30F1F9F3BEB0037AC25 /* ExpireCouponViewController.m in Sources */,
+				5351BF49208875E1003CD54A /* UIColor+WLZ_HexRGB.m in Sources */,
 				00A9527A1F7024F800DEE0F6 /* ChangeUserInfoViewController.m in Sources */,
 				6BBD89BA1F697AC700C8B7C3 /* RecommendCell.m in Sources */,
 				6B5F6DA21F628D28001BDC0E /* NSMutableAttributedString+Category.m in Sources */,
@@ -2038,25 +1987,21 @@
 				04274F751F765FE9009DF308 /* MemberRechargeViewController.m in Sources */,
 				42F9BB142085EC44001D941A /* PayViewController.m in Sources */,
 				00A51EA31F72C28F00E383AF /* DeliveryAddressModel.m in Sources */,
-				53FB0187207DACC900F6D09E /* UIColor+WLZ_HexRGB.m in Sources */,
 				04274F721F7654A1009DF308 /* MemberCardViewController.m in Sources */,
 				42F9BB192085EC6F001D941A /* TopupModel.m in Sources */,
 				6B5F6DA41F628D28001BDC0E /* NSString+Category.m in Sources */,
 				00C40BC51F9DE100002A31A0 /* ShopListModel.m in Sources */,
 				4284B4AC1FB58DD500E3D3D7 /* CCDateAlter.m in Sources */,
 				427C3D7A1F9F227B0081B431 /* OrderInfoFootView.m in Sources */,
-				53FB018F207DACC900F6D09E /* WLZ_HeardView.m in Sources */,
 				00A952871F7024F800DEE0F6 /* DeilveryAddressTableViewCell.m in Sources */,
 				74E8084920871A1A0007E928 /* GoodsDetailImgCell.m in Sources */,
 				74E808462085D5930007E928 /* GoodsDetailModel.m in Sources */,
 				42A24FCF1F5F0CE5005130DC /* UIView+Frame.m in Sources */,
-				53FB018A207DACC900F6D09E /* WLZ_ShoppIngCarModel.m in Sources */,
 				740791542079EBA700F4BC45 /* ShoplistVC.m in Sources */,
 				00A952831F7024F800DEE0F6 /* BaseTextField.m in Sources */,
 				6B5F6DB11F628D28001BDC0E /* UIView+Animation.m in Sources */,
 				74D34D84207479CB0009AFB8 /* UIView+Banner.m in Sources */,
 				6B5F6DAF1F628D28001BDC0E /* UITableViewCell+CellAnimation.m in Sources */,
-				53FB0186207DACC900F6D09E /* WLZ_ShopViewModel.m in Sources */,
 				427C3D731F9F227B0081B431 /* MakeOrderViewController.m in Sources */,
 				6B5F6DAD1F628D28001BDC0E /* UIMenuItem+Category.m in Sources */,
 				74079166207B4E5D00F4BC45 /* ThreeSubTypeModel.m in Sources */,
@@ -2065,17 +2010,16 @@
 				743A5C3220882DD900BF85D0 /* CommentCell.m in Sources */,
 				42A24FCE1F5F0CE5005130DC /* UILabel+Width.m in Sources */,
 				04654A9D1F6E663D0023FF63 /* WMBalancePointDetailsViewController.m in Sources */,
-				53FB018B207DACC900F6D09E /* WLZ_CommodityModel.m in Sources */,
-				53FB018E207DACC900F6D09E /* WLZ_ShoppingCarCell.m in Sources */,
 				427C3D771F9F227B0081B431 /* OrderAddressTableViewCell.m in Sources */,
 				04654A951F6E66280023FF63 /* WMScrollView.m in Sources */,
 				6B5F6DBF1F62A027001BDC0E /* GoodDetialViewController.m in Sources */,
 				74E8084F20873C140007E928 /* AllCommentsVC.m in Sources */,
 				427C3D781F9F227B0081B431 /* OrderFootView.m in Sources */,
 				427C3D761F9F227B0081B431 /* CouponTableViewCell.m in Sources */,
+				5351BF4020884729003CD54A /* WLZ_ShoppingCarCell.m in Sources */,
 				04274F781F766716009DF308 /* SelectShopViewController.m in Sources */,
+				5351BF4C20888374003CD54A /* WLZ_ShoppingCartEndView.m in Sources */,
 				422FD9FA2060DC500062C4D9 /* UIViewController+BarButton.m in Sources */,
-				53FB018C207DACC900F6D09E /* WLZ_ChangeCountView.m in Sources */,
 				429940EE1F5E8ED60009ADDA /* CCBaseViewController.m in Sources */,
 				42F9BB1D2085ECB8001D941A /* TopUpViewController.m in Sources */,
 				4214BDEB1F5FA8A800FA1F85 /* ShoppingCarViewController.m in Sources */,
