@@ -10,6 +10,7 @@
 
 #import "AllCommentsVC.h"
 #import "MakeOrderViewController.h"
+#import "WLZ_ShoppingCarController.h"
 
 #import "GoodsDetailImgCell.h"
 #import "GoodsDetailTitleCell.h"
@@ -469,7 +470,8 @@
 
 #pragma mark 按钮事件
 - (void)shopCarBtnAction {
-    
+    WLZ_ShoppingCarController *vc = [WLZ_ShoppingCarController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)joinShopCarBtnAction {
