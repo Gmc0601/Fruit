@@ -28,7 +28,7 @@
     [self contentV];
     
     [self getCartData];
-
+  
 }
 
 -(UILabel *)holdLab
@@ -219,9 +219,37 @@
                 if (model.isSelect==YES) {
                     
                     [indexSet addIndex:j];
+                    
+                    
+                    //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+                    
+                    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+                    parameters[@"id"] = model.card_id;
+                    [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
+                        
+                        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+                        if (baseModel.error == 0) {
+                         
+                           [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
+                            
+                        }else {
+                            NSLog(@"====%@",baseModel.message);
+                            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+                        }
+                        
+                    }];
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 }
             }
             [self.cartmArr removeObjectsAtIndexes:indexSet];
+        
+       
         
         
         [self.cartmArr removeObjectsAtIndexes:bigIndexSet];
@@ -370,6 +398,24 @@
         WLZ_ShoppIngCarModel *model = [self.cartmArr objectAtIndex:indexPath.row];
         model.isSelect=NO;
         [self.cartmArr removeObjectAtIndex:indexPath.row];
+        
+        //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+        
+        NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+        parameters[@"id"] = model.card_id;
+        [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
+            
+            BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+            if (baseModel.error == 0) {
+                
+                [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
+                
+            }else {
+                NSLog(@"====%@",baseModel.message);
+                [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+            }
+            
+        }];
         
         [self.showTbv reloadData];
         
