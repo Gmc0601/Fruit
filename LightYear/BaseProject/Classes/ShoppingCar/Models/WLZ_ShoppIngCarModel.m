@@ -10,6 +10,9 @@
 
 @implementation WLZ_ShoppIngCarModel
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"card_id" : @"id"};
+}
 
 
 - (void)setVm:(WLZ_ShopViewModel *)vm
@@ -19,10 +22,9 @@
 }
 -(void)dealloc
 {
-
+    
     
     [self removeObserver:_vm forKeyPath:@"isSelect"];
-
+    
 }
-
 @end

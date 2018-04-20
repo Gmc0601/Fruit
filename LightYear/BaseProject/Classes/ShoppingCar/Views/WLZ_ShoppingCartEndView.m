@@ -8,7 +8,6 @@
 
 #import "WLZ_ShoppingCartEndView.h"
 
-#import "WLZ_ShoppingCarController.h"
 #import "UIColor+WLZ_HexRGB.h"
 
 
@@ -39,8 +38,6 @@ static CGFloat VIEW_HEIGHT =44;
 }
 
 
-
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if([keyPath isEqualToString:@"isEdit"]) {
@@ -64,9 +61,14 @@ static CGFloat VIEW_HEIGHT =44;
     [self removeObserver:self forKeyPath:@"isEdit"];
 }
 
+
+
+
+
+
 -(void)initView
 {
-    UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, APPScreenWidth, 0.5)];
+    UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 0.5)];
     line.backgroundColor=[UIColor colorFromHexRGB:@"e2e2e2"];
     [self addSubview:line];
     UIImage *btimg = [UIImage imageNamed:@"Unselected.png"];
@@ -94,7 +96,7 @@ static CGFloat VIEW_HEIGHT =44;
     [self addSubview:_Lab];
     
     
-    _pushBt = [[UIButton alloc]initWithFrame:CGRectMake(APPScreenWidth-120, 0, 120, 48)];
+    _pushBt = [[UIButton alloc]initWithFrame:CGRectMake(kScreenW-120, 0, 120, 48)];
     _pushBt.hidden=NO;
     _pushBt.tag=18;
     [_pushBt setTitle:@"结算" forState:UIControlStateNormal];
@@ -125,6 +127,7 @@ static CGFloat VIEW_HEIGHT =44;
     
 }
 
+
 -(void)clickRightBT:(UIButton *)bt
 {
     [self.delegate clickRightBT:bt];
@@ -144,8 +147,4 @@ static CGFloat VIEW_HEIGHT =44;
 }
 
 
-+ (CGFloat)getViewHeight
-{
-    return VIEW_HEIGHT;
-}
 @end

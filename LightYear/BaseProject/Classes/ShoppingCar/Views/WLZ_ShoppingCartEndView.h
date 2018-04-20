@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol WLZ_ShoppingCartEndViewDelegate;
-
 @interface WLZ_ShoppingCartEndView : UIView
 
 
@@ -18,11 +17,8 @@
 @property(nonatomic,strong)UILabel *Lab;
 @property(nonatomic,strong)UIButton *checkbt;
 
-+(CGFloat)getViewHeight;
 
 @end
-
-
 
 @protocol WLZ_ShoppingCartEndViewDelegate <NSObject>
 
