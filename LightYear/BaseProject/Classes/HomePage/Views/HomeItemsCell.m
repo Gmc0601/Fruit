@@ -26,42 +26,42 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 //        self.contentView.backgroundColor = DPWhiteColor;
-        [self creatView];
+//        [self creatView];
     }
     return self;
 }
 
 - (void)creatView {
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(SizeWidth(60), SizeWidth(85));
+    if (_dataArray.count<=4) {
+                    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(100)) collectionViewLayout:layout];
+    } else {
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(185)) collectionViewLayout:layout];
+    }
     
+    //        UIImageView *imgV = [UIImageView new];
+    //        imgV.image = [UIImage imageNamed:@"我的背景黑2"];
+    //        _collectionView.backgroundView = imgV;
+    _collectionView.showsHorizontalScrollIndicator = NO;
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = SizeWidth(31);
+    layout.scrollDirection=UICollectionViewScrollDirectionVertical;
     
+    [_collectionView registerClass:[ItemCollectionCell class] forCellWithReuseIdentifier:@"ItemCollectionCell"];
+    _collectionView.backgroundColor = RGBColor(255, 255, 255);
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    [self.contentView addSubview:_collectionView];
 }
 
-- (UICollectionView *)collectionView{
-    if (_collectionView == nil) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(SizeWidth(60), SizeWidth(85));
-        if (_dataArray.count<=4) {
-            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(100)) collectionViewLayout:layout];
-        } else {
-            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SizeWidth(375),SizeWidth(185)) collectionViewLayout:layout];
-        }
-        
-        //        UIImageView *imgV = [UIImageView new];
-        //        imgV.image = [UIImage imageNamed:@"我的背景黑2"];
-        //        _collectionView.backgroundView = imgV;
-        _collectionView.showsHorizontalScrollIndicator = NO;
-        layout.minimumLineSpacing = 0;
-        layout.minimumInteritemSpacing = SizeWidth(31);
-        layout.scrollDirection=UICollectionViewScrollDirectionVertical;
-        
-        [_collectionView registerClass:[ItemCollectionCell class] forCellWithReuseIdentifier:@"ItemCollectionCell"];
-        _collectionView.backgroundColor = RGBColor(255, 255, 255);
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        
-    }
-    return _collectionView;
-}
+//- (UICollectionView *)collectionView{
+//    if (_collectionView == nil) {
+//
+//
+//    }
+//    return _collectionView;
+//}
 
 #pragma mark UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -102,10 +102,10 @@
 - (void)setItemsArray:(NSArray *)itemsArray {
     _dataArray = itemsArray;
     [self.contentView removeAllSubviews];
-    [self.contentView addSubview:self.collectionView];
+    [self creatView];
     
     
-    [_collectionView reloadData];
+//    [_collectionView reloadData];
 }
 
 @end
