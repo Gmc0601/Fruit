@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface CouponList :NSObject
 @property (nonatomic , copy) NSString              * end_time;
 @property (nonatomic , copy) NSString              * status;
@@ -40,15 +41,15 @@
 @end
 
 @interface Goodlist :NSObject
-@property (nonatomic , copy) NSString              * sku;
+//@property (nonatomic , copy) NSString              * sku;
 @property (nonatomic , assign) NSInteger              price;
 @property (nonatomic , copy) NSString              * img_path;
 @property (nonatomic , assign) NSInteger              count;
-@property (nonatomic , assign) NSInteger              stock;
-@property (nonatomic , assign) NSInteger              w_stock;
+@property (nonatomic , assign) NSInteger              goodstype;
+//@property (nonatomic , assign) NSInteger              w_stock;
 @property (nonatomic , copy) NSString              * good_name;
 @property (nonatomic , copy) NSString              * good_id;
-@property (nonatomic , assign) NSInteger              s_stock;
+//@property (nonatomic , assign) NSInteger              s_stock;
 
 @end
 
@@ -131,46 +132,89 @@
 
 @end
 
+@interface Orders :NSObject
+
+@property (nonatomic, copy)NSString *orderdays, *ordertimes;
+
+@end
+
 @interface OrderDetailModel :NSObject
-@property (nonatomic , copy) NSString              * production_time;
-@property (nonatomic , copy) NSString              * delivery;
+
+@property (nonatomic , copy) NSString              * update_time;
 @property (nonatomic , copy) NSString              * id;
 @property (nonatomic , copy) NSArray<CouponList *>              * couponList;
-@property (nonatomic , assign) NSInteger              end_time;
+@property (nonatomic , copy) NSString              * end_time;
+@property (nonatomic , strong) NSDictionary              * orders;
 @property (nonatomic , copy) NSString              * receipt_id;
-@property (nonatomic , assign) NSInteger              integel;
-@property (nonatomic , copy) NSString              * refuse;
-@property (nonatomic , copy) NSString              * exception;
-@property (nonatomic , copy) NSString              * take_delivery_time;
-@property (nonatomic , copy) NSString              * type;
+@property (nonatomic , copy) NSString              * post_time;
 @property (nonatomic , copy) NSString              * supplier;
-@property (nonatomic , copy) NSString              * old_order;
+@property (nonatomic , copy) NSString              * take_delivery_time;
 @property (nonatomic , strong) Receiptinfo              * receiptinfo;
+@property (nonatomic , copy) NSString              * type;
 @property (nonatomic , copy) NSArray<Goodlist *>              * goodlist;
-@property (nonatomic , strong) Coupon_info              * coupon_info;
+@property (nonatomic , copy) NSString              * finish_time;
 @property (nonatomic , copy) NSString              * create_time;
 @property (nonatomic , copy) NSString              * code;
+@property (nonatomic , copy) NSString              * cancel_time;
 @property (nonatomic , copy) NSString              * status;
 @property (nonatomic , strong) ShopInfo              * shopInfo;
-@property (nonatomic , copy) NSString              * pay_order_no;
+@property (nonatomic , strong) WarehouseInfo              * warehouseInfo;
 @property (nonatomic , copy) NSString              * coupon_money;
+@property (nonatomic , copy) NSString              * pay_time;
 @property (nonatomic , copy) NSString              * order_no;
 @property (nonatomic , copy) NSString              * status_name;
 @property (nonatomic , copy) NSString              * paysuccess;
 @property (nonatomic , copy) NSString              * user_id;
 @property (nonatomic , copy) NSString              * isrefund;
 @property (nonatomic , copy) NSString              * drawtime;
-@property (nonatomic , copy) NSString              * pay_type;
 @property (nonatomic , copy) NSString              * userAmount;
+@property (nonatomic , copy) NSString              * pay_type;
 @property (nonatomic , copy) NSString              * transaction_id;
 @property (nonatomic , copy) NSString              * postage;
-@property (nonatomic , copy) NSString              * ip;
-@property (nonatomic , copy) NSString              *all_amount;
-@property (nonatomic , strong) WarehouseInfo              * warehouseInfo;
+@property (nonatomic , copy) NSString              * pay_money;
 @property (nonatomic , copy) NSString              * note;
 @property (nonatomic , copy) NSString              * amount;
-@property (nonatomic, copy) NSString *  can_selftake;
-@property (nonatomic, copy) NSString *  can_ship;
+
+
+//@property (nonatomic , copy) NSString              * production_time;
+//@property (nonatomic , copy) NSString              * delivery;
+//@property (nonatomic , copy) NSString              * id;
+//@property (nonatomic , copy) NSArray<CouponList *>              * couponList;
+//@property (nonatomic , assign) NSInteger              end_time;
+//@property (nonatomic , copy) NSString              * receipt_id;
+//@property (nonatomic , assign) NSInteger              integel;
+//@property (nonatomic , copy) NSString              * refuse;
+//@property (nonatomic , copy) NSString              * exception;
+//@property (nonatomic , copy) NSString              * take_delivery_time;
+//@property (nonatomic , copy) NSString              * type;
+//@property (nonatomic , copy) NSString              * supplier;
+//@property (nonatomic , copy) NSString              * old_order;
+//@property (nonatomic , strong) Receiptinfo              * receiptinfo;
+//@property (nonatomic , copy) NSArray<Goodlist *>              * goodlist;
+//@property (nonatomic , strong) Coupon_info              * coupon_info;
+//@property (nonatomic , copy) NSString              * create_time;
+//@property (nonatomic , copy) NSString              * code;
+//@property (nonatomic , copy) NSString              * status;
+//@property (nonatomic , strong) ShopInfo              * shopInfo;
+//@property (nonatomic , copy) NSString              * pay_order_no;
+//@property (nonatomic , copy) NSString              * coupon_money;
+//@property (nonatomic , copy) NSString              * order_no;
+//@property (nonatomic , copy) NSString              * status_name;
+//@property (nonatomic , copy) NSString              * paysuccess;
+//@property (nonatomic , copy) NSString              * user_id;
+//@property (nonatomic , copy) NSString              * isrefund;
+//@property (nonatomic , copy) NSString              * drawtime;
+//@property (nonatomic , copy) NSString              * pay_type;
+//@property (nonatomic , copy) NSString              * userAmount;
+//@property (nonatomic , copy) NSString              * transaction_id;
+//@property (nonatomic , copy) NSString              * postage;
+//@property (nonatomic , copy) NSString              * ip;
+//@property (nonatomic , copy) NSString              *all_amount;
+//@property (nonatomic , strong) WarehouseInfo              * warehouseInfo;
+//@property (nonatomic , copy) NSString              * note;
+//@property (nonatomic , copy) NSString              * amount;
+//@property (nonatomic, copy) NSString *  can_selftake;
+//@property (nonatomic, copy) NSString *  can_ship;
 
 
 @end

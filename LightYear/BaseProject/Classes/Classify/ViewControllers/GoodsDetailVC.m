@@ -317,7 +317,7 @@
     
     [HttpRequest postPath:orderUrl params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
-        NSLog(@"responseObject = %@",responseObject)
+        NSLog(@"responseObject = %@",responseObject);
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
             NSString *orderId = responseObject[@"info"][@"id"];
@@ -326,7 +326,7 @@
             [self.navigationController pushViewController:vc animated:YES];
 
         }else {
-            NSLog(@"%@",baseModel.message)
+            NSLog(@"%@",baseModel.message);
             [ConfigModel mbProgressHUD:baseModel.message andView:nil];
         }
         

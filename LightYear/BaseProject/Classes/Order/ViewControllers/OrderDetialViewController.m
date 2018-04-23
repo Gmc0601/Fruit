@@ -221,7 +221,7 @@
     [OrderDataHelper orderDetailWithParameter:dic callBack:^(BOOL success, OrderDetailModel *model) {
         [ConfigModel hideHud: self];
         self.model = model;
-        amont = [self.model.all_amount floatValue];
+        amont = [self.model.amount floatValue];
         postmoney = [self.model.postage floatValue];
         storeName = self.model.shopInfo.shopname;
         if ([self.model.type intValue] == 1) {
@@ -604,7 +604,7 @@
             cell.detailTextLabel.font = VerdanaBold(15);
             cell.detailTextLabel.textColor = UIColorFromHex(0x333333);
             if (indexPath.row == 0) {
-                str = [NSString stringWithFormat:@"￥%.2f", [self.model.all_amount floatValue]];
+                str = [NSString stringWithFormat:@"￥%.2f", [self.model.amount floatValue]];
             }else if (indexPath.row == 1){
                 cell.detailTextLabel.font = SourceHanSansCNMedium(15);
                 cell.detailTextLabel.textColor = UIColorFromHex(0xff543a);
