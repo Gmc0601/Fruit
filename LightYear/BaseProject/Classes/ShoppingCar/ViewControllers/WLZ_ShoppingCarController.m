@@ -10,6 +10,7 @@
 #import "WLZ_ShoppingCarCell.h"
 #import "WLZ_ShoppingCartEndView.h"
 #import "WLZ_ShopViewModel.h"
+#import "MakeOrderViewController.h"
 @interface WLZ_ShoppingCarController ()<UITableViewDelegate,UITableViewDataSource,WLZ_ShoppingCartEndViewDelegate,WLZ_ShoppingCarCellDelegate>
 @property(nonatomic,assign)BOOL isEdit;
 @property (nonatomic, strong) UITableView *showTbv;
@@ -17,6 +18,9 @@
 @property (nonatomic,strong)NSMutableArray *cartmArr;
 @property(nonatomic,strong)WLZ_ShoppingCartEndView *endView;
 @property(nonatomic,strong) WLZ_ShopViewModel *vm;
+@property (nonatomic,assign)CGFloat price;
+@property (nonatomic,copy)NSString *goodId;
+
 @end
 
 @implementation WLZ_ShoppingCarController
@@ -160,6 +164,11 @@
             float sale = [model.price floatValue];
             if (model.isSelect ) {
                 num = count*sale+ num;
+                self.price=num;
+                self.goodId=[NSString stringWithFormat:@"%@,%@",self.goodId,model.good_id];
+                [self.goodId substringFromIndex:1];
+                
+                
             }
         }
         
@@ -281,7 +290,7 @@
         
         
         
-        
+        [self loadOrderData];
         
         
         
@@ -290,6 +299,40 @@
     
     
     
+}
+
+
+
+- (void)loadOrderData {
+    [ConfigModel showHud:self];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    NSArray *arr = @[@{@"good_id":self.goodId,@"price":@(self.price),@"count":@"1"}];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
+    parameters[@"shopid"] = @"3";
+    parameters[@"receipt_id"] = @"";
+    parameters[@"amount"] = @(self.price);
+    parameters[@"auto"] = @"1";
+    parameters[@"good_info"] = dataStr;
+    
+    
+    [HttpRequest postPath:orderUrl params:parameters resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        NSLog(@"responseObject = %@",responseObject)
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+            NSString *orderId = responseObject[@"info"][@"id"];
+            MakeOrderViewController *vc = [MakeOrderViewController new];
+            vc.OrderID = orderId;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else {
+            NSLog(@"%@",baseModel.message)
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+        
+    }];
 }
 
 - (void)edits:(UIBarButtonItem *)item
