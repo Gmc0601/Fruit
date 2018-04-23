@@ -44,7 +44,7 @@
 {
     if (_holdLab == nil) {
         _holdLab = [[UILabel alloc]init];
-        _holdLab.text = @"暂无购物车";
+        _holdLab.text = @"暂无商品";
         _holdLab.font=[UIFont systemFontOfSize:22];
         _holdLab.textAlignment = NSTextAlignmentCenter;
         _holdLab.textColor = [UIColor grayColor];
@@ -126,9 +126,13 @@
         if (commonArry.count==0) {
             
             weak.holdLab.hidden=NO;
+            weak.endView.hidden=YES;
+            weak.navigationItem.rightBarButtonItem.title=@"";
         }else
         {
             weak.holdLab.hidden=YES;
+              weak.endView.hidden=NO;
+            weak.navigationItem.rightBarButtonItem.title=@"编辑";
             [weak.showTbv reloadData];
             [weak numPrice];
         }
