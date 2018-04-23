@@ -226,10 +226,17 @@ static CGFloat CELL_HEIGHT = 100;
     
     _model.count = _changeView.numberFD.text;
     _model.isSelect=_selectBt.selected;
+    
+    
+    
+    
+    
+    
 }
 
 -(void)addCar
 {
+    
    
 }
 

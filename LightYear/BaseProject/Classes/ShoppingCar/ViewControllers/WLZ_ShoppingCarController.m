@@ -123,8 +123,18 @@
         weak.cartmArr=nil;
         [weak.cartmArr addObjectsFromArray:commonArry];
         
-        [weak.showTbv reloadData];
-        [weak numPrice];
+        if (commonArry.count==0) {
+            
+            weak.holdLab.hidden=NO;
+        }else
+        {
+            weak.holdLab.hidden=YES;
+            [weak.showTbv reloadData];
+            [weak numPrice];
+        }
+       
+        
+        
     } priceBlock:^{
         
         [weak numPrice];
@@ -140,13 +150,15 @@
     float num = 0.00;
     for (int i=0; i<self.cartmArr.count-1; i++) {
        
-        
+        if (self.cartmArr.count!=0) {
             WLZ_ShoppIngCarModel *model = [self.cartmArr objectAtIndex:i];
             NSInteger count = [model.count integerValue];
             float sale = [model.price floatValue];
             if (model.isSelect ) {
                 num = count*sale+ num;
             }
+        }
+        
         }
     _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
 }
@@ -248,12 +260,6 @@
                         }
                         
                     }];
-                    
-                    
-                    
-                    
-                    
-                    
                     
                 }
             }
