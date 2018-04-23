@@ -308,7 +308,6 @@
     NSArray *arr = @[@{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"}];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
     NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
     parameters[@"shopid"] = @"3";
     parameters[@"receipt_id"] = @"";
     parameters[@"amount"] = _goodsDetailModel.discount_price;
