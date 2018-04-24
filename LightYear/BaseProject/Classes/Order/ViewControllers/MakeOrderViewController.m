@@ -110,6 +110,7 @@
 - (void)createData {
     //   查询订单详情
     [ConfigModel showHud:self];
+    
     if (self.OrderID.length == 0) {
         [ConfigModel mbProgressHUD:@"请传入Order_NO" andView:nil];
         return;
@@ -122,10 +123,11 @@
         self.model = model;
         self.goodsArr = (NSMutableArray *)self.model.goodlist;
         self.couponArr = (NSMutableArray *)self.model.couponList;
-        amont = [self.model.all_amount floatValue];
+        amont = [self.model.amount floatValue];
         postmoney = [self.model.warehouseInfo.deliverfee floatValue];
         storeName = self.model.shopInfo.shopname;
-        if ([self.model.can_ship intValue] == 1) {
+        //[self.model.can_ship intValue] ==
+        if ([self.model.type intValue] == 1) {
             post = YES;
         }else {
             post = NO;
@@ -134,11 +136,9 @@
         [self changefootviewInfo];
         //  获取默认取货时间
         
-        
-        
         NSDictionary *couDic = @{
                                  @"type" : @"1",
-                                 @"amount" : self.model.all_amount,
+                                 @"amount" : self.model.amount,
                                  @"ctype" : @"1"
                                  };
         [HttpRequest postPath:@"_coupon_list_001" params:couDic resultBlock:^(id responseObject, NSError *error) {
@@ -149,14 +149,16 @@
             if ([datadic[@"error"] intValue] == 0) {
                 NSArray *arr = datadic[@"info"];
                 canUseCouponNum = (int)arr.count;
+                [self.noUseTableView reloadData];
             }else {
                 NSString *str = datadic[@"info"];
                 [ConfigModel mbProgressHUD:str andView:nil];
             }
         }];
-        [self.noUseTableView reloadData];
+        
         
         GetBackTime *back = [[GetBackTime alloc] init];
+
         getTime = [back update:self.model];
         [self.noUseTableView reloadData];
         
@@ -168,7 +170,6 @@
 - (void)changefootviewInfo {
     
     if (([self.model.warehouseInfo isEqual:[NSNull null]] || self.model.warehouseInfo == nil) && post) {
-        
         [self.footView choiseType:FootOneLab];
         self.footView.moreLab.text = @"收货地址超出配送范围,无法配送";
         [self.footView changeBtnStyle:Gray];
@@ -178,7 +179,7 @@
         [self.footView.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         return;
     }
-    [self.footView choiseType:FootNoraml];
+    [self.footView choiseType:FootOneLab];
     float price;
     if (post && (amont >= [self.model.warehouseInfo.freeprice floatValue])) {
         price = amont - couponcut;
@@ -198,6 +199,7 @@
         return;
     }
     if (post) {
+        //  配送
         if (amont >= [self.model.warehouseInfo.minprice floatValue]) {
             self.footView.payBtn.titleLabel.font = SourceHanSansCNRegular(SizeWidth(13));
             [self.footView.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
@@ -210,6 +212,7 @@
             [self.footView changeBtnStyle:Gray];
         }
     }else {
+        //   自取
         self.footView.payBtn.titleLabel.font = SourceHanSansCNRegular(SizeWidth(13));
         [self.footView.payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
         [self.footView changeBtnStyle:Red];
@@ -385,7 +388,7 @@
                 NSString *title;
                 title = [NSString stringWithFormat:@"配送费（满%.2f元，免配送费）", [self.model.warehouseInfo.freeprice floatValue]];
                 cell.textLabel.text = title;
-                if ([self.model.all_amount floatValue] >= [self.model.warehouseInfo.freeprice floatValue]) {
+                if ([self.model.amount floatValue] >= [self.model.warehouseInfo.freeprice floatValue]) {
                     str = @"￥0.00";
                     postmoney = 0;
                 }else {
@@ -486,7 +489,7 @@
     
     if (indexPath.section == 2 && indexPath.row == 0 && self.couponArr.count > 0) {
         CouponViewController *view = [[CouponViewController alloc] init];
-        view.amout = self.model.all_amount;
+        view.amout = self.model.amount;
         view.couponBlock = ^(NSString *idStr, NSString *cutmoney) {
             couponId = [idStr intValue];
             couponcut = [cutmoney floatValue];
@@ -752,16 +755,16 @@
 
 - (void)postOrget:(UIButton *)sender {
     if (sender.tag == 100) {
-        if ([self.model.can_ship intValue] == 2) {
-            [ConfigModel mbProgressHUD:@"订单中部分商品不支持配送" andView:nil];
-            return;
-        }
+//        if ([self.model.can_ship intValue] == 2) {
+//            [ConfigModel mbProgressHUD:@"订单中部分商品不支持配送" andView:nil];
+//            return;
+//        }
         post = YES;
     }else {
-        if ([self.model.can_selftake intValue] == 2) {
-            [ConfigModel mbProgressHUD:@"订单中部分商品不支持自取" andView:nil];
-            return;
-        }
+//        if ([self.model.can_selftake intValue] == 2) {
+//            [ConfigModel mbProgressHUD:@"订单中部分商品不支持自取" andView:nil];
+//            return;
+//        }
         post = NO;
     }
     [self changePostType];

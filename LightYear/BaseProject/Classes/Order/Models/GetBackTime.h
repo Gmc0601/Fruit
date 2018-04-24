@@ -15,4 +15,5 @@
 @property (nonatomic, retain) NSMutableArray *dataArr, *arr0, *arr1, *arr2;
 
 - (NSString *)update:(OrderDetailModel *)model ;
+
 @end

@@ -29,7 +29,7 @@
 
 - (void)update:(OrderDetailModel *)model {
     self.dataArr = [NSMutableArray new];
-    NSInteger dis = [model.shopInfo.orderdays integerValue]; //前后的天数
+    NSInteger dis = 3; //前后的天数
     NSDate*nowDate = [NSDate date];
     NSDate* theDate;
     self.arr0 = [NSMutableArray new];
@@ -55,7 +55,7 @@
 - (void)gettimeArr:(OrderDetailModel *)model{
     self.arr1 = [NSMutableArray new];
     self.arr2 = [NSMutableArray new];
-    int time = [model.shopInfo.ordertimes intValue];
+    int time = 15;//[model.shopInfo.ordertimes intValue];
     NSString *startTime = model.shopInfo.startdate;
     NSString *endTime = model.shopInfo.enddate;
     NSString *str1 =  [startTime substringToIndex:2];
