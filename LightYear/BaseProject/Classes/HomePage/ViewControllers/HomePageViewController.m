@@ -310,6 +310,11 @@
  */
 -(void)showAdDetailWithIndex:(NSInteger)index {
     NSLog(@"===%ld",index);
+    BannerModel *bannerModel  = self.bannerArr[index];
+    GoodsDetailVC *vc = [GoodsDetailVC new];
+    vc.goodsId = bannerModel.goodid;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /**
@@ -339,9 +344,6 @@
 #pragma mark 按钮事件
 - (void)messageAction {
     NSLog(@"message");
-    ShoplistVC *vc = [ShoplistVC new];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)searchBtnAction {

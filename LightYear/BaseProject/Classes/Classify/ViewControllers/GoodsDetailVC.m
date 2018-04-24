@@ -38,7 +38,17 @@
 @implementation GoodsDetailVC
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.leftBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleDefault animated:YES];
     [self loadCarCountData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.leftBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = NO;
+    //    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent;
+    
 }
 
 - (void)viewDidLoad {

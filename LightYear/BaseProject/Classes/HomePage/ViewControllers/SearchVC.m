@@ -244,8 +244,8 @@ maxHeight:(CGFloat)height {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"key"] = _telStr;
-    parameters[@"search_type"] = @"1";
-    parameters[@"sort"] = @"2";
+    parameters[@"search_type"] = @(_searchType);
+    parameters[@"sort"] = @(_sort);
     parameters[@"shopid"] = @"3";
     parameters[@"page"] = @(_leftPage);
     parameters[@"size"] = @"20";
