@@ -11,6 +11,7 @@
 #import "AllCommentsVC.h"
 #import "MakeOrderViewController.h"
 #import "WLZ_ShoppingCarController.h"
+#import "LoginViewController.h"
 
 #import "GoodsDetailImgCell.h"
 #import "GoodsDetailTitleCell.h"
@@ -36,6 +37,10 @@
 
 @implementation GoodsDetailVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadCarCountData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleLab.text = @"商品详情";
@@ -43,7 +48,6 @@
     [self loadGoodsData];
     [self loadCommentsData];
     [self creatBottomView];
-    [self loadCarCountData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webviewHeight:) name:@"goodsDetailHeight" object:nil];
 }
@@ -469,6 +473,15 @@
 
 #pragma mark 按钮事件
 - (void)shopCarBtnAction {
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }
     WLZ_ShoppingCarController *vc = [WLZ_ShoppingCarController new];
     [self.navigationController pushViewController:vc animated:YES];
 }

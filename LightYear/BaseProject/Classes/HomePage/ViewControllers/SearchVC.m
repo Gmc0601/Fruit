@@ -112,6 +112,7 @@
 }
 
 - (void)creatSearchView {
+    [_searchView removeFromSuperview];
     [self.historyArray removeAllObjects];
     self.historyArray = [ConfigModel getArrforKey:@"historyArray"];
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH)];
@@ -239,6 +240,7 @@ maxHeight:(CGFloat)height {
 
 #pragma mark 加载数据
 - (void)loadGoodsIndexData {
+
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"key"] = _telStr;
@@ -247,7 +249,7 @@ maxHeight:(CGFloat)height {
     parameters[@"shopid"] = @"3";
     parameters[@"page"] = @(_leftPage);
     parameters[@"size"] = @"20";
-    [HttpRequest postPath:goodsIndexURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:searchUrl params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (_leftType == 0) {
@@ -440,7 +442,6 @@ maxHeight:(CGFloat)height {
 - (void)clearBtnAction {
     [self.historyArray removeAllObjects];
     [ConfigModel saveArr:self.historyArray forKey:@"historyArray"];
-    [_searchView removeFromSuperview];
     [self creatSearchView];
 }
 
