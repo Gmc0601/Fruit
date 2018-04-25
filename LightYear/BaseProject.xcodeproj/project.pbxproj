@@ -61,6 +61,7 @@
 		422FDA012060DCA20062C4D9 /* TBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FD9FF2060DCA20062C4D9 /* TBNavigationController.m */; };
 		422FDA1A2060E3300062C4D9 /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 422FDA192060E3300062C4D9 /* NetHelper.m */; };
 		423607CF1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 423607CE1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m */; };
+		423FA72C20905F2B006A6020 /* ToPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 423FA72B20905F2B006A6020 /* ToPayModel.m */; };
 		4271F8B51FBD8069009D3E79 /* GetBackTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271F8B41FBD8069009D3E79 /* GetBackTime.m */; };
 		427C3D4F1F9F22180081B431 /* HHPasswordErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 427C3D4A1F9F22180081B431 /* HHPasswordErrorView.m */; };
 		427C3D501F9F22180081B431 /* HHPayPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 427C3D4C1F9F22180081B431 /* HHPayPasswordView.m */; };
@@ -351,6 +352,8 @@
 		422FDA192060E3300062C4D9 /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
 		423607CD1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+EOCBlocksSupport.h"; sourceTree = "<group>"; };
 		423607CE1FB2ACF800DF96CD /* NSTimer+EOCBlocksSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+EOCBlocksSupport.m"; sourceTree = "<group>"; };
+		423FA72A20905F2B006A6020 /* ToPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToPayModel.h; sourceTree = "<group>"; };
+		423FA72B20905F2B006A6020 /* ToPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToPayModel.m; sourceTree = "<group>"; };
 		4271F8B31FBD8069009D3E79 /* GetBackTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetBackTime.h; sourceTree = "<group>"; };
 		4271F8B41FBD8069009D3E79 /* GetBackTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetBackTime.m; sourceTree = "<group>"; };
 		427C3D491F9F22180081B431 /* HHPasswordErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHPasswordErrorView.h; sourceTree = "<group>"; };
@@ -725,6 +728,8 @@
 				00A9528F1F70258500DEE0F6 /* UserModel.m */,
 				00A51EA11F72C28F00E383AF /* DeliveryAddressModel.h */,
 				00A51EA21F72C28F00E383AF /* DeliveryAddressModel.m */,
+				423FA72A20905F2B006A6020 /* ToPayModel.h */,
+				423FA72B20905F2B006A6020 /* ToPayModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2039,6 +2044,7 @@
 				00A952801F7024F800DEE0F6 /* LoginViewController.m in Sources */,
 				6B5F6D9F1F628D28001BDC0E /* NSData+CommonCryptor.m in Sources */,
 				74079160207B4E2D00F4BC45 /* OneSubTypeModel.m in Sources */,
+				423FA72C20905F2B006A6020 /* ToPayModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

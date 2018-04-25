@@ -24,6 +24,7 @@
 #import "SelectShopViewController.h"
 #import "CCDateAlter.h"
 #import "GetBackTime.h"
+#import "TopUpViewController.h"
 
 @interface MakeOrderViewController ()<UITableViewDelegate, UITableViewDataSource, HHPayPasswordViewDelegate> {
     BOOL post; //  配送
@@ -193,12 +194,6 @@
     }
     self.footView.priceLab.text = [NSString stringWithFormat:@"￥%.2f", price];
     self.footView.balanceLab.text = [NSString stringWithFormat:@"账户余额：￥%.2f", [self.model.userAmount floatValue]];
-    //  取出余额不足情况 
-//    if ([self.model.userAmount floatValue]  < price) {
-//        [self.footView.payBtn setTitle:@"账户余额不足" forState:UIControlStateNormal];
-//        [self.footView changeBtnStyle:Gray];
-//        return;
-//    }
     if (post) {
         //  配送
         if (amont >= [self.model.warehouseInfo.minprice floatValue]) {
@@ -645,17 +640,29 @@
 }
 
 - (void)click{
-    HHPayPasswordView *payPasswordView = [[HHPayPasswordView alloc] init];
-    payPasswordView.delegate = self;
-    WeakSelf(weak);
-    payPasswordView.closeBlock = ^{
-        OrderDetialViewController *vc = [[OrderDetialViewController alloc] init];
-        vc.OrderID = self.OrderID;
-        vc.orderType = Order_Topay;
-        vc.backHome = YES;
-        [weak.navigationController pushViewController:vc animated:YES];
-    };
-    [payPasswordView showInView:self.view];
+    
+    //  现在跳转
+    TopUpViewController *vc = [[TopUpViewController alloc] init];
+    vc.type = Topup_order;//   余额  订单号  订单金额
+    ToPayModel *model = [[ToPayModel alloc] init];
+    model.orderNum = self.model.order_no;
+    model.amount = topaymoney;
+    model.blance = self.model.userAmount;
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+//    //  原来支付
+//    HHPayPasswordView *payPasswordView = [[HHPayPasswordView alloc] init];
+//    payPasswordView.delegate = self;
+//    WeakSelf(weak);
+//    payPasswordView.closeBlock = ^{
+//        OrderDetialViewController *vc = [[OrderDetialViewController alloc] init];
+//        vc.OrderID = self.OrderID;
+//        vc.orderType = Order_Topay;
+//        vc.backHome = YES;
+//        [weak.navigationController pushViewController:vc animated:YES];
+//    };
+//    [payPasswordView showInView:self.view];
 }
 
 #pragma mark - HHPayPasswordViewDelegate

@@ -18,6 +18,7 @@
 @interface TopUpViewController ()<UITableViewDelegate, UITableViewDataSource>{
     float viewheigh;
     int selecedID, paytype;
+    NSString *paybtnStr;
 }
 
 @property (nonatomic, strong) UITableView *noUseTableView;
@@ -28,13 +29,15 @@
 
 @property (nonatomic, strong) NSArray *titleArr, *iconArr;
 
+@property (nonatomic, strong) UILabel *topaylab;
+
 @end
 
 @implementation TopUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    paytype = 0;
+    paytype = -1;
     self.titleLab.text = @"充值";
     self.rightBar.hidden = YES;
     
@@ -51,6 +54,7 @@
                 UIView *view = [[UIView alloc] initWithFrame:FRAME(0, 0, 10, 10)];
                 view.hidden = YES;
                 [self addmoneyBtn:view];
+                paybtnStr = @"立即充值";
                 [self.view addSubview:self.noUseTableView];
                 
             }else {
@@ -60,11 +64,21 @@
         }];
     }
     
+    if (self.type == Topup_order) {
+        //  订单支付
+        viewheigh = 70;
+        paybtnStr = @"立即支付";
+        NSString *vip = [NSString stringWithFormat:@"会员卡(余额:￥%@)",self.model.blance];
+        self.titleArr = @[@"支付方式", @"支付宝支付", @"微信支付", vip];
+        self.iconArr = @[@"", @"chongzhi_zfb", @"chongzhi_wx", @"chongzhi_vip"];
+        [self.view addSubview:self.noUseTableView];
+    }
+    
     
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.titleArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -77,6 +91,12 @@
         cell.btn.hidden = YES;
         cell.backgroundColor = RGBColor(239, 240, 241);
     }
+    if (indexPath.row == paytype) {
+        cell.btn.selected = YES;
+    }else {
+        cell.btn.selected = NO;
+    }
+    
     cell.textLabel.text = self.titleArr[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:self.iconArr[indexPath.row]];
     [cell.imageView sizeToFit];
@@ -90,20 +110,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    PaytypeTableViewCell *cell = [self.noUseTableView cellForRowAtIndexPath:indexPath];
-    cell.btn.selected = YES;
-    NSIndexPath *index;
+//    PaytypeTableViewCell *cell = [self.noUseTableView cellForRowAtIndexPath:indexPath];
+//    cell.btn.selected = YES;
+//    NSIndexPath *index;
     if (indexPath.row == 1) {
-        index = [NSIndexPath indexPathForRow:2 inSection:0];
+//        index = [NSIndexPath indexPathForRow:2 inSection:0];
         paytype = 1;
     }
     if (indexPath.row == 2) {
         paytype = 2;
-        index = [NSIndexPath indexPathForRow:1 inSection:0];
+//        index = [NSIndexPath indexPathForRow:1 inSection:0];
     }
-    PaytypeTableViewCell *chancle  = [self.noUseTableView cellForRowAtIndexPath:index];
-    chancle.btn.selected = NO;
-    
+    if (indexPath.row == 3) {
+        paytype = 3;
+//        index = [NSIndexPath indexPathForRow:3 inSection:<#(NSInteger)#>]
+    }
+//    PaytypeTableViewCell *chancle  = [self.noUseTableView cellForRowAtIndexPath:index];
+//    chancle.btn.selected = NO;
+    [self.noUseTableView reloadData];
 
 }
 - (UITableView *)noUseTableView {
@@ -119,7 +143,12 @@
             UILabel *line = [[UILabel alloc] initWithFrame:FRAME(0, 0, kScreenW, 20)];
             line.backgroundColor = RGBColor(239, 240, 241);
             [view addSubview:line];
-            [self addmoneyBtn:view];
+            if (self.type == Topup_wallet) {
+               [self addmoneyBtn:view];
+            }
+            if (self.type == Topup_order) {
+                [self addblancel:view];
+            }
             view;
         });
         _noUseTableView.tableFooterView = ({
@@ -129,6 +158,25 @@
         });
     }
     return _noUseTableView;
+}
+
+- (void)addblancel:(UIView *)view {
+    
+
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:FRAME(15, 15 + 20, kScreenW, 15)];
+    title.text = @"订单需支付：";
+    title.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+    title.textColor = [UIColor colorWithRed:102/255 green:102/255 blue:102/255 alpha:1];
+    [view addSubview:title];
+    
+    self.topaylab = [[UILabel alloc] initWithFrame:FRAME(0, 15 + 20, kScreenW - 15, 15)];
+    self.topaylab.font = [UIFont fontWithName:@"DINAlternate-Bold" size:18];
+    self.topaylab.textColor = [UIColor colorWithRed:255/255 green:76/255 blue:68/255 alpha:1];
+    self.topaylab.text = [NSString stringWithFormat:@"￥%.2f", self.model.amount];
+    self.topaylab.textAlignment = NSTextAlignmentRight;
+    [view addSubview:self.topaylab];
+    
 }
 
 - (void)addmoneyBtn:(UIView *)view {
@@ -182,7 +230,7 @@
     if (!_payBtn) {
         _payBtn = [[UIButton alloc] initWithFrame:FRAME(20, 20, kScreenW - 40, 50)];
         _payBtn.backgroundColor = ThemeGreen;
-        [_payBtn setTitle:@"立即充值" forState:UIControlStateNormal];
+        [_payBtn setTitle:paybtnStr forState:UIControlStateNormal];
         _payBtn.layer.masksToBounds = YES;
         _payBtn.layer.cornerRadius = 3;
         [_payBtn addTarget:self action:@selector(payclick:) forControlEvents:UIControlEventTouchUpInside];
@@ -191,9 +239,21 @@
 }
 
 - (void)payclick:(UIButton *)sender {
-    PayViewController *vc = [[PayViewController alloc] init];
-    vc.payMoney = @"158.00";
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if (paytype < 0) {
+        [ConfigModel mbProgressHUD:@"请选择支付方式" andView:nil];
+        return;
+    }
+    
+    if (paytype < 3) {
+    //  支付宝 和 微信
+        
+    }
+    
+    if (paytype == 3) {
+        //  余额 支付
+        
+    }
     
 }
 

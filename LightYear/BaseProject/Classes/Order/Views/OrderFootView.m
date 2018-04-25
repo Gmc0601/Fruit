@@ -43,8 +43,8 @@
     }else {
         self.infoLab.hidden =  NO;
         self.priceLab.hidden = NO;
-        self.balanceLab.hidden = NO;
-        self.topUpBtn.hidden = NO;
+        self.balanceLab.hidden = YES;
+        self.topUpBtn.hidden = YES;
         [self.logoImage removeFromSuperview];
         [self.moreLab removeFromSuperview];
     }
@@ -63,10 +63,10 @@
 
 - (void)chagneFrame {
     
-    int top = SizeHeigh(10);
-    if (kDevice_Is_iPhoneX) {
-        top = SizeHeigh(5);
-    }
+    int top = SizeHeigh(22.5);
+//    if (kDevice_Is_iPhoneX) {
+//        top = SizeHeigh(5);
+//    }
     
     [self.infoLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.backView.mas_left).offset(SizeWidth(15));
@@ -96,7 +96,7 @@
     if (kDevice_Is_iPhoneX) {
         top = SizeHeigh(2);
     }else {
-        SizeHeigh(5);
+       top =  SizeHeigh(5);
     }
     
     [self.payBtn mas_makeConstraints:^(MASConstraintMaker *make) {
