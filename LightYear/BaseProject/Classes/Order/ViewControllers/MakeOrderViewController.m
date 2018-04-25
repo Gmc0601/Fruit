@@ -179,7 +179,7 @@
         [self.footView.payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         return;
     }
-    [self.footView choiseType:FootOneLab];
+    [self.footView choiseType:FootNoraml];
     float price;
     if (post && (amont >= [self.model.warehouseInfo.freeprice floatValue])) {
         price = amont - couponcut;
@@ -193,11 +193,12 @@
     }
     self.footView.priceLab.text = [NSString stringWithFormat:@"￥%.2f", price];
     self.footView.balanceLab.text = [NSString stringWithFormat:@"账户余额：￥%.2f", [self.model.userAmount floatValue]];
-    if ([self.model.userAmount floatValue]  < price) {
-        [self.footView.payBtn setTitle:@"账户余额不足" forState:UIControlStateNormal];
-        [self.footView changeBtnStyle:Gray];
-        return;
-    }
+    //  取出余额不足情况 
+//    if ([self.model.userAmount floatValue]  < price) {
+//        [self.footView.payBtn setTitle:@"账户余额不足" forState:UIControlStateNormal];
+//        [self.footView changeBtnStyle:Gray];
+//        return;
+//    }
     if (post) {
         //  配送
         if (amont >= [self.model.warehouseInfo.minprice floatValue]) {
@@ -688,9 +689,6 @@
                 [passwordView payFailureWithPasswordError:YES withErrorLimit:3];
                 [ConfigModel mbProgressHUD:@"支付密码错误" andView:nil];
             }
-            
-            
-            
         }];
         
 
