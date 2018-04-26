@@ -313,7 +313,7 @@
     parameters[@"shopid"] = @"3";
     parameters[@"receipt_id"] = @"";
     parameters[@"amount"] = @(self.price);
-    parameters[@"auto"] = @"1";
+    parameters[@"auto"] = @"2";
     parameters[@"good_info"] = dataStr;
     
     
