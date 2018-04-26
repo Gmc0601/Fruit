@@ -116,18 +116,22 @@ static CGFloat CELL_HEIGHT = 100;
     if ([self isPureInt:_changeView.numberFD.text]) {
         if ([_changeView.numberFD.text integerValue]<0) {
             _changeView.numberFD.text=@"1";
+        
+       
         }
         
     }
     else
     {
         _changeView.numberFD.text=@"1";
+        [self addCardeleteCar];
     }
     
     
     if ([_changeView.numberFD.text isEqualToString:@""] || [_changeView.numberFD.text isEqualToString:@"0"]) {
         self.choosedCount = 1;
         _changeView.numberFD.text=@"1";
+       
         
     }
     NSString *numText = _changeView.numberFD.text;
@@ -136,11 +140,14 @@ static CGFloat CELL_HEIGHT = 100;
     if ([numText intValue] >_model.stock) {
       //  [SVProgressHUD showErrorWithStatus:@"最多支持购买99个"];
         _changeView.numberFD.text = [NSString stringWithFormat:@"%zi",_model.stock];
+   
     }
     
     if ([numText intValue] >99) {
         //  [SVProgressHUD showErrorWithStatus:@"最多支持购买99个"];
         _changeView.numberFD.text = @"99";
+        
+       
     }
     
     _changeView.addButton.enabled=YES;
@@ -148,6 +155,7 @@ static CGFloat CELL_HEIGHT = 100;
     self.choosedCount = [_changeView.numberFD.text integerValue];
     _model.count = _changeView.numberFD.text;
     _model.isSelect = _selectBt.selected;
+    [self addCardeleteCar];
 }
 
 - (BOOL)isPureInt:(NSString*)string{
