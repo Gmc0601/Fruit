@@ -198,7 +198,7 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
     if (self.choosedCount<99) {
-        [self addCar];
+        [self addCardeleteCar];
     }
     
     ++self.choosedCount ;
@@ -234,10 +234,32 @@ static CGFloat CELL_HEIGHT = 100;
     
 }
 
--(void)addCar
+-(void)addCardeleteCar
 {
     
    
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+   
+    parameters[@"count"] = @(self.choosedCount);
+    parameters[@"price"] = _model.price;
+    parameters[@"good_id"] = _model.good_id;
+    parameters[@"sku_id"] = _model.sku;
+    parameters[@"shopid"] = _model.shopid;
+    parameters[@"id"] = _model.card_id;
+    
+    [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+        
+        NSLog(@"responseObject = %@",responseObject)
+        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        if (baseModel.error == 0) {
+           
+            
+        }else {
+            NSLog(@"%@",baseModel.message)
+            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+        }
+        
+    }];
 }
 
 
@@ -263,7 +285,7 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
     if (self.choosedCount >1) {
-         [self deleteCar];
+         [self addCardeleteCar];
     }
     
    -- self.choosedCount ;
