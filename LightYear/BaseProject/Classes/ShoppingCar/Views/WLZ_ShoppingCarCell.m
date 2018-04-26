@@ -198,10 +198,14 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
     if (self.choosedCount<99) {
+        ++self.choosedCount ;
         [self addCardeleteCar];
+    }else
+    {
+         ++self.choosedCount ;
     }
     
-    ++self.choosedCount ;
+   
     if (self.choosedCount>0) {
         _changeView.subButton.enabled=YES;
     }
@@ -285,10 +289,14 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
     if (self.choosedCount >1) {
+         -- self.choosedCount ;
          [self addCardeleteCar];
+    }else
+    {
+        -- self.choosedCount ;
     }
     
-   -- self.choosedCount ;
+  
     
     if (self.choosedCount==0) {
         self.choosedCount= 1;
