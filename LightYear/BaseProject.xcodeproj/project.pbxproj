@@ -206,6 +206,7 @@
 		743A5C352088380A00BF85D0 /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A5C342088380A00BF85D0 /* CommentsModel.m */; };
 		743A5C3820883BDC00BF85D0 /* UtilHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A5C3720883BDC00BF85D0 /* UtilHelper.m */; };
 		743A5C3B2088702A00BF85D0 /* GoodsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A5C3A2088702A00BF85D0 /* GoodsDetailCell.m */; };
+		7451A7F1209179EB00709B80 /* ChoseNumberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7451A7F0209179EB00709B80 /* ChoseNumberVC.m */; };
 		74D34D6C207479920009AFB8 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D68207479920009AFB8 /* SearchVC.m */; };
 		74D34D6D207479920009AFB8 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D6A207479920009AFB8 /* HomePageViewController.m */; };
 		74D34D7A207479BD0009AFB8 /* HomeHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D34D70207479BB0009AFB8 /* HomeHotCell.m */; };
@@ -634,6 +635,8 @@
 		743A5C3720883BDC00BF85D0 /* UtilHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilHelper.m; sourceTree = "<group>"; };
 		743A5C392088702A00BF85D0 /* GoodsDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailCell.h; sourceTree = "<group>"; };
 		743A5C3A2088702A00BF85D0 /* GoodsDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailCell.m; sourceTree = "<group>"; };
+		7451A7EF209179EB00709B80 /* ChoseNumberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChoseNumberVC.h; sourceTree = "<group>"; };
+		7451A7F0209179EB00709B80 /* ChoseNumberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoseNumberVC.m; sourceTree = "<group>"; };
 		74D34D68207479920009AFB8 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		74D34D69207479920009AFB8 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		74D34D6A207479920009AFB8 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -1025,6 +1028,8 @@
 				74079159207AF44B00F4BC45 /* GoodsDetailVC.m */,
 				74E8084D20873C140007E928 /* AllCommentsVC.h */,
 				74E8084E20873C140007E928 /* AllCommentsVC.m */,
+				7451A7EF209179EB00709B80 /* ChoseNumberVC.h */,
+				7451A7F0209179EB00709B80 /* ChoseNumberVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1986,6 +1991,7 @@
 				6B5F6D651F628143001BDC0E /* ShopBaseViewController.m in Sources */,
 				74D34D9220747A240009AFB8 /* ClassifyLeftCell.m in Sources */,
 				6B5F6DAE1F628D28001BDC0E /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				7451A7F1209179EB00709B80 /* ChoseNumberVC.m in Sources */,
 				42C84EB11EF2DB060008189D /* main.m in Sources */,
 				42C84EC91EF2DD1A0008189D /* DicToString.m in Sources */,
 				00A952851F7024F800DEE0F6 /* DateView.m in Sources */,

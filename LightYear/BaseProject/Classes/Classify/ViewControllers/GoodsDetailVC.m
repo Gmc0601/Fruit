@@ -12,6 +12,7 @@
 #import "MakeOrderViewController.h"
 #import "WLZ_ShoppingCarController.h"
 #import "LoginViewController.h"
+#import "ChoseNumberVC.h"
 
 #import "GoodsDetailImgCell.h"
 #import "GoodsDetailTitleCell.h"
@@ -26,6 +27,7 @@
     NSString *_commentCount;
     CGFloat _webHeight;
     NSString *_orderId;
+    NSInteger _choseNum;
 }
 
 @property(nonatomic,strong) UITableView *tableView;
@@ -40,6 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.leftBar.hidden = NO;
     self.navigationController.navigationBar.hidden = YES;
+    _choseNum = 1;
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleDefault animated:YES];
     [self loadCarCountData];
 }
@@ -241,7 +244,7 @@
 - (void)loadSetCarData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"count"] = @"1";
+    parameters[@"count"] = @(_choseNum);
     parameters[@"price"] = _goodsDetailModel.original_price;
     parameters[@"good_id"] = _goodsDetailModel.goodsId;
 //    parameters[@"sku_id"] = _goodsId;
@@ -253,7 +256,7 @@
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
         if (baseModel.error == 0) {
 //            NSDictionary *dic = responseObject[@"info"];
-            _carCount ++;
+            _carCount = _carCount+_choseNum;
             _countLb.text = [NSString stringWithFormat:@"%ld",_carCount];
             if (_carCount == 0) {
                 _countLb.hidden = YES;
@@ -319,12 +322,12 @@
 - (void)loadOrderData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    NSArray *arr = @[@{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"}];
+    NSArray *arr = @[@{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@(_choseNum)}];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
     NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     parameters[@"shopid"] = @"3";
     parameters[@"receipt_id"] = @"";
-    parameters[@"amount"] = _goodsDetailModel.discount_price;
+    parameters[@"amount"] = [NSString stringWithFormat:@"%.2f",[_goodsDetailModel.discount_price floatValue]*_choseNum];
     parameters[@"auto"] = @"1";
     parameters[@"good_info"] = dataStr;
     
@@ -333,6 +336,7 @@
         [ConfigModel hideHud:self];
         NSLog(@"responseObject = %@",responseObject);
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+        
         if (baseModel.error == 0) {
             NSString *orderId = responseObject[@"info"][@"id"];
             MakeOrderViewController *vc = [MakeOrderViewController new];
@@ -341,7 +345,7 @@
 
         }else {
             NSLog(@"%@",baseModel.message);
-            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+            [ConfigModel mbProgressHUD:responseObject[@"info"] andView:nil];
         }
         
     }];
@@ -497,12 +501,28 @@
 }
 
 - (void)joinShopCarBtnAction {
-    [self loadSetCarData];
+    ChoseNumberVC *vc= [ChoseNumberVC new];
+    vc.goodsDetailModel = _goodsDetailModel;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    vc.definesPresentationContext = YES;
+    vc.sureBlock = ^(NSInteger choseNum) {
+        _choseNum = choseNum;
+        [self loadSetCarData];
+    };
+    [self presentViewController:vc animated:YES completion:nil];
     
 }
 
 - (void)buyBtnAction {
-    [self loadOrderData];
+    ChoseNumberVC *vc= [ChoseNumberVC new];
+    vc.goodsDetailModel = _goodsDetailModel;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    vc.definesPresentationContext = YES;
+    vc.sureBlock = ^(NSInteger choseNum) {
+        _choseNum = choseNum;
+        [self loadOrderData];
+    };
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)commentDetailAction {
