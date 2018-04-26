@@ -42,6 +42,7 @@
     [self setChildVC:classify title:@"分类" image:@"tab_fenlei_wxz" selectedImage:@"tab_fenlei_xz"];
 
     WLZ_ShoppingCarController *car = [[WLZ_ShoppingCarController alloc] init];
+    car.type=0;
     [self setChildVC:car title:@"购物车" image:@"tab_gouwuche_wxz" selectedImage:@"tab_gouwuche_xz"];
 
 //    LoginViewController *myVC = [[LoginViewController alloc] init];

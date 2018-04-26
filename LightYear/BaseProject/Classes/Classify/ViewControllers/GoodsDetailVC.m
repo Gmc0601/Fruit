@@ -497,6 +497,7 @@
         return;
     }
     WLZ_ShoppingCarController *vc = [WLZ_ShoppingCarController new];
+    vc.type=1;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -10,4 +10,6 @@
 
 @interface WLZ_ShoppingCarController : BaseViewController
 
+@property (nonatomic,assign)NSInteger type;
+
 @end

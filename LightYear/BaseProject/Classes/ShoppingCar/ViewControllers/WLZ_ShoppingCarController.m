@@ -67,7 +67,14 @@
 -(WLZ_ShoppingCartEndView *)endView
 {
     if (!_endView) {
-        _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-158, kScreenW, 44)];
+        
+        if (self.type==0) {
+               _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-158, kScreenW, 44)];
+        }else
+        {
+               _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-112, kScreenW, 44)];
+        }
+     
        
         _endView.delegate=self;
         _endView.isEdit = _isEdit;
@@ -76,6 +83,10 @@
     }
     return _endView;
 }
+
+
+
+
 -(UITableView *)showTbv
 {
     if (_showTbv==nil) {
