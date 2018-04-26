@@ -35,7 +35,7 @@
     [self.view addSubview:self.navigationView];
     [self.navigationView addSubview:self.titleLab];
     [self.navigationView addSubview:self.leftBar];
-    [self.navigationView addSubview:self.rightBar];
+//    [self.navigationView addSubview:self.rightBar];
     [self.navigationView addSubview:self.line];
 
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated:YES];
