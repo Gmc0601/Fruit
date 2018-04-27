@@ -15,6 +15,7 @@
 #import "WMHomePageViewController.h"
 #import "UserModel.h"
 #import "ViewController.h"
+#import "AppDelegate+Jpush.h"
 
 @interface AppDelegate ()
 @end
@@ -35,7 +36,7 @@
     if ([[TMCache sharedCache] objectForKey:UserInfoModel]) {
         [self updateUserInfo];
     }
-    
+    [self initJpushapplication:application optins:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [ViewController new];
     self.window.backgroundColor = [UIColor whiteColor];
