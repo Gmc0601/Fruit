@@ -20,6 +20,8 @@
 @property(nonatomic,strong) WLZ_ShopViewModel *vm;
 @property (nonatomic,assign)CGFloat price;
 @property (nonatomic,copy)NSString *goodId;
+@property (nonatomic,strong)NSMutableArray *ordermArr;
+
 
 @end
 
@@ -35,7 +37,13 @@
   
 }
 
-
+-(NSMutableArray *)ordermArr
+{
+    if (_ordermArr==nil) {
+        _ordermArr=[NSMutableArray new];
+    }
+    return _ordermArr;
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -173,11 +181,16 @@
             WLZ_ShoppIngCarModel *model = [self.cartmArr objectAtIndex:i];
             NSInteger count = [model.count integerValue];
             float sale = [model.price floatValue];
+            self.ordermArr=nil;
             if (model.isSelect ) {
                 num = count*sale+ num;
                 self.price=num;
-                self.goodId=[NSString stringWithFormat:@"%@,%@",self.goodId,model.good_id];
-                [self.goodId substringFromIndex:1];
+                
+                NSDictionary *dic=@{@"good_id":model.good_id,@"price":model.price,@"count":model.count};
+                
+                [self.ordermArr addObject:dic];
+                
+                
                 
                 
             }
@@ -317,8 +330,7 @@
 - (void)loadOrderData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    NSArray *arr = @[@{@"good_id":self.goodId,@"price":@(self.price),@"count":@"1"}];
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
     NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
     parameters[@"shopid"] = @"3";
