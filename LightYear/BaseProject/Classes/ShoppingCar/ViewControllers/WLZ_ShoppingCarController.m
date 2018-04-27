@@ -175,13 +175,14 @@
 {
     NSArray *lists =   [_endView.Lab.text componentsSeparatedByString:@"￥"];
     float num = 0.00;
+     self.ordermArr=nil;
     for (int i=0; i<self.cartmArr.count-1; i++) {
        
         if (self.cartmArr.count!=0) {
             WLZ_ShoppIngCarModel *model = [self.cartmArr objectAtIndex:i];
             NSInteger count = [model.count integerValue];
             float sale = [model.price floatValue];
-            self.ordermArr=nil;
+           
             if (model.isSelect ) {
                 num = count*sale+ num;
                 self.price=num;
