@@ -502,6 +502,15 @@
 }
 
 - (void)joinShopCarBtnAction {
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }
     ChoseNumberVC *vc= [ChoseNumberVC new];
     vc.goodsDetailModel = _goodsDetailModel;
     vc.modalPresentationStyle = UIModalPresentationCustom;
@@ -515,6 +524,15 @@
 }
 
 - (void)buyBtnAction {
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }
     ChoseNumberVC *vc= [ChoseNumberVC new];
     vc.goodsDetailModel = _goodsDetailModel;
     vc.modalPresentationStyle = UIModalPresentationCustom;
