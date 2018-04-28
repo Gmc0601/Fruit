@@ -10,7 +10,7 @@
 
 @interface ToPayModel : NSObject
 
-@property (nonatomic, copy) NSString *orderNum, *blance;
+@property (nonatomic, copy) NSString *orderNum, *blance, *orderid;
 
 @property (nonatomic, assign) float amount;
 
