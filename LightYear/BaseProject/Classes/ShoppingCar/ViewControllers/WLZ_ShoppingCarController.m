@@ -145,16 +145,19 @@
     [_vm getShopData:^(NSArray *commonArry) {
         weak.cartmArr=nil;
         [weak.cartmArr addObjectsFromArray:commonArry];
-        
+        [weak.showTbv reloadData];
         if (commonArry.count==0) {
             
             weak.holdLab.hidden=NO;
             weak.endView.hidden=YES;
+          
+            [weak edits:nil];
             weak.navigationItem.rightBarButtonItem.title=@"";
         }else
         {
             weak.holdLab.hidden=YES;
-              weak.endView.hidden=NO;
+           
+            weak.endView.hidden=NO;
             weak.navigationItem.rightBarButtonItem.title=@"编辑";
             [weak.showTbv reloadData];
             [weak numPrice];
@@ -299,15 +302,29 @@
                         
                     }];
                     
+                    //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+                 
+                    [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
+                        
+                        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+                        if (baseModel.error == 0) {
+                            
+                            [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
+                              [self getCartData];
+                            
+                        }else {
+                            NSLog(@"====%@",baseModel.message);
+                            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+                        }
+                        
+                    }];
+                    
                 }
             }
-            [self.cartmArr removeObjectsAtIndexes:indexSet];
-        
-       
-        
-        
-        [self.cartmArr removeObjectsAtIndexes:bigIndexSet];
-        [self.showTbv reloadData];
+//            [self.cartmArr removeObjectsAtIndexes:indexSet];
+//            [self.cartmArr removeObjectsAtIndexes:bigIndexSet];
+//            [self.showTbv reloadData];
+      
     }
     else if (bt.tag==18)
     {
