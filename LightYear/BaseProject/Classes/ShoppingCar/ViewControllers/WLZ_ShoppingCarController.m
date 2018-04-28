@@ -11,6 +11,7 @@
 #import "WLZ_ShoppingCartEndView.h"
 #import "WLZ_ShopViewModel.h"
 #import "MakeOrderViewController.h"
+#import "LoginViewController.h"
 @interface WLZ_ShoppingCarController ()<UITableViewDelegate,UITableViewDataSource,WLZ_ShoppingCartEndViewDelegate,WLZ_ShoppingCarCellDelegate>
 @property(nonatomic,assign)BOOL isEdit;
 @property (nonatomic, strong) UITableView *showTbv;
@@ -26,6 +27,25 @@
 @end
 
 @implementation WLZ_ShoppingCarController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        vc.clickBlock = ^(NSString *str) {
+            self.tabBarController.selectedIndex = 0;
+        };
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:na animated:YES completion:nil];
+        return;
+    }else
+    {
+          [self getCartData];
+    }
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,11 +65,7 @@
     return _ordermArr;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self getCartData];
-}
+
 
 
 -(UILabel *)holdLab
@@ -178,7 +194,7 @@
 {
     NSArray *lists =   [_endView.Lab.text componentsSeparatedByString:@"￥"];
     float num = 0.00;
-     self.ordermArr=nil;
+    self.goodId=@"";
     for (int i=0; i<self.cartmArr.count-1; i++) {
        
         if (self.cartmArr.count!=0) {
@@ -190,17 +206,14 @@
                 num = count*sale+ num;
                 self.price=num;
                 
-                NSDictionary *dic=@{@"good_id":model.good_id,@"price":model.price,@"count":model.count};
-                
-                [self.ordermArr addObject:dic];
-                
-                
-                
+                self.goodId=[self.goodId stringByAppendingFormat:@",%@",model.card_id];
                 
             }
+            
         }
         
         }
+     self.goodId=[self.goodId substringFromIndex:1];
     _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
 }
 
@@ -348,14 +361,14 @@
 - (void)loadOrderData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
     parameters[@"shopid"] = @"3";
-    parameters[@"receipt_id"] = @"";
-    parameters[@"amount"] = @(self.price);
+//    parameters[@"receipt_id"] = @"";
+    parameters[@"amount"] = [NSString stringWithFormat:@"%.2f",self.price];
     parameters[@"auto"] = @"2";
-    parameters[@"good_info"] = dataStr;
+    parameters[@"ids"] = self.goodId;
     
     
     [HttpRequest postPath:orderUrl params:parameters resultBlock:^(id responseObject, NSError *error) {
