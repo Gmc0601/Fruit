@@ -1686,7 +1686,11 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
+<<<<<<< HEAD
 						DevelopmentTeam = E3KLA65BLF;
+=======
+						DevelopmentTeam = 5NU5NX2467;
+>>>>>>> e34807fbd049f3b4d99a6a940097b3dc9f0a0d1c
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -2231,7 +2235,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = E3KLA65BLF;
+=======
+				DEVELOPMENT_TEAM = 5NU5NX2467;
+>>>>>>> e34807fbd049f3b4d99a6a940097b3dc9f0a0d1c
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/AliapySDK",
@@ -2268,8 +2276,18 @@
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+<<<<<<< HEAD
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3KLA65BLF;
+=======
+<<<<<<< HEAD
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5NU5NX2467;
+=======
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = KZ29JZWD5H;
+>>>>>>> 1add6cdc66325ab34a30251011e9e134c98c4e46
+>>>>>>> e34807fbd049f3b4d99a6a940097b3dc9f0a0d1c
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/AliapySDK",
@@ -2289,8 +2307,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fruit.app.feture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a6d021f3-4645-4ebb-aa42-2e1074d2042f";
+				PROVISIONING_PROFILE_SPECIFIER = Fruit_development;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

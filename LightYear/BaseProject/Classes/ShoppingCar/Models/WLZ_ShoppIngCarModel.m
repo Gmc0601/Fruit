@@ -22,4 +22,14 @@
 }
 
 
+<<<<<<< HEAD
+=======
+-(void)dealloc
+{
+
+    [self removeObserver:_vm forKeyPath:@"isSelect"];
+    
+}
+
+>>>>>>> e34807fbd049f3b4d99a6a940097b3dc9f0a0d1c
 @end

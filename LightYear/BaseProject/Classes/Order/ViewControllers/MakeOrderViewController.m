@@ -596,7 +596,8 @@
         [dic setValue:@(couponId) forKey:@"coupon_id"];
         [dic setValue:@(couponcut) forKey:@"coupon_money"];
     }
-    [dic setValue:@(topaymoney) forKey:@"amount"];
+    NSString *topay = [NSString stringWithFormat:@"%.2f", topaymoney];
+    [dic setValue:topay forKey:@"amount"];
     if (post) {
         [dic setValue:@"1" forKey:@"type"];
         //  邮费 ？？
@@ -646,6 +647,7 @@
     vc.type = Topup_order;//   余额  订单号  订单金额
     ToPayModel *model = [[ToPayModel alloc] init];
     model.orderNum = self.model.order_no;
+    model.orderid = self.OrderID;
     model.amount = topaymoney;
     model.blance = self.model.userAmount;
     vc.model = model;

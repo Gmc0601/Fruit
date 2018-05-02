@@ -132,33 +132,22 @@
     return _showTbv;
 }
 
+-(WLZ_ShopViewModel *)vm
+{
+    if (_vm==nil) {
+        _vm=[[WLZ_ShopViewModel alloc]init];
+    }
+    return _vm;
+}
+
 -(void)getCartData
 {
-//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    parameters[@"shopid"] = @"3";
-//    [HttpRequest postPath:cardList params:parameters resultBlock:^(id responseObject, NSError *error) {
-//
-//        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-//        if (baseModel.error == 0) {
-//            NSArray *arr = responseObject[@"info"];
-//            for (NSDictionary *dic in arr) {
-//                WLZ_ShoppIngCarModel *shopModel = [WLZ_ShoppIngCarModel yy_modelWithDictionary:dic];
-//                [self.cartmArr addObject:shopModel];
-//            }
-//
-//            [self.showTbv reloadData];
-//
-//        }else {
-//            NSLog(@"====%@",baseModel.message);
-//            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-//        }
-//
-//    }];
+
     
     //获取数据
-    _vm = [[WLZ_ShopViewModel alloc]init];
+ 
     WGetWeakSelf(weak, self);
-    [_vm getShopData:^(NSArray *commonArry) {
+    [self.vm getShopData:^(NSArray *commonArry) {
         weak.cartmArr=nil;
         [weak.cartmArr addObjectsFromArray:commonArry];
         [weak.showTbv reloadData];

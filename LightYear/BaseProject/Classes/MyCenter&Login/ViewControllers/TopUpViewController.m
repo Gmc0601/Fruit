@@ -13,9 +13,13 @@
 #import <MJExtension/MJExtension.h>
 #import "PaytypeTableViewCell.h"
 #import "PayViewController.h"
+#import "HHPayPasswordView.h"
+#import "OrderDetialViewController.h"
+#import "OrderViewController.h"
+#import "ChangeUserInfoViewController.h"
 
 
-@interface TopUpViewController ()<UITableViewDelegate, UITableViewDataSource>{
+@interface TopUpViewController ()<UITableViewDelegate, UITableViewDataSource,HHPayPasswordViewDelegate>{
     float viewheigh;
     int selecedID, paytype;
     NSString *paybtnStr;
@@ -252,8 +256,63 @@
     
     if (paytype == 3) {
         //  余额 支付
-        
+        //    //  原来支付
+            HHPayPasswordView *payPasswordView = [[HHPayPasswordView alloc] init];
+            payPasswordView.delegate = self;
+            WeakSelf(weak);
+            payPasswordView.closeBlock = ^{
+                OrderDetialViewController *vc = [[OrderDetialViewController alloc] init];
+                vc.OrderID = self.model.orderid;
+                vc.orderType = Order_Topay;
+                vc.backHome = YES;
+                [weak.navigationController pushViewController:vc animated:YES];
+            };
+            [payPasswordView showInView:self.view];
     }
+    
+}
+#pragma mark - HHPayPasswordViewDelegate
+- (void)passwordView:(HHPayPasswordView *)passwordView didFinishInputPayPassword:(NSString *)password{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //   请求网络
+        NSDictionary *dic = @{
+                              @"invest_id" : self.model.orderid,
+                              @"tradePwd" : password
+                              };
+        WeakSelf(weakself);
+        [HttpRequest postPath:@"_pay_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+            NSLog(@"%@", responseObject);
+            
+            if([error isEqual:[NSNull null]] || error == nil){
+                NSLog(@"success");
+                
+            }
+            
+            NSDictionary *datadic = responseObject;
+            if ([datadic[@"error"] intValue] == 0) {
+                [passwordView paySuccess];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [passwordView hide];
+                    OrderViewController  *vc = [[OrderViewController alloc] init];
+                    vc.listType = OrderList_All;
+                    vc.backHome = YES;
+                    [weakself.navigationController pushViewController:vc animated:YES];
+                });
+            }else {
+                [passwordView payFailureWithPasswordError:YES withErrorLimit:3];
+                [ConfigModel mbProgressHUD:@"支付密码错误" andView:nil];
+            }
+        }];
+        
+        
+    });
+}
+
+- (void)forgetPayPassword {
+    //  忘记密码
+    ChangeUserInfoViewController * changeUserInfoVC = [[ChangeUserInfoViewController alloc] init];
+    changeUserInfoVC.type = UserInfoTypePayPassword;
+    [self.navigationController pushViewController:changeUserInfoVC animated:YES];
     
 }
 
