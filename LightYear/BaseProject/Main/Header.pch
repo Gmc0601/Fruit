@@ -124,6 +124,9 @@
 
 #define MainGreen  RGBColor(78, 173, 53)
 
+#define JumpMessage(vc) vc.hidesBottomBarWhenPushed = YES;\
+[self.navigationController pushViewController:vc animated:YES];
+
 /**
  * App基本信息
  */
