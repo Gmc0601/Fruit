@@ -21,4 +21,13 @@
     [self addObserver:vm forKeyPath:@"isSelect" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 }
 
+-(void)dealloc
+{
+    
+    
+    [self removeObserver:_vm forKeyPath:@"isSelect"];
+    
+}
+
+
 @end

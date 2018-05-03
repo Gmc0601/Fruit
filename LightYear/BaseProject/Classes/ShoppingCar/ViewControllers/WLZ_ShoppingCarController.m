@@ -31,7 +31,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   
+    
     if (![ConfigModel getBoolObjectforKey:IsLogin]) {
         LoginViewController *vc = [[LoginViewController alloc] init];
         vc.clickBlock = ^(NSString *str) {
@@ -42,19 +42,19 @@
         return;
     }else
     {
-          [self getCartData];
+        [self getCartData];
     }
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self createNav];
     [self contentV];
     
     [self getCartData];
-  
+    
 }
 
 -(NSMutableArray *)ordermArr
@@ -93,13 +93,13 @@
     if (!_endView) {
         
         if (self.type==0) {
-               _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-158, kScreenW, 44)];
+            _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-158, kScreenW, 44)];
         }else
         {
-               _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-112, kScreenW, 44)];
+            _endView = [[WLZ_ShoppingCartEndView alloc]initWithFrame:CGRectMake(0, kScreenH-112, kScreenW, 44)];
         }
-     
-       
+        
+        
         _endView.delegate=self;
         _endView.isEdit = _isEdit;
         
@@ -125,60 +125,50 @@
         self.showTbv.bounces = NO;
         self.showTbv.rowHeight=100;
         //        self.showTbv.contentInset = UIEdgeInsetsMake(0, 0,50, 0);
-       
+        
         self.showTbv.backgroundView=self.holdLab;
         
     }
     return _showTbv;
 }
 
+-(WLZ_ShopViewModel *)vm
+{
+    if (_vm==nil) {
+        _vm=[[WLZ_ShopViewModel alloc]init];
+    }
+    return _vm;
+}
+
+
 -(void)getCartData
 {
-//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    parameters[@"shopid"] = @"3";
-//    [HttpRequest postPath:cardList params:parameters resultBlock:^(id responseObject, NSError *error) {
-//
-//        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-//        if (baseModel.error == 0) {
-//            NSArray *arr = responseObject[@"info"];
-//            for (NSDictionary *dic in arr) {
-//                WLZ_ShoppIngCarModel *shopModel = [WLZ_ShoppIngCarModel yy_modelWithDictionary:dic];
-//                [self.cartmArr addObject:shopModel];
-//            }
-//
-//            [self.showTbv reloadData];
-//
-//        }else {
-//            NSLog(@"====%@",baseModel.message);
-//            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-//        }
-//
-//    }];
+    
     
     //获取数据
-    _vm = [[WLZ_ShopViewModel alloc]init];
+    //    _vm = [[WLZ_ShopViewModel alloc]init];
     WGetWeakSelf(weak, self);
-    [_vm getShopData:^(NSArray *commonArry) {
-        [weak.cartmArr removeAllObjects];
+    [self.vm getShopData:^(NSArray *commonArry) {
+        weak.cartmArr=nil;
         [weak.cartmArr addObjectsFromArray:commonArry];
         [weak.showTbv reloadData];
         if (commonArry.count==0) {
             
             weak.holdLab.hidden=NO;
             weak.endView.hidden=YES;
-          
+            
             [weak edits:nil];
             weak.navigationItem.rightBarButtonItem.title=@"";
         }else
         {
             weak.holdLab.hidden=YES;
-           
+            
             weak.endView.hidden=NO;
             weak.navigationItem.rightBarButtonItem.title=@"编辑";
             [weak.showTbv reloadData];
             [weak numPrice];
         }
-       
+        
         
         
     } priceBlock:^{
@@ -195,13 +185,15 @@
     NSArray *lists =   [_endView.Lab.text componentsSeparatedByString:@"￥"];
     float num = 0.00;
     self.goodId=@"";
-    for (int i=0; i<self.cartmArr.count-1; i++) {
-       
-        if (self.cartmArr.count!=0) {
+    
+    if (self.cartmArr.count!=0) {
+        for (int i=0; i<self.cartmArr.count-1; i++) {
+            
+            
             WLZ_ShoppIngCarModel *model = [self.cartmArr objectAtIndex:i];
             NSInteger count = [model.count integerValue];
             float sale = [model.price floatValue];
-           
+            
             if (model.isSelect ) {
                 num = count*sale+ num;
                 self.price=num;
@@ -212,14 +204,16 @@
             
         }
         
-        }
-     self.goodId=[self.goodId substringFromIndex:1];
-    _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
+        self.goodId=[self.goodId substringFromIndex:1];
+        _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
+    }
+    
+    
 }
 
 -(void)createNav
 {
-     [self setCustomerTitle:@"购物车"];
+    [self setCustomerTitle:@"购物车"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(edits:)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
 }
@@ -245,17 +239,17 @@
     }
     if (self.isEdit) {
         //取消
-       
-            NSMutableDictionary *dic = [self.cartmArr lastObject];
-            
-            [dic setObject:checked forKey:@"checked"];
-            for (int j=0; j<self.cartmArr.count-1; j++) {
-                WLZ_ShoppIngCarModel *model = (WLZ_ShoppIngCarModel *)[self.cartmArr objectAtIndex:j];
-                if (![model.status isEqualToString:@"3"]) {
-                    model.isSelect=btselected;
-                }
-                
+        
+        NSMutableDictionary *dic = [self.cartmArr lastObject];
+        
+        [dic setObject:checked forKey:@"checked"];
+        for (int j=0; j<self.cartmArr.count-1; j++) {
+            WLZ_ShoppIngCarModel *model = (WLZ_ShoppIngCarModel *)[self.cartmArr objectAtIndex:j];
+            if (![model.status isEqualToString:@"3"]) {
+                model.isSelect=btselected;
             }
+            
+        }
         
     }
     else
@@ -266,10 +260,10 @@
         NSMutableDictionary *dic = [self.cartmArr lastObject];
         
         [dic setObject:checked forKey:@"checked"];
-            for (int j=0; j<self.cartmArr.count-1; j++) {
-                WLZ_ShoppIngCarModel *model = (WLZ_ShoppIngCarModel *)[self.cartmArr objectAtIndex:j];
-                model.isSelect=btselected;
-            }
+        for (int j=0; j<self.cartmArr.count-1; j++) {
+            WLZ_ShoppIngCarModel *model = (WLZ_ShoppIngCarModel *)[self.cartmArr objectAtIndex:j];
+            model.isSelect=btselected;
+        }
         
         
     }
@@ -287,57 +281,57 @@
     {
         //删除
         NSMutableIndexSet *bigIndexSet = [[NSMutableIndexSet alloc]init];
-     
-            NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc]init];
-            for (int j=0 ; j<self.cartmArr.count-1; j++) {
-                WLZ_ShoppIngCarModel *model = [ self.cartmArr objectAtIndex:j];
+        
+        NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc]init];
+        for (int j=0 ; j<self.cartmArr.count-1; j++) {
+            WLZ_ShoppIngCarModel *model = [ self.cartmArr objectAtIndex:j];
+            
+            if (model.isSelect==YES) {
                 
-                if (model.isSelect==YES) {
+                [indexSet addIndex:j];
+                
+                
+                //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+                
+                NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+                parameters[@"id"] = model.card_id;
+                [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
                     
-                    [indexSet addIndex:j];
-                    
-                    
-                    //访问网络 获取数据 block回调失败或者成功 都可以在这处理
-                    
-                    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-                    parameters[@"id"] = model.card_id;
-                    [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
+                    BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+                    if (baseModel.error == 0) {
                         
-                        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-                        if (baseModel.error == 0) {
-                         
-                           [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
-                            
-                        }else {
-                            NSLog(@"====%@",baseModel.message);
-                            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-                        }
+                        [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
                         
-                    }];
+                    }else {
+                        NSLog(@"====%@",baseModel.message);
+                        [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+                    }
                     
-                    //访问网络 获取数据 block回调失败或者成功 都可以在这处理
-                 
-                    [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
-                        
-                        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-                        if (baseModel.error == 0) {
-                            
-                            [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
-                              [self getCartData];
-                            
-                        }else {
-                            NSLog(@"====%@",baseModel.message);
-                            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-                        }
-                        
-                    }];
+                }];
+                
+                //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+                
+                [HttpRequest postPath:deleteCrad params:parameters resultBlock:^(id responseObject, NSError *error) {
                     
-                }
+                    BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+                    if (baseModel.error == 0) {
+                        
+                        [ConfigModel mbProgressHUD:@"删除成功" andView:nil];
+                        [self getCartData];
+                        
+                    }else {
+                        NSLog(@"====%@",baseModel.message);
+                        [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+                    }
+                    
+                }];
+                
             }
-//            [self.cartmArr removeObjectsAtIndexes:indexSet];
-//            [self.cartmArr removeObjectsAtIndexes:bigIndexSet];
-//            [self.showTbv reloadData];
-      
+        }
+        //            [self.cartmArr removeObjectsAtIndexes:indexSet];
+        //            [self.cartmArr removeObjectsAtIndexes:bigIndexSet];
+        //            [self.showTbv reloadData];
+        
     }
     else if (bt.tag==18)
     {
@@ -361,11 +355,11 @@
 - (void)loadOrderData {
     [ConfigModel showHud:self];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
+    //    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
     parameters[@"shopid"] = @"3";
-//    parameters[@"receipt_id"] = @"";
+    //    parameters[@"receipt_id"] = @"";
     parameters[@"amount"] = [NSString stringWithFormat:@"%.2f",self.price];
     parameters[@"auto"] = @"2";
     parameters[@"ids"] = self.goodId;
@@ -391,7 +385,7 @@
 
 - (void)edits:(UIBarButtonItem *)item
 {
-     self.isEdit = !self.isEdit;
+    self.isEdit = !self.isEdit;
     if (self.isEdit) {
         item.title = @"完成";
         
@@ -401,11 +395,11 @@
         
     }else
     {
-         item.title = @"编辑";
+        item.title = @"编辑";
     }
     
-     _endView.isEdit = self.isEdit;
-//     [_endView.checkbt setSelected:self.isEdit];
+    _endView.isEdit = self.isEdit;
+    //     [_endView.checkbt setSelected:self.isEdit];
     
     
 }
@@ -442,11 +436,11 @@
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     WLZ_ShoppIngCarModel *model=self.cartmArr[indexPath.row];
-
-   
+    
+    
     cell.isEdit=self.isEdit;
     cell.row = indexPath.row+1;
-     cell.model=model;
+    cell.model=model;
     return cell;
     
 }
@@ -480,7 +474,7 @@
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
         [self.showTbv reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
     }
-  
+    
     
 }
 
@@ -493,7 +487,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-
+    
     
 }
 
