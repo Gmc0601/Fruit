@@ -19,6 +19,7 @@
 #import "HomeHotCell.h"
 
 
+
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,HomeBannerCellDelegate,HomeItemsCellDelegate,HomeHotCellDelegate>
 {
     NSInteger _leftPage;
@@ -344,6 +345,8 @@
 #pragma mark 按钮事件
 - (void)messageAction {
     NSLog(@"message");
+    
+    JumpMessage([GoodsDetailVC new]);//消息跳转，把类名换掉即可
 }
 
 - (void)searchBtnAction {
