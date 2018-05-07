@@ -148,28 +148,29 @@
     //获取数据
     //    _vm = [[WLZ_ShopViewModel alloc]init];
     WGetWeakSelf(weak, self);
+    
     [self.vm getShopData:^(NSArray *commonArry) {
-        weak.cartmArr=nil;
-        [weak.cartmArr addObjectsFromArray:commonArry];
-        [weak.showTbv reloadData];
-        if (commonArry.count==0) {
-            
-            weak.holdLab.hidden=NO;
-            weak.endView.hidden=YES;
-            
-            [weak edits:nil];
-            weak.navigationItem.rightBarButtonItem.title=@"";
-        }else
-        {
-            weak.holdLab.hidden=YES;
-            
-            weak.endView.hidden=NO;
-            weak.navigationItem.rightBarButtonItem.title=@"编辑";
+        
+      
+            weak.cartmArr=nil;
+            [weak.cartmArr addObjectsFromArray:commonArry];
             [weak.showTbv reloadData];
-            [weak numPrice];
-        }
-        
-        
+            if (commonArry.count==0) {
+                
+                weak.holdLab.hidden=NO;
+                weak.endView.hidden=YES;
+                
+                [weak edits:nil];
+                weak.navigationItem.rightBarButtonItem.title=@"";
+            }else
+            {
+                weak.holdLab.hidden=YES;
+                
+                weak.endView.hidden=NO;
+                weak.navigationItem.rightBarButtonItem.title=@"编辑";
+                [weak.showTbv reloadData];
+                [weak numPrice];
+            }
         
     } priceBlock:^{
         
@@ -203,8 +204,10 @@
             }
             
         }
-        
-        self.goodId=[self.goodId substringFromIndex:1];
+        if (![self.goodId isEqualToString:@""]) {
+             self.goodId=[self.goodId substringFromIndex:1];
+        }
+       
         _endView.Lab.text = [NSString stringWithFormat:@"%@￥%.2f",lists[0],num];
     }
     
