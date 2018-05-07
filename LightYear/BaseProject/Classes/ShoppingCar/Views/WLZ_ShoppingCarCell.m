@@ -218,14 +218,14 @@ static CGFloat CELL_HEIGHT = 100;
         _changeView.subButton.enabled=YES;
     }
     
-    if (_model.stock <self.choosedCount) {
-        self.choosedCount  = _model.stock;
-        _changeView.addButton.enabled = NO;
-    }
-    else
-    {
-        _changeView.subButton.enabled = YES;
-    }
+//    if (_model.stock <self.choosedCount) {
+//        self.choosedCount  = _model.stock;
+//        _changeView.addButton.enabled = NO;
+//    }
+//    else
+//    {
+//        _changeView.subButton.enabled = YES;
+//    }
    
     
     if(self.choosedCount>=99)
