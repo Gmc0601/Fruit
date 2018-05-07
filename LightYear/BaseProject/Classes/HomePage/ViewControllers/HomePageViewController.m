@@ -195,7 +195,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (section == 0) {
+        if (self.bannerArr.count == 0) {
+            return 0;
+        } else {
+            return 1;
+        }
+    } else {
+        return 1;
+    }
 }
 
 
@@ -280,7 +288,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:
-            return SizeWidth(180);
+        {
+            if (self.bannerArr.count == 0) {
+                return 0.01;
+            } else {
+                return SizeWidth(180);
+            }
+        }
+
             break;
         case 1:
         {
@@ -346,7 +361,7 @@
 - (void)messageAction {
     NSLog(@"message");
     
-    JumpMessage([GoodsDetailVC new]);//消息跳转，把类名换掉即可
+//    JumpMessage([GoodsDetailVC new]);//消息跳转，把类名换掉即可
 }
 
 - (void)searchBtnAction {

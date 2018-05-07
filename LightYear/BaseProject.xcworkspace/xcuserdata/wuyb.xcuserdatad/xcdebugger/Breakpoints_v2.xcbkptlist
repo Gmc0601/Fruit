@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BaseProject/Classes/HomePage/ViewControllers/SearchVC.m"
-            timestampString = "546247725.450986"
+            filePath = "BaseProject/Classes/HomePage/ViewControllers/ShoplistVC.m"
+            timestampString = "547353144.4023761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-loadGoodsIndexData"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-mapView:didUpdateUserLocation:updatingLocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
