@@ -9,6 +9,8 @@
 #import "ShoplistVC.h"
 #import "ShopListCell.h"
 
+#import "TBTabBarController.h"
+
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
@@ -121,7 +123,9 @@
     [ConfigModel saveString:model.shopId forKey:ShopId];
     // 点击选择店铺
     if (self.back) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"xxxx" object:nil userInfo:nil];
+    }else {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"xxxx" object:nil userInfo:nil];
     }
 }
 
@@ -130,7 +134,7 @@
     
     CLLocationCoordinate2D coord = [userLocation coordinate];
     //    NSLog(@"latitude: %f, longitude: %f",coord.latitude, coord.longitude);
-    if (!self.isFirstMap) {
+    if (!self.isFirstMap && coord.latitude>0) {
         _latitude = [NSString stringWithFormat:@"%f",coord.latitude];
         _longitude = [NSString stringWithFormat:@"%f",coord.longitude];
         [self loadHomeData];

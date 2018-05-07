@@ -102,4 +102,7 @@
 
 #define IosSwitch @"iosSwitch"
 
+//判断字符串是否为空
+#define NULLString(string) ((![string isKindOfClass:[NSString class]])||[string isEqualToString:@""] || (string == nil) || [string isEqualToString:@""] ||[string isEqualToString:@"(null)"] || [string isKindOfClass:[NSNull class]]||[[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+
 #endif /* CCUrl_h */

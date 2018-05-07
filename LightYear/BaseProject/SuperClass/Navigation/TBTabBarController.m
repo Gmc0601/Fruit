@@ -13,6 +13,7 @@
 #import "WLZ_ShoppingCarController.h"
 #import "ViewController.h"
 #import "TBNavigationController.h"
+#import "ShoplistVC.h"
 //#import "TBTabBar.h"
 
 
@@ -34,9 +35,18 @@
 #pragma mark -初始化所有控制器 
 
 - (void)setUpChildVC {
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
+    NSLog(@"shopId==================================%@",shopId);
+    if (NULLString(shopId)) {
+        ShoplistVC *homepage = [[ShoplistVC alloc] init];
+        [self setChildVC:homepage title:@"首页" image:@"tab_home_wxz" selectedImage:@"tab_home_xz"];
+    } else {
+        HomePageViewController *homepage = [[HomePageViewController alloc] init];
+        [self setChildVC:homepage title:@"首页" image:@"tab_home_wxz" selectedImage:@"tab_home_xz"];
+        
+    }
     
-    HomePageViewController *homepage = [[HomePageViewController alloc] init];
-    [self setChildVC:homepage title:@"首页" image:@"tab_home_wxz" selectedImage:@"tab_home_xz"];
+    
 
     ClassifyViewController *classify = [[ClassifyViewController alloc] init];
     [self setChildVC:classify title:@"分类" image:@"tab_fenlei_wxz" selectedImage:@"tab_fenlei_xz"];

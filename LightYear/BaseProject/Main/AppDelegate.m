@@ -17,6 +17,8 @@
 #import "ViewController.h"
 #import "AppDelegate+Jpush.h"
 
+#import "TBTabBarController.h"
+
 @interface AppDelegate ()
 @end
 
@@ -46,16 +48,26 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginActionWithType:) name:kLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTabHome) name:@"xxxx" object:nil];
+    
+    
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
 
     [self.window makeKeyAndVisible];
+    
+    
     
     //设置地图
     [AMapServices sharedServices].apiKey = AMapKey;
     
     return YES;
 }
+- (void)changeTabHome {
+    TBTabBarController *tab = [[TBTabBarController alloc] init];
+    self.window.rootViewController =  tab;
+}
+
 - (void)updateUserInfo{
     [HttpRequest postPath:GetUserinfoURL params:nil resultBlock:^(id responseObject, NSError *error) {
         UserModel * userModel = [[UserModel alloc] initWithDictionary:responseObject error:nil];
