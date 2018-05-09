@@ -93,6 +93,7 @@
 #define UserToken @"userTOken"
 #define UserNickName @"nickname"
 #define ShopId @"shopId"
+#define ShopName @"shopName"
 // 经纬度  地理位置信息
 #define Longitude @"longitude"
 

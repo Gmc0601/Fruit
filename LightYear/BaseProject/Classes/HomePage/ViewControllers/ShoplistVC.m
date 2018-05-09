@@ -121,6 +121,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ShopModel *model = self.itemsArray[indexPath.row];
     [ConfigModel saveString:model.shopId forKey:ShopId];
+    [ConfigModel saveString:model.shopname forKey:ShopName];
     // 点击选择店铺
     if (self.back) {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"xxxx" object:nil userInfo:nil];

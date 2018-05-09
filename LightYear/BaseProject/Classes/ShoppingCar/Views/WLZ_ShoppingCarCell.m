@@ -251,12 +251,12 @@ static CGFloat CELL_HEIGHT = 100;
     
    
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-   
+   NSString *shopId = [ConfigModel getStringforKey:ShopId];
     parameters[@"count"] = @(self.choosedCount);
     parameters[@"price"] = _model.price;
     parameters[@"good_id"] = _model.good_id;
     parameters[@"sku_id"] = _model.sku;
-    parameters[@"shopid"] = _model.shopid;
+    parameters[@"shopid"] = shopId;
     parameters[@"id"] = _model.card_id;
     
     [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {

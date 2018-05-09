@@ -243,12 +243,13 @@
 
 - (void)loadSetCarData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"count"] = @(_choseNum);
     parameters[@"price"] = _goodsDetailModel.discount_price;
     parameters[@"good_id"] = _goodsDetailModel.goodsId;
 //    parameters[@"sku_id"] = _goodsId;
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     
     [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
@@ -321,11 +322,12 @@
 
 - (void)loadOrderData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     NSArray *arr = @[@{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@(_choseNum)}];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
     NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     parameters[@"receipt_id"] = @"";
     parameters[@"amount"] = [NSString stringWithFormat:@"%.2f",[_goodsDetailModel.discount_price floatValue]*_choseNum];
     parameters[@"auto"] = @"1";

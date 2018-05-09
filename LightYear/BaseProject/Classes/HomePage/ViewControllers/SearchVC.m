@@ -242,11 +242,12 @@ maxHeight:(CGFloat)height {
 - (void)loadGoodsIndexData {
 
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"key"] = _telStr;
     parameters[@"search_type"] = @(_searchType);
     parameters[@"sort"] = @(_sort);
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     parameters[@"page"] = @(_leftPage);
     parameters[@"size"] = @"20";
     [HttpRequest postPath:searchUrl params:parameters resultBlock:^(id responseObject, NSError *error) {

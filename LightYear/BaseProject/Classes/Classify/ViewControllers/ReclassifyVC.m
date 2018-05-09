@@ -50,9 +50,10 @@
 
 - (void)loadGoodsData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     parameters[@"goodstype"] = _typeId;
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     parameters[@"search_type"] = @(_searchType);
     parameters[@"sort"] = @(_sort);
     parameters[@"page"] = @(_leftPage);

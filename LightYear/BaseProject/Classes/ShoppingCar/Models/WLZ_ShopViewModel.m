@@ -23,9 +23,10 @@
 - (void)getShopData:(void (^)(NSArray * commonArry))shopDataBlock  priceBlock:(void (^)()) priceBlock
 {
     //访问网络 获取数据 block回调失败或者成功 都可以在这处理
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
      NSMutableArray *commonMuList = [NSMutableArray array];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     [HttpRequest postPath:cardList params:parameters resultBlock:^(id responseObject, NSError *error) {
         
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];

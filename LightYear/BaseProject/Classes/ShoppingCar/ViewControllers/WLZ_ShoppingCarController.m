@@ -357,11 +357,12 @@
 
 - (void)loadOrderData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.ordermArr options:NSJSONWritingPrettyPrinted error:nil];
     //    NSString *dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //    NSDictionary *arr = @{@"good_id":_goodsDetailModel.goodsId,@"price":_goodsDetailModel.discount_price,@"count":@"1"};
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     //    parameters[@"receipt_id"] = @"";
     parameters[@"amount"] = [NSString stringWithFormat:@"%.2f",self.price];
     parameters[@"auto"] = @"2";
@@ -457,7 +458,7 @@
     [headV addSubview:imageV];
     
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 200, 21)];
-    label.text=@"厦门店";
+    label.text= [ConfigModel getStringforKey:ShopName];
     label.textColor=[UIColor grayColor];
     label.font=[UIFont systemFontOfSize:15];
     label.textAlignment=NSTextAlignmentLeft;

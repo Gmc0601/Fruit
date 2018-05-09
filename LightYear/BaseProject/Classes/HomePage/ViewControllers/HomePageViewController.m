@@ -125,8 +125,9 @@
 
 - (void)loadBannerData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     [HttpRequest postPath:homeBannerURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
@@ -146,8 +147,9 @@
 
 - (void)loadShopGoodsTypeData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     [HttpRequest postPath:shopGoodsTypeURL params:parameters resultBlock:^(id responseObject, NSError *error) {
         [ConfigModel hideHud:self];
         BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
@@ -167,8 +169,9 @@
 
 - (void)loadGoodsIndexData {
     [ConfigModel showHud:self];
+    NSString *shopId = [ConfigModel getStringforKey:ShopId];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    parameters[@"shopid"] = @"3";
+    parameters[@"shopid"] = shopId;
     parameters[@"page"] = @(_leftPage);
     parameters[@"size"] = @"20";
     [HttpRequest postPath:goodsIndexURL params:parameters resultBlock:^(id responseObject, NSError *error) {

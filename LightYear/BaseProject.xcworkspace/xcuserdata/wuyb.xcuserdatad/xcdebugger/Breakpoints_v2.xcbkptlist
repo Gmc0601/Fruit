@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/Classify/ViewControllers/GoodsDetailVC.m"
-            timestampString = "547377340.168308"
+            timestampString = "547435552.804314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "-loadCarCountData"
             landmarkType = "7">
             <Locations>
@@ -83,11 +83,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewControllers/ShoplistVC.m"
-            timestampString = "547379025.506777"
+            timestampString = "547539485.992119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-mapView:didUpdateUserLocation:updatingLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -99,11 +99,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewControllers/ShoplistVC.m"
-            timestampString = "547379025.507147"
+            timestampString = "547539485.992186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-mapView:didUpdateUserLocation:updatingLocation:"
             landmarkType = "7">
          </BreakpointContent>
