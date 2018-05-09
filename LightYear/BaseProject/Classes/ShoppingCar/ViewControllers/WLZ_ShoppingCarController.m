@@ -342,7 +342,14 @@
         
         
         
-        [self loadOrderData];
+        if ([_endView.Lab.text isEqualToString:@"合计: ￥0.00"]) {
+             [ConfigModel mbProgressHUD:@"请选择商品" andView:nil];
+        }else
+        {
+              [self loadOrderData];
+        }
+        
+      
         
         
         
@@ -445,6 +452,38 @@
     cell.isEdit=self.isEdit;
     cell.row = indexPath.row+1;
     cell.model=model;
+  
+    cell.AddBlock=^(NSInteger count)
+    {
+        
+        NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+        NSString *shopId = [ConfigModel getStringforKey:ShopId];
+        parameters[@"count"] = @(count);
+        parameters[@"price"] = model.discount_price;
+        parameters[@"good_id"] = model.good_id;
+        parameters[@"sku_id"] = model.sku;
+        parameters[@"shopid"] = shopId;
+        parameters[@"id"] = model.card_id;
+
+        [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {
+
+            NSLog(@"responseObject = %@",responseObject)
+            BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
+            if (baseModel.error == 0) {
+
+
+            }else {
+                NSLog(@"%@",baseModel.message)
+                [ConfigModel mbProgressHUD:baseModel.message andView:nil];
+            }
+
+        }];
+        
+        
+        
+    };
+    
+    
     return cell;
     
 }

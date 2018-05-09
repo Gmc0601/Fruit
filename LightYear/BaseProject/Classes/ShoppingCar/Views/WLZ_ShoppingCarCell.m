@@ -169,7 +169,7 @@ static CGFloat CELL_HEIGHT = 100;
 
 - (void)setModel:(WLZ_ShoppIngCarModel *)model
 {
-//    _model = model;
+    _model = model;
     _selectBt.selected=model.isSelect;
     if (_changeView.numberFD.text) {
         self.choosedCount = [_changeView.numberFD.text integerValue];
@@ -226,7 +226,7 @@ static CGFloat CELL_HEIGHT = 100;
 //    {
 //        _changeView.subButton.enabled = YES;
 //    }
-   
+//   
     
     if(self.choosedCount>=99)
     {
@@ -250,28 +250,11 @@ static CGFloat CELL_HEIGHT = 100;
 {
     
    
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-   NSString *shopId = [ConfigModel getStringforKey:ShopId];
-    parameters[@"count"] = @(self.choosedCount);
-    parameters[@"price"] = _model.price;
-    parameters[@"good_id"] = _model.good_id;
-    parameters[@"sku_id"] = _model.sku;
-    parameters[@"shopid"] = shopId;
-    parameters[@"id"] = _model.card_id;
-    
-    [HttpRequest postPath:setCarURL params:parameters resultBlock:^(id responseObject, NSError *error) {
-        
-        NSLog(@"responseObject = %@",responseObject)
-        BaseModel * baseModel = [[BaseModel alloc] initWithDictionary:responseObject error:nil];
-        if (baseModel.error == 0) {
-           
-            
-        }else {
-            NSLog(@"%@",baseModel.message)
-            [ConfigModel mbProgressHUD:baseModel.message andView:nil];
-        }
-        
-    }];
+    if (self.AddBlock) {
+        self.AddBlock(self.choosedCount);
+    }
+
+  
 }
 
 

@@ -85,11 +85,24 @@
     
     BOOL isCheck =YES;
   
-      
+//    for (int i=0; i<carDataArrList.count-2; i++) {
+//
+//        WLZ_ShoppIngCarModel * model=carDataArrList[i];
+//        if (model.isSelect) {
+//
+//            isCheck=YES;
+//            break;
+//        }else
+//        {
+//            isCheck=NO;
+//        }
+//
+//    }
+  
         NSMutableDictionary *dic = [carDataArrList lastObject];
          [dic setObject:@"YES" forKey:@"checked"];
-    
-        
+
+
         if ([[dic objectForKey:@"checked"] isEqualToString:@"NO"]) {
             isCheck = NO;
         }

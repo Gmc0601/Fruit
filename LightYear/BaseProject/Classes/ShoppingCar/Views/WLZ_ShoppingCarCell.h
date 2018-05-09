@@ -22,7 +22,7 @@
 @property(nonatomic,assign)NSInteger row;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,weak)id<WLZ_ShoppingCarCellDelegate> delegate;
-
+@property (copy, nonatomic) void (^(AddBlock)) (NSInteger count);
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView *)tableView;
 
 +(CGFloat)getHeight;
@@ -31,6 +31,8 @@
 @protocol WLZ_ShoppingCarCellDelegate <NSObject>
 
 -(void)singleClick:(WLZ_ShoppIngCarModel *)models row:(NSInteger )row;
+
+
 
 @end
 
